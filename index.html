@@ -1,14 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Awesome Site</title>
-    <style>
-      body { font-family: sans-serif; text-align: center; padding-top: 50px; }
-      h1 { color: hotpink; }
-    </style>
-  </head>
-  <body>
-    <h1>Hello World! 👋</h1>
-    <p>This is my first website hosted on GitHub Pages. 🎉</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perk Up, Grant!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f3f0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #4b2e2e;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #dcb18c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .menu-item {
+      margin: 1rem 0;
+    }
+
+    footer {
+      background-color: #4b2e2e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Perk Up, Grant!</h1>
+    <p>Your cozy neighborhood coffee haven ☕</p>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#hours">Hours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section" id="menu">
+    <h2>Our Favorites</h2>
+    <div class="menu-item"><strong>Flat White</strong> – smooth & creamy perfection</div>
+    <div class="menu-item"><strong>Hazelnut Cold Brew</strong> – bold meets sweet</div>
+    <div class="menu-item"><strong>Choco-Mocha Latte</strong> – because you deserve it</div>
+  </section>
+
+  <section class="section" id="hours">
+    <h2>Hours</h2>
+    <p>Monday–Friday: 7am – 5pm</p>
+    <p>Saturday–Sunday: 8am – 4pm</p>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Find Us</h2>
+    <p>📍 123 Roast Street, Grant City</p>
+    <p>📞 (555) 123-4567</p>
+    <p>📧 hello@perkupgrant.com</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Perk Up, Grant! ☕ Stay perky.</p>
+  </footer>
+
+</body>
 </html>
