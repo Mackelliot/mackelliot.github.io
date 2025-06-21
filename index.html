@@ -36,9 +36,14 @@
       margin: 0.5rem 0 1.5rem;
     }
 
-    /* NAVIGATION */
+    /* STICKY NAVIGATION */
     nav {
-      margin-bottom: 2rem;
+      background-color: #f0dfc2;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 1rem 0;
     }
 
     nav ul {
@@ -173,16 +178,16 @@
   <header id="top">
     <img src="logo.jpeg" alt="Perk Up, Grant! logo">
     <div class="tagline">No shame in a third cup</div>
-
-    <!-- NAVIGATION BELOW LOGO -->
-    <nav>
-      <ul>
-        <li><a href="#top">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
   </header>
+
+  <!-- STICKY NAVIGATION BELOW LOGO -->
+  <nav>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
 
   <!-- MENU -->
   <section id="menu" class="menu-section">
