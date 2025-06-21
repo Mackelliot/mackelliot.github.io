@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +48,7 @@
       text-align: center;
       min-height: 85vh;
       background-color: #F6EBD5;
-      padding: 1rem 1rem 0;
+      padding: 1rem;
     }
     header img {
       max-width: 80vw;
@@ -67,22 +66,199 @@
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #3a2a1c;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .drink {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .drink img {
+      width: 70px;
+      margin-right: 1rem;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .drink-text h3 {
+      font-family: 'Oswald', sans-serif;
+      margin: 0 0 0.3rem 0;
+    }
+    .drink-text p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #4a3b30;
+    }
+    .about-section img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+      border-radius: 8px;
+    }
+    .socials-section {
+      background-color: #3a2a1c;
+      color: #fff;
+      padding: 3rem 1rem;
+      border-radius: 8px;
+    }
+    .socials-section a {
+      color: #f6ebd5;
+      text-decoration: underline;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .social-grid img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      color: #7c6e5a;
+      margin-top: 4rem;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background-color: #3a2a1c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    #backToTop:hover {
+      background-color: #5a3a1c;
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="#top">Home</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#socials">Socials</a></li>
-      <li><a href="#careers">Careers</a></li>
-    </ul>
-  </nav>
-  <header id="top">
-    <img src="logo.jpeg" alt="Perk Up, Grant! logo">
-    <div class="established">est. 2025</div>
-  </header>
-  <!-- Additional content like Menu, About, Socials, Careers, and Footer would go here -->
+
+<nav>
+  <ul>
+    <li><a href="#top">Home</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#socials">Socials</a></li>
+    <li><a href="#careers">Careers</a></li>
+  </ul>
+</nav>
+
+<header id="top">
+  <img src="logo.jpeg" alt="Perk Up, Grant! logo">
+  <div class="established">est. 2025</div>
+</header>
+
+<section id="menu">
+  <h2>Menu</h2>
+  <div class="drink">
+    <img src="cortado.jpeg" alt="Cortado">
+    <div class="drink-text">
+      <h3>Cortado</h3>
+      <p>Grant’s pick. A no-nonsense shot of espresso softened with a splash of milk. Balanced, bold, and straight to the point—just like the general.</p>
+    </div>
+  </div>
+  <div class="drink">
+    <img src="cappuccino.jpeg" alt="Cappuccino">
+    <div class="drink-text">
+      <h3>Cappuccino</h3>
+      <p>Foamy, cozy, and deceptively strong.</p>
+    </div>
+  </div>
+  <div class="drink">
+    <img src="latte.jpeg" alt="Latte">
+    <div class="drink-text">
+      <h3>Latte</h3>
+      <p>The friendliest formation of espresso and milk. Warm, comforting, and built for slow sips.</p>
+    </div>
+  </div>
+  <div class="drink">
+    <img src="americano.jpeg" alt="Americano">
+    <div class="drink-text">
+      <h3>Americano</h3>
+      <p>Espresso, extended with hot water—popularized by American GIs in France who wanted “real coffee” when served a tiny espresso cup.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <h2>About</h2>
+  <img src="about.jpeg" alt="About Perk Up, Grant!">
+  <p>Perk Up, Grant! started the way many great ideas do—somewhere after a fourth cup of coffee but before a fourth cup of wine. After rewatching all seasons of <em>Bluey</em> for the 9th time without any good next things to watch, a weary dad hit his limit. So, naturally, he did the only reasonable thing left: he opened a coffee shop in his house.</p>
+  <p>What began as a small setup—just him, a stubborn espresso machine, and a dream—quickly became a local favorite. But there was a cost. Mainly, he could no longer say “Oh sorry, I don’t work here” when his in-laws asked him to unclog the sink.</p>
+  <p>Today, Perk Up, Grant! isn’t just a place for coffee—it’s a place for connection. It’s about love, family, and the people who show up for each other. One cup at a time.</p>
+</section>
+
+<section id="socials" class="socials-section">
+  <h2>Follow Us</h2>
+  <a href="https://instagram.com" target="_blank">@perkupgrant</a>
+  <div class="social-grid">
+    <img src="social-a.jpeg" alt="Social A">
+    <img src="social-b.jpeg" alt="Social B">
+    <img src="social-c.jpeg" alt="Social C">
+    <img src="social-d.jpeg" alt="Social D">
+  </div>
+</section>
+
+<section id="careers">
+  <h2>Careers</h2>
+  <p>Are you passionate about coffee, chaos, and contributing to a cause that pays in vibes and gratitude?</p>
+  <p>Join us at Perk Up, Grant! where we proudly offer:</p>
+  <ul>
+    <li>No benefits</li>
+    <li>No pay</li>
+    <li>Unlimited exposure to espresso fumes</li>
+  </ul>
+  <p>If you're still reading, you're exactly the kind of person we're looking for. Drop by. Bring your own mug.</p>
+</section>
+
+<footer>
+  2025 Perk Up, Grant!<br>
+  Brewed with care in Atlanta, GA.<br>
+  No shame in a third cup.
+</footer>
+
+<button id="backToTop" title="Back to top">↑</button>
+
+<script>
+  const backToTopBtn = document.getElementById("backToTop");
+  window.onscroll = () => {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  };
+  backToTopBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+
 </body>
 </html>
