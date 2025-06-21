@@ -6,6 +6,10 @@
   <title>Perk Up, Grant! – Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
@@ -13,9 +17,41 @@
       color: #2c2c2c;
     }
 
+    /* NAVIGATION */
+    nav {
+      background-color: #f0dfc2;
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #3a2a1c;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER */
     header {
       text-align: center;
-      padding: 2rem 1rem 0.5rem;
+      padding: 6rem 1rem 1rem;
     }
 
     header img {
@@ -31,6 +67,7 @@
       margin-top: 0;
     }
 
+    /* MENU */
     .menu-section {
       max-width: 800px;
       margin: 4rem auto 2rem;
@@ -74,6 +111,30 @@
       max-width: 500px;
     }
 
+    /* ABOUT SECTION */
+    .about-section {
+      max-width: 800px;
+      margin: 5rem auto 2rem;
+      padding: 0 1rem;
+    }
+
+    .about-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #3a2a1c;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #4a3b30;
+      margin-bottom: 1.2rem;
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -101,12 +162,23 @@
 </head>
 <body>
 
-  <header>
+  <!-- NAVIGATION -->
+  <nav>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="top">
     <img src="logo.jpeg" alt="Perk Up, Grant! logo">
     <div class="tagline">No shame in a third cup</div>
   </header>
 
-  <section class="menu-section">
+  <!-- MENU -->
+  <section id="menu" class="menu-section">
     <h2>Menu</h2>
 
     <div class="drink">
@@ -142,8 +214,27 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <h2>About</h2>
+    <p>
+      Perk Up, Grant! started the way many great ideas do—somewhere between a fourth cup of coffee and a full-blown midlife crisis.
+      After years of juggling work, kids, dishes, and the delicate art of avoiding his in-laws, a weary dad hit his limit.
+      So, naturally, he did the only reasonable thing left: he opened a coffee shop. In his house.
+    </p>
+    <p>
+      What began as a small setup—just him, a stubborn espresso machine, and a dream—quickly became a local favorite.
+      But there was a cost. Mainly, he could no longer say “Oh sorry, I don’t work here” when his in-laws asked him to unclog the sink.
+    </p>
+    <p>
+      Today, Perk Up, Grant! serves bold brews and bold boundaries. It’s more than just coffee—it’s a quiet rebellion, one cup at a time.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; 2025 Perk Up, Grant! – Brewed with care in Atlanta, GA.
+    &copy; 2025 Perk Up, Grant! – 
+    Brewed with care in Atlanta, GA.
   </footer>
 
 </body>
