@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Perk Up, Grant!</title>
+  <title>Perk Up, Grant! – Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     body {
@@ -31,37 +31,44 @@
       color: #3a2a1c;
     }
 
-    .menu {
-      max-width: 900px;
-      margin: 3rem auto;
+    .menu-section {
+      max-width: 800px;
+      margin: 4rem auto 2rem;
       padding: 0 1rem;
     }
 
+    .menu-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      border-bottom: 2px solid #3a2a1c;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
     .drink {
-      margin-bottom: 3rem;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
     }
 
     .drink img {
-      width: 100%;
-      max-width: 300px;
-      display: block;
-      margin: 0 auto 1rem;
+      width: 80px;
+      height: auto;
+      margin-right: 1.5rem;
+      border-radius: 6px;
+      object-fit: cover;
     }
 
-    .drink h2 {
+    .drink-text h3 {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      text-align: center;
+      font-size: 1.3rem;
+      margin: 0;
     }
 
-    .drink p {
-      font-size: 1rem;
-      font-weight: 400;
-      text-align: center;
+    .drink-text p {
+      margin: 0.4rem 0 0 0;
+      font-size: 0.95rem;
       color: #4a3b30;
-      margin: 0 auto;
       max-width: 500px;
     }
 
@@ -70,25 +77,22 @@
       font-size: 0.9rem;
       padding: 2rem 1rem;
       color: #7c6e5a;
+      margin-top: 4rem;
     }
 
-    @media (min-width: 700px) {
+    @media (max-width: 600px) {
       .drink {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .drink img {
-        margin: 0;
+        margin-bottom: 1rem;
+        margin-right: 0;
       }
 
-      .drink h2, .drink p {
-        text-align: left;
-      }
-
-      .drink-text {
-        flex: 1;
+      .drink-text p {
+        max-width: 100%;
       }
     }
   </style>
@@ -100,11 +104,13 @@
     <h1>Perk Up, Grant!</h1>
   </header>
 
-  <section class="menu">
+  <section class="menu-section">
+    <h2>Menu</h2>
+
     <div class="drink">
       <img src="cortado.jpeg" alt="Cortado">
       <div class="drink-text">
-        <h2>Cortado</h2>
+        <h3>Cortado</h3>
         <p>Grant’s pick. A no-nonsense shot of espresso softened with a splash of milk. Balanced, bold, and straight to the point—just like the general.</p>
       </div>
     </div>
@@ -112,7 +118,7 @@
     <div class="drink">
       <img src="cappuccino.jpeg" alt="Cappuccino">
       <div class="drink-text">
-        <h2>Cappuccino</h2>
+        <h3>Cappuccino</h3>
         <p>Foamy, cozy, and deceptively strong.</p>
       </div>
     </div>
@@ -120,7 +126,7 @@
     <div class="drink">
       <img src="latte.jpeg" alt="Latte">
       <div class="drink-text">
-        <h2>Latte</h2>
+        <h3>Latte</h3>
         <p>The friendliest formation of espresso and milk. Warm, comforting, and built for slow sips.</p>
       </div>
     </div>
@@ -128,14 +134,14 @@
     <div class="drink">
       <img src="americano.jpeg" alt="Americano">
       <div class="drink-text">
-        <h2>Americano</h2>
+        <h3>Americano</h3>
         <p>Espresso, extended with hot water—popularized by American GIs in France who wanted “real coffee” when served a tiny espresso cup.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Perk Up, Grant! – Brewed with care in Atlanta, GA.
+    &copy; 2025 Perk Up, Grant! – Brewed with style. Served with heart.
   </footer>
 
 </body>
