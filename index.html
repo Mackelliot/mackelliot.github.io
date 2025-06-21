@@ -17,26 +17,7 @@
       color: #2c2c2c;
     }
 
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 4rem 1rem 1rem;
-    }
-
-    header img {
-      max-width: 200px;
-      height: auto;
-      margin-bottom: 0.3rem;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      color: #5e4c3f;
-      font-style: italic;
-      margin: 0.5rem 0 1.5rem;
-    }
-
-    /* STICKY NAVIGATION */
+    /* STICKY TOP NAVIGATION */
     nav {
       background-color: #f0dfc2;
       position: sticky;
@@ -64,6 +45,17 @@
 
     nav ul li a:hover {
       text-decoration: underline;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 5rem 1rem 2rem;
+    }
+
+    header img {
+      max-width: 200px;
+      height: auto;
     }
 
     /* MENU */
@@ -174,13 +166,7 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header id="top">
-    <img src="logo.jpeg" alt="Perk Up, Grant! logo">
-    <div class="tagline">No shame in a third cup</div>
-  </header>
-
-  <!-- STICKY NAVIGATION BELOW LOGO -->
+  <!-- NAVIGATION -->
   <nav>
     <ul>
       <li><a href="#top">Home</a></li>
@@ -188,6 +174,11 @@
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
+
+  <!-- HEADER -->
+  <header id="top">
+    <img src="logo.jpeg" alt="Perk Up, Grant! logo">
+  </header>
 
   <!-- MENU -->
   <section id="menu" class="menu-section">
@@ -246,7 +237,8 @@
 
   <!-- FOOTER -->
   <footer>
-    2025 Perk Up, Grant! – Brewed with care in Atlanta, GA.
+    2025 Perk Up, Grant! – Brewed with care in Atlanta, GA.<br>
+    No shame in a third cup.
   </footer>
 
 </body>
