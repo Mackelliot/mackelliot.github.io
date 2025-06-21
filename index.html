@@ -40,10 +40,13 @@
       color: #3a2a1c;
       font-family: 'Oswald', sans-serif;
       font-size: 1rem;
+      transition: color 0.2s;
     }
 
-    nav ul li a:hover {
+    nav ul li a:hover,
+    nav ul li a.active {
       text-decoration: underline;
+      color: #000000;
     }
 
     header {
@@ -54,6 +57,23 @@
     header img {
       max-width: 200px;
       height: auto;
+    }
+
+    .jump-button {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #3a2a1c;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+    }
+
+    .jump-button:hover {
+      background-color: #5a3a1c;
     }
 
     .menu-section, .about-section, .careers-section {
@@ -129,6 +149,28 @@
       margin-top: 4rem;
     }
 
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background-color: #3a2a1c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
+    }
+
+    #backToTop:hover {
+      background-color: #5a3a1c;
+    }
+
     @media (max-width: 600px) {
       .drink {
         flex-direction: column;
@@ -164,6 +206,7 @@
 
   <header id="top">
     <img src="logo.jpeg" alt="Perk Up, Grant! logo">
+    <a href="#menu" class="jump-button">Jump to Menu</a>
   </header>
 
   <section id="menu" class="menu-section">
@@ -241,6 +284,44 @@
     2025 Perk Up, Grant! – Brewed with care in Atlanta, GA.<br>
     No shame in a third cup.
   </footer>
+
+  <button id="backToTop" title="Back to top">↑</button>
+
+  <script>
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.onscroll = () => {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    };
+
+    backToTopBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
