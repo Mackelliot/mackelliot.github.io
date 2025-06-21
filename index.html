@@ -17,15 +17,28 @@
       color: #2c2c2c;
     }
 
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 4rem 1rem 1rem;
+    }
+
+    header img {
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 0.3rem;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: #5e4c3f;
+      font-style: italic;
+      margin: 0.5rem 0 1.5rem;
+    }
+
     /* NAVIGATION */
     nav {
-      background-color: #f0dfc2;
-      padding: 1rem;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
 
     nav ul {
@@ -46,25 +59,6 @@
 
     nav ul li a:hover {
       text-decoration: underline;
-    }
-
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 6rem 1rem 1rem;
-    }
-
-    header img {
-      max-width: 200px;
-      height: auto;
-      margin-bottom: 0.3rem;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      color: #5e4c3f;
-      font-style: italic;
-      margin-top: 0;
     }
 
     /* MENU */
@@ -175,19 +169,19 @@
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="#top">Home</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
-
   <!-- HEADER -->
   <header id="top">
     <img src="logo.jpeg" alt="Perk Up, Grant! logo">
     <div class="tagline">No shame in a third cup</div>
+
+    <!-- NAVIGATION BELOW LOGO -->
+    <nav>
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- MENU -->
