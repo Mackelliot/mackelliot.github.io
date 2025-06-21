@@ -1,1 +1,88 @@
-<!-- Full HTML content with Socials before Careers and logo fix -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perk Up, Grant! – Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F6EBD5;
+      color: #2c2c2c;
+    }
+    nav {
+      background-color: #f0dfc2;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 0.7rem 0;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #3a2a1c;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      text-decoration: underline;
+      color: #000000;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 85vh;
+      background-color: #F6EBD5;
+      padding: 1rem 1rem 0;
+    }
+    header img {
+      max-width: 80vw;
+      height: auto;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+    .established {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      color: #5a4a3a;
+      margin-top: 1rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#socials">Socials</a></li>
+      <li><a href="#careers">Careers</a></li>
+    </ul>
+  </nav>
+  <header id="top">
+    <img src="logo.jpeg" alt="Perk Up, Grant! logo">
+    <div class="established">est. 2025</div>
+  </header>
+  <!-- Additional content like Menu, About, Socials, Careers, and Footer would go here -->
+</body>
+</html>
