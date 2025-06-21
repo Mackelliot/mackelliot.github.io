@@ -50,36 +50,42 @@
     }
 
     header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 3rem 1rem 1rem;
+      height: 100vh;
+      background-color: #F6EBD5;
+      padding: 2rem 1rem;
     }
 
     header img {
-      max-width: 200px;
+      max-width: 80vw;
       height: auto;
       opacity: 0;
       animation: fadeIn 1.5s ease-out forwards;
     }
 
+    .established {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      color: #5a4a3a;
+      margin-top: 1rem;
+    }
+
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
       from {
         opacity: 0;
         transform: translateY(-20px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .established {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
-      color: #5a4a3a;
-      margin-top: 0.5rem;
-    }
-
-    .menu-section, .about-section, .careers-section {
+    .menu-section, .about-section, .careers-section, .socials-section {
       max-width: 800px;
       margin: 4rem auto 2rem;
       padding: 0 1rem;
@@ -87,24 +93,14 @@
 
     .menu-section h2,
     .about-section h2,
-    .careers-section h2 {
+    .careers-section h2,
+    .socials-section h2 {
       font-family: 'Oswald', sans-serif;
       font-size: 2rem;
       text-align: center;
       border-bottom: 2px solid #3a2a1c;
       padding-bottom: 0.5rem;
       margin-bottom: 2rem;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .drink {
@@ -119,6 +115,17 @@
     .drink:nth-child(2) { animation-delay: 0.4s; }
     .drink:nth-child(3) { animation-delay: 0.6s; }
     .drink:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     .drink img {
       width: 70px;
@@ -160,6 +167,33 @@
       color: #4a3b30;
       margin-bottom: 1.2rem;
       text-align: left;
+    }
+
+    .socials-section {
+      background-color: #3a2a1c;
+      color: #fff;
+      padding: 3rem 1rem;
+      border-radius: 8px;
+    }
+
+    .socials-section a {
+      color: #f6ebd5;
+      text-decoration: underline;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-grid img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
     }
 
     footer {
@@ -208,8 +242,13 @@
       }
 
       .about-section p,
-      .careers-section p {
+      .careers-section p,
+      .socials-section {
         text-align: center;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
@@ -222,6 +261,7 @@
       <li><a href="#menu">Menu</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#careers">Careers</a></li>
+      <li><a href="#socials">Socials</a></li>
     </ul>
   </nav>
 
@@ -269,36 +309,32 @@
   <section id="about" class="about-section">
     <h2>About</h2>
     <img src="about.jpeg" alt="About Perk Up, Grant!">
-    <p>
-      Perk Up, Grant! started the way many great ideas do—somewhere after a fourth cup of coffee but before a fourth cup of wine.
-      After rewatching all seasons of <em>Bluey</em> for the 9th time without any good next things to watch, a weary dad hit his limit.
-      So, naturally, he did the only reasonable thing left: he opened a coffee shop in his house.
-    </p>
-    <p>
-      What began as a small setup—just him, a stubborn espresso machine, and a dream—quickly became a local favorite.
-      But there was a cost. Mainly, he could no longer say “Oh sorry, I don’t work here” when his in-laws asked him to unclog the sink.
-    </p>
-    <p>
-      Today, Perk Up, Grant! isn’t just a place for coffee—it’s a place for connection. It’s about love, family, and the people who show up for each other. One cup at a time.
-    </p>
+    <p>Perk Up, Grant! started the way many great ideas do—somewhere after a fourth cup of coffee but before a fourth cup of wine. After rewatching all seasons of <em>Bluey</em> for the 9th time without any good next things to watch, a weary dad hit his limit. So, naturally, he did the only reasonable thing left: he opened a coffee shop in his house.</p>
+    <p>What began as a small setup—just him, a stubborn espresso machine, and a dream—quickly became a local favorite. But there was a cost. Mainly, he could no longer say “Oh sorry, I don’t work here” when his in-laws asked him to unclog the sink.</p>
+    <p>Today, Perk Up, Grant! isn’t just a place for coffee—it’s a place for connection. It’s about love, family, and the people who show up for each other. One cup at a time.</p>
   </section>
 
   <section id="careers" class="careers-section">
     <h2>Careers</h2>
-    <p>
-      Are you passionate about coffee, chaos, and contributing to a cause that pays in vibes and gratitude?
-    </p>
-    <p>
-      Join us at Perk Up, Grant! where we proudly offer:
-      <ul>
-        <li>No benefits</li>
-        <li>No pay</li>
-        <li>Unlimited exposure to espresso fumes</li>
-      </ul>
-    </p>
-    <p>
-      If you're still reading, you're exactly the kind of person we're looking for. Drop by. Bring your own mug.
-    </p>
+    <p>Are you passionate about coffee, chaos, and contributing to a cause that pays in vibes and gratitude?</p>
+    <p>Join us at Perk Up, Grant! where we proudly offer:</p>
+    <ul>
+      <li>No benefits</li>
+      <li>No pay</li>
+      <li>Unlimited exposure to espresso fumes</li>
+    </ul>
+    <p>If you're still reading, you're exactly the kind of person we're looking for. Drop by. Bring your own mug.</p>
+  </section>
+
+  <section id="socials" class="socials-section">
+    <h2>Follow Us</h2>
+    <a href="https://instagram.com" target="_blank">@perkupgrant</a>
+    <div class="social-grid">
+      <img src="social-a.jpeg" alt="Social A">
+      <img src="social-b.jpeg" alt="Social B">
+      <img src="social-c.jpeg" alt="Social C">
+      <img src="social-d.jpeg" alt="Social D">
+    </div>
   </section>
 
   <footer>
@@ -323,27 +359,6 @@
     backToTopBtn.onclick = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav ul li a");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
-        }
-      });
-    });
   </script>
-
 </body>
 </html>
