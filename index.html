@@ -4,102 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Perk Up, Grant!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f3f0;
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F6EBD5;
+      color: #3b2f2f;
     }
 
     header {
-      background-color: #4b2e2e;
-      color: white;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1rem;
     }
 
-    header h1 {
-      margin: 0;
+    header img {
+      max-width: 200px;
+      height: auto;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
-    }
-
-    nav {
-      text-align: center;
       margin-top: 1rem;
+      color: #5e3b2c;
     }
 
-    nav a {
-      margin: 0 1rem;
-      color: #dcb18c;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .section {
-      padding: 2rem 1rem;
-      max-width: 800px;
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1000px;
       margin: auto;
     }
 
     .menu-item {
-      margin: 1rem 0;
+      background: #fffaf3;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.02);
+    }
+
+    .menu-item img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .menu-item h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .menu-item p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #4a3b30;
     }
 
     footer {
-      background-color: #4b2e2e;
-      color: white;
       text-align: center;
-      padding: 1rem;
       font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
+      padding: 1rem;
+      color: #7c6e5a;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
 
   <header>
+    <img src="logo.jpeg" alt="Perk Up, Grant! logo">
     <h1>Perk Up, Grant!</h1>
-    <p>Your cozy neighborhood coffee haven ☕</p>
-    <nav>
-      <a href="#menu">Menu</a>
-      <a href="#hours">Hours</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <section class="section" id="menu">
-    <h2>Our Favorites</h2>
-    <div class="menu-item"><strong>Flat White</strong> – smooth & creamy perfection</div>
-    <div class="menu-item"><strong>Hazelnut Cold Brew</strong> – bold meets sweet</div>
-    <div class="menu-item"><strong>Choco-Mocha Latte</strong> – because you deserve it</div>
-  </section>
+  <section class="menu">
+    <div class="menu-item">
+      <img src="cortado.jpeg" alt="Cortado">
+      <h2>Cortado</h2>
+      <p>Grant’s pick. A no-nonsense shot of espresso softened with a splash of milk. Balanced, bold, and straight to the point—just like the general.</p>
+    </div>
 
-  <section class="section" id="hours">
-    <h2>Hours</h2>
-    <p>Monday–Friday: 7am – 5pm</p>
-    <p>Saturday–Sunday: 8am – 4pm</p>
-  </section>
+    <div class="menu-item">
+      <img src="cappuccino.jpeg" alt="Cappuccino">
+      <h2>Cappuccino</h2>
+      <p>Foamy, cozy, and deceptively strong.</p>
+    </div>
 
-  <section class="section" id="contact">
-    <h2>Find Us</h2>
-    <p>📍 123 Roast Street, Grant City</p>
-    <p>📞 (555) 123-4567</p>
-    <p>📧 hello@perkupgrant.com</p>
+    <div class="menu-item">
+      <img src="latte.jpeg" alt="Latte">
+      <h2>Latte</h2>
+      <p>The friendliest formation of espresso and milk. Warm, comforting, and built for slow sips.</p>
+    </div>
+
+    <div class="menu-item">
+      <img src="americano.jpeg" alt="Americano">
+      <h2>Americano</h2>
+      <p>Espresso, extended with hot water—popularized by American GIs in France who wanted “real coffee” when served a tiny espresso cup.</p>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Perk Up, Grant! ☕ Stay perky.</p>
+    &copy; 2025 Perk Up, Grant! – Brewed with care ☕
   </footer>
 
 </body>
