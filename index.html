@@ -267,56 +267,38 @@
   const navLinks = document.querySelectorAll("nav a");
   const sections = document.querySelectorAll("section");
 
-  function updateActiveLink() {
-    let closestSection = null;
-    let closestDistance = window.innerHeight;
+  // Highlight active nav link using IntersectionObserver
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6 // Trigger when 60% of the section is visible
+  };
 
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const distance = Math.abs(rect.top);
-      
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestSection = section;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const currentId = entry.target.getAttribute("id");
+
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + currentId) {
+            link.classList.add("active");
+          }
+        });
       }
     });
+  }, observerOptions);
 
-    if (closestSection) {
-      const currentId = closestSection.getAttribute("id");
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + currentId) {
-          link.classList.add("active");
-        }
-      });
-    }
-  }
-
-  // When a nav link is clicked
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      // Clear all active links right away
-      navLinks.forEach(l => l.classList.remove("active"));
-      
-      // Let the scroll complete, then update active state
-      setTimeout(updateActiveLink, 100);
-    });
+  sections.forEach(section => {
+    observer.observe(section);
   });
 
-  // Scroll listener
+  // CTA and Back-to-Top still work
   window.addEventListener("scroll", () => {
-    // Fade scroll CTA
     scrollCTA.style.opacity = window.scrollY > 150 ? 0 : 1;
-
-    // Show/hide back-to-top button
     backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-
-    // Update nav highlighting
-    updateActiveLink();
   });
 
-  // Back to top
   backToTopBtn.onclick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
