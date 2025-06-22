@@ -269,12 +269,12 @@
 
   function updateActiveLink() {
     let closestSection = null;
-    let closestDistance = Infinity;
+    let closestDistance = window.innerHeight;
 
     sections.forEach(section => {
       const rect = section.getBoundingClientRect();
       const distance = Math.abs(rect.top);
-
+      
       if (distance < closestDistance) {
         closestDistance = distance;
         closestSection = section;
@@ -293,30 +293,30 @@
     }
   }
 
-  // Clear all active links on click, then wait for scroll to complete
+  // When a nav link is clicked
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
+      // Clear all active links right away
       navLinks.forEach(l => l.classList.remove("active"));
-      setTimeout(updateActiveLink, 50); // Allow scroll to finish
+      
+      // Let the scroll complete, then update active state
+      setTimeout(updateActiveLink, 100);
     });
   });
 
+  // Scroll listener
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 150) {
-      scrollCTA.style.opacity = 0;
-    } else {
-      scrollCTA.style.opacity = 1;
-    }
+    // Fade scroll CTA
+    scrollCTA.style.opacity = window.scrollY > 150 ? 0 : 1;
 
-    if (window.scrollY > 300) {
-      backToTopBtn.style.display = "block";
-    } else {
-      backToTopBtn.style.display = "none";
-    }
+    // Show/hide back-to-top button
+    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
 
-    updateActiveLink(); // Run on every scroll
+    // Update nav highlighting
+    updateActiveLink();
   });
 
+  // Back to top
   backToTopBtn.onclick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
