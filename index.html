@@ -268,30 +268,36 @@
   const sections = document.querySelectorAll("section");
 
   function updateActiveLink() {
-    let current = "";
+    let closestSection = null;
+    let closestDistance = Infinity;
 
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
+      const rect = section.getBoundingClientRect();
+      const distance = Math.abs(rect.top);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestSection = section;
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
+    if (closestSection) {
+      const currentId = closestSection.getAttribute("id");
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + currentId) {
+          link.classList.add("active");
+        }
+      });
+    }
   }
 
-  // Add event listener for link clicks
+  // Clear all active links on click, then wait for scroll to complete
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       navLinks.forEach(l => l.classList.remove("active"));
-      
-      // Small timeout to wait until browser updates scroll position
-      setTimeout(updateActiveLink, 50);
+      setTimeout(updateActiveLink, 50); // Allow scroll to finish
     });
   });
 
@@ -308,7 +314,7 @@
       backToTopBtn.style.display = "none";
     }
 
-    updateActiveLink();
+    updateActiveLink(); // Run on every scroll
   });
 
   backToTopBtn.onclick = () => {
