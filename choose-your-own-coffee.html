@@ -2,46 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perk Up, Grant! - Application Adventure</title>
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: #F6EBD5;
       color: #2c2c2c;
-      padding: 2rem;
-      max-width: 700px;
-      margin: auto;
-      position: relative;
-      overflow: hidden;
+      padding: 1rem;
+      margin: 0;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     h1 {
       font-family: 'Oswald', sans-serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #3a2a1c;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     .scene {
+      display: none;
       animation: fadeIn 0.8s ease forwards;
+      padding: 1rem;
+    }
+
+    .scene.active {
+      display: block;
+    }
+
+    .button-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      align-items: center;
     }
 
     button {
-      margin: 1rem 0.5rem 0;
       background-color: #3a2a1c;
       color: #f6ebd5;
-      padding: 0.7rem 1.4rem;
+      padding: 0.8rem 1.2rem;
       font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
+      width: 80%;
+      max-width: 300px;
     }
 
     button:hover {
       background-color: #5a3a1c;
-    }
-
-    .button-row {
-      margin-top: 1rem;
     }
 
     @keyframes fadeIn {
@@ -53,106 +72,86 @@
 <body>
 
 <div id="scene-container">
-  <div class="scene" id="scene-1">
-    <h1>🎉 Welcome to Perk Up, Grant!</h1>
-    <p>You apply for an opening as a barista at Perk Up, Grant!, a coffee company that takes caffeine — and drama — very seriously.</p>
-    <p>Just as you hit "submit," your computer screen flickers. Smoke pours from the USB port. A squirrel in a tiny apron bursts through your window yelling, “The Roast Awakens!”</p>
-    <p>What do you do?</p>
+  <!-- Intro Scene -->
+  <div class="scene active" id="scene-1">
+    <h1>☕ Welcome to the Application Process</h1>
+    <p>Thank you for applying to <strong>Perk Up, Grant!</strong> We believe the best way to evaluate a potential team member is through a hyper-realistic, emotionally questionable simulation.</p>
+    <p>You’ll be placed in a series of totally normal, definitely not exaggerated real-life workplace scenarios.</p>
+    <p>Your decisions will reveal your true character. Will you survive? Will you thrive? Will you accidentally travel back to the dinosaur era?</p>
     <div class="button-row">
-      <button onclick="goToScene('scene-2a')">Follow the squirrel</button>
-      <button onclick="goToScene('scene-2b')">Ignore it and check your email</button>
+      <button onclick="goToScene('scene-2')">Let’s Go</button>
     </div>
   </div>
 
-  <!-- Follow the squirrel path -->
-  <div class="scene" id="scene-2a" style="display:none;">
-    <h1>🐿️ Into the Brew-niverse</h1>
-    <p>The squirrel leads you to a glowing espresso machine in an alley. You touch it. Time warps. Your name is now "Café Jones."</p>
+  <!-- First Moral Dilemma -->
+  <div class="scene" id="scene-2">
+    <h1>☕ Moral Dilemma #1</h1>
+    <p>You walk into your first shift and immediately spill an entire cold brew keg. The manager hasn't seen it yet.</p>
     <p>Do you:</p>
     <div class="button-row">
-      <button onclick="goToScene('scene-3a')">Press the button labeled “ITALIA, BABY”</button>
-      <button onclick="goToScene('scene-3b')">Stick your head in the steam wand</button>
+      <button onclick="goToScene('scene-honest')">Tell the truth and accept the consequences</button>
+      <button onclick="goToScene('scene-lie')">Blame it on the intern who left 10 minutes ago</button>
     </div>
   </div>
 
-  <!-- Endings from squirrel path -->
-  <div class="scene" id="scene-3a" style="display:none;">
-    <h1>💋 Espresso in Venice</h1>
-    <p>You’re whisked to Venice, where a sexy Italian man named Lorenzo teaches you to make the perfect affogato. You fall in love and start a gondola café.</p>
-    <p><strong>Application status: Tragically romantic. Not hired.</strong></p>
+  <!-- Honest Path -->
+  <div class="scene" id="scene-honest">
+    <h1>🕊️ Honesty Is the Best Policy?</h1>
+    <p>You confess, expecting rage. Instead, you're applauded for your integrity and offered a new challenge: dealing with the espresso machine that’s growling ominously.</p>
     <div class="button-row">
-      <button onclick="restartAdventure()">☕ Apply Again</button>
-      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+      <button onclick="goToScene('scene-help')">Try to help the espresso machine spirit pass on</button>
+      <button onclick="goToScene('scene-run')">Run away screaming with a croissant in your hand</button>
     </div>
   </div>
 
-  <div class="scene" id="scene-3b" style="display:none;">
-    <h1>🦖 Jurassic Perk</h1>
-    <p>The steam wand was actually a time portal. You wake up in the Cretaceous era and are immediately eaten by a dinosaur named Kevin.</p>
-    <p><strong>Application status: Digested. Not hired.</strong></p>
+  <!-- Lie Path -->
+  <div class="scene" id="scene-lie">
+    <h1>🤥 The Blame Game</h1>
+    <p>The manager believes you... for now. The intern returns unexpectedly with lunch for everyone. Chaos ensues.</p>
     <div class="button-row">
-      <button onclick="restartAdventure()">☕ Apply Again</button>
-      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+      <button onclick="goToScene('scene-coverup')">Double down and gaslight the intern</button>
+      <button onclick="goToScene('scene-confess')">Break down and confess everything</button>
     </div>
   </div>
 
-  <!-- Ignore squirrel path -->
-  <div class="scene" id="scene-2b" style="display:none;">
-    <h1>📩 Digital Disaster</h1>
-    <p>You open an email from "HR Bot 4000." It says: “To complete your application, you must submit a song.”</p>
-    <p>Do you:</p>
-    <div class="button-row">
-      <button onclick="goToScene('scene-3c')">Perform a Backstreet Boys ballad</button>
-      <button onclick="goToScene('scene-3d')">Auto-tune a Gregorian chant</button>
-    </div>
-  </div>
-
-  <!-- Endings from email path -->
-  <div class="scene" id="scene-3c" style="display:none;">
-    <h1>🎤 Campus Cover Kings</h1>
-    <p>You join a Backstreet Boys cover band called “Snackstreet Boys.” You tour college campuses during lunch hours. Your “I Want It Barista Way” goes viral.</p>
-    <p><strong>Application status: Millennium-style fame. Not hired.</strong></p>
-    <div class="button-row">
-      <button onclick="restartAdventure()">☕ Apply Again</button>
-      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
-    </div>
-  </div>
-
-  <div class="scene" id="scene-3d" style="display:none;">
-    <h1>🚀 Mars or Bust</h1>
-    <p>Your chant is misunderstood by NASA as a launch code. You are launched into space. You colonize Mars, start the first alien espresso bar. Elon Musk owes you rent.</p>
-    <p><strong>Application status: Intergalactic. Not hired.</strong></p>
-    <div class="button-row">
-      <button onclick="restartAdventure()">☕ Apply Again</button>
-      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
-    </div>
-  </div>
-
-  <!-- Extra endings -->
-  <div class="scene" id="scene-4a" style="display:none;">
+  <!-- Help the Espresso Machine -->
+  <div class="scene" id="scene-help">
     <h1>👻 Haunted Grounds</h1>
-    <p>You inherit a haunted espresso machine. Each cappuccino conjures a ghost who critiques your foam art. You're now a medium, not a barista.</p>
-    <p><strong>Application status: Spiritually overqualified. Not hired.</strong></p>
+    <p>You perform an impromptu exorcism using oat milk and chant the Starbucks drink menu backward. The espresso machine thanks you and vanishes. You're promoted to Senior Coffee Whisperer.</p>
+    <p><strong>Status: Paranormally successful. Not hired.</strong></p>
     <div class="button-row">
       <button onclick="restartAdventure()">☕ Apply Again</button>
       <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
     </div>
   </div>
 
-  <div class="scene" id="scene-4b" style="display:none;">
-    <h1>🧬 Mutant Barista</h1>
-    <p>A freak cold brew accident mutates you. You grow six arms and become a latte machine. Customers scream. Yelp reviews are... mixed.</p>
-    <p><strong>Application status: Caffeinated chimera. Not hired.</strong></p>
+  <!-- Run Away Path -->
+  <div class="scene" id="scene-run">
+    <h1>🏃 Latte Escape</h1>
+    <p>You bolt out the door, croissant in hand. Unfortunately, it was a gluten-free decoy croissant and disintegrates mid-sprint. You trip into a quantum espresso wormhole.</p>
+    <p><strong>Status: Lost in space-time. Not hired.</strong></p>
     <div class="button-row">
       <button onclick="restartAdventure()">☕ Apply Again</button>
       <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
     </div>
   </div>
 
-  <div class="scene" id="scene-4c" style="display:none;">
-    <h1>🕵️‍♂️ Operation: Steep Secret</h1>
-    <p>The CIA recruits you after they hear your chant. Your mission: infiltrate Belgian cafés to uncover the black tea cartel. You’re a spy now.</p>
-    <p><strong>Application status: Classified. Not hired.</strong></p>
+  <!-- Cover Up Path -->
+  <div class="scene" id="scene-coverup">
+    <h1>🧠 Gaslight Brew</h1>
+    <p>You gaslight the intern so effectively that they question if they ever applied for this job. You’re promoted to Head of HR Manipulations… but then sued by five different barista unions.</p>
+    <p><strong>Status: Legally troubled. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <!-- Confess After Lying -->
+  <div class="scene" id="scene-confess">
+    <h1>😢 A Frothy Redemption</h1>
+    <p>You break down in tears and confess everything. The manager nods solemnly, then asks if you can foam milk with your tears. Turns out — you can.</p>
+    <p><strong>Status: Emotionally foamy. Not hired.</strong></p>
     <div class="button-row">
       <button onclick="restartAdventure()">☕ Apply Again</button>
       <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
@@ -163,8 +162,8 @@
 <script>
   function goToScene(sceneId) {
     const scenes = document.querySelectorAll('.scene');
-    scenes.forEach(scene => scene.style.display = 'none');
-    document.getElementById(sceneId).style.display = 'block';
+    scenes.forEach(scene => scene.classList.remove('active'));
+    document.getElementById(sceneId).classList.add('active');
   }
 
   function restartAdventure() {
