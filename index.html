@@ -146,12 +146,22 @@
       object-fit: cover;
     }
     footer {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      border-top: 4px double #f0dfc2;
       text-align: center;
-      font-size: 0.9rem;
       padding: 2rem 1rem;
-      color: #7c6e5a;
       margin-top: 4rem;
-      background-color: #e0d2b5;
+    }
+    footer:hover::after {
+      content: " ☕";
+      animation: wiggle 0.3s infinite alternate;
+    }
+    @keyframes wiggle {
+      from { transform: rotate(-5deg); }
+      to { transform: rotate(5deg); }
     }
     #backToTop {
       position: fixed;
