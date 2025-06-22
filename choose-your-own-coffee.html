@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perk Up, Grant! - Application Adventure</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F6EBD5;
+      color: #2c2c2c;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      color: #3a2a1c;
+    }
+
+    .scene {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    button {
+      margin: 1rem 0.5rem 0;
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      padding: 0.7rem 1.4rem;
+      font-family: 'Oswald', sans-serif;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5a3a1c;
+    }
+
+    .button-row {
+      margin-top: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scene-container">
+  <div class="scene" id="scene-1">
+    <h1>🎉 Welcome to Perk Up, Grant!</h1>
+    <p>You apply for an opening as a barista at Perk Up, Grant!, a coffee company that takes caffeine — and drama — very seriously.</p>
+    <p>Just as you hit "submit," your computer screen flickers. Smoke pours from the USB port. A squirrel in a tiny apron bursts through your window yelling, “The Roast Awakens!”</p>
+    <p>What do you do?</p>
+    <div class="button-row">
+      <button onclick="goToScene('scene-2a')">Follow the squirrel</button>
+      <button onclick="goToScene('scene-2b')">Ignore it and check your email</button>
+    </div>
+  </div>
+
+  <!-- Follow the squirrel path -->
+  <div class="scene" id="scene-2a" style="display:none;">
+    <h1>🐿️ Into the Brew-niverse</h1>
+    <p>The squirrel leads you to a glowing espresso machine in an alley. You touch it. Time warps. Your name is now "Café Jones."</p>
+    <p>Do you:</p>
+    <div class="button-row">
+      <button onclick="goToScene('scene-3a')">Press the button labeled “ITALIA, BABY”</button>
+      <button onclick="goToScene('scene-3b')">Stick your head in the steam wand</button>
+    </div>
+  </div>
+
+  <!-- Endings from squirrel path -->
+  <div class="scene" id="scene-3a" style="display:none;">
+    <h1>💋 Espresso in Venice</h1>
+    <p>You’re whisked to Venice, where a sexy Italian man named Lorenzo teaches you to make the perfect affogato. You fall in love and start a gondola café.</p>
+    <p><strong>Application status: Tragically romantic. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <div class="scene" id="scene-3b" style="display:none;">
+    <h1>🦖 Jurassic Perk</h1>
+    <p>The steam wand was actually a time portal. You wake up in the Cretaceous era and are immediately eaten by a dinosaur named Kevin.</p>
+    <p><strong>Application status: Digested. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <!-- Ignore squirrel path -->
+  <div class="scene" id="scene-2b" style="display:none;">
+    <h1>📩 Digital Disaster</h1>
+    <p>You open an email from "HR Bot 4000." It says: “To complete your application, you must submit a song.”</p>
+    <p>Do you:</p>
+    <div class="button-row">
+      <button onclick="goToScene('scene-3c')">Perform a Backstreet Boys ballad</button>
+      <button onclick="goToScene('scene-3d')">Auto-tune a Gregorian chant</button>
+    </div>
+  </div>
+
+  <!-- Endings from email path -->
+  <div class="scene" id="scene-3c" style="display:none;">
+    <h1>🎤 Campus Cover Kings</h1>
+    <p>You join a Backstreet Boys cover band called “Snackstreet Boys.” You tour college campuses during lunch hours. Your “I Want It Barista Way” goes viral.</p>
+    <p><strong>Application status: Millennium-style fame. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <div class="scene" id="scene-3d" style="display:none;">
+    <h1>🚀 Mars or Bust</h1>
+    <p>Your chant is misunderstood by NASA as a launch code. You are launched into space. You colonize Mars, start the first alien espresso bar. Elon Musk owes you rent.</p>
+    <p><strong>Application status: Intergalactic. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <!-- Extra endings -->
+  <div class="scene" id="scene-4a" style="display:none;">
+    <h1>👻 Haunted Grounds</h1>
+    <p>You inherit a haunted espresso machine. Each cappuccino conjures a ghost who critiques your foam art. You're now a medium, not a barista.</p>
+    <p><strong>Application status: Spiritually overqualified. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <div class="scene" id="scene-4b" style="display:none;">
+    <h1>🧬 Mutant Barista</h1>
+    <p>A freak cold brew accident mutates you. You grow six arms and become a latte machine. Customers scream. Yelp reviews are... mixed.</p>
+    <p><strong>Application status: Caffeinated chimera. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
+  <div class="scene" id="scene-4c" style="display:none;">
+    <h1>🕵️‍♂️ Operation: Steep Secret</h1>
+    <p>The CIA recruits you after they hear your chant. Your mission: infiltrate Belgian cafés to uncover the black tea cartel. You’re a spy now.</p>
+    <p><strong>Application status: Classified. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function goToScene(sceneId) {
+    const scenes = document.querySelectorAll('.scene');
+    scenes.forEach(scene => scene.style.display = 'none');
+    document.getElementById(sceneId).style.display = 'block';
+  }
+
+  function restartAdventure() {
+    goToScene('scene-1');
+  }
+</script>
+
+</body>
+</html>
