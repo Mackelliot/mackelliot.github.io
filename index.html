@@ -34,11 +34,24 @@
       color: #3a2a1c;
       font-family: 'Oswald', sans-serif;
       font-size: 1rem;
-      transition: color 0.2s;
+      position: relative;
     }
-    nav ul li a.active {
-      text-decoration: underline;
-      color: #000;
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 2px;
+      background-color: #3a2a1c;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease-out;
+    }
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     header {
       display: flex;
@@ -66,8 +79,13 @@
       margin-top: 2rem;
       font-family: 'Oswald', sans-serif;
       font-size: 1.1rem;
+      animation: bounce 2s infinite;
       opacity: 1;
       transition: opacity 0.5s;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
     section {
       max-width: 800px;
@@ -81,34 +99,6 @@
       border-bottom: 2px solid #3a2a1c;
       padding-bottom: 0.5rem;
       margin-bottom: 2rem;
-    }
-    .drink {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-    }
-    .drink img {
-      width: 70px;
-      margin-right: 1rem;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-    .drink-text h3 {
-      font-family: 'Oswald', sans-serif;
-      margin: 0 0 0.3rem 0;
-    }
-    .drink-text p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #4a3b30;
-    }
-    .about-section img {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-      margin: 0 auto 1.5rem;
-      display: block;
-      border-radius: 8px;
     }
     .socials-section {
       background-color: #3a2a1c;
@@ -182,15 +172,12 @@
 
 <section id="menu">
   <h2>Menu</h2>
-  <!-- Menu drinks (Cortado, Latte, etc.) go here -->
+  <!-- Your drinks go here -->
 </section>
 
-<section id="about" class="about-section">
+<section id="about">
   <h2>About</h2>
-  <img src="about.jpeg" alt="About Perk Up, Grant!">
-  <p>Perk Up, Grant! started the way many great ideas do—somewhere after a fourth cup of coffee but before a fourth cup of wine. After rewatching all seasons of <em>Bluey</em> for the 9th time without any good next things to watch, a weary dad hit his limit. So, naturally, he did the only reasonable thing left: he opened a coffee shop in his house.</p>
-  <p>What began as a small setup—just him, a stubborn espresso machine, and a dream—quickly became a local favorite. But there was a cost. Mainly, he could no longer say “Oh sorry, I don’t work here” when his in-laws asked him to unclog the sink.</p>
-  <p>Today, Perk Up, Grant! isn’t just a place for coffee—it’s a place for connection. It’s about love, family, and the people who show up for each other. One cup at a time.</p>
+  <!-- About story goes here -->
 </section>
 
 <section id="socials" class="socials-section">
