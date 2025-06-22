@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Give Us Feedback – Perk Up, Grant!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans&display=stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F6EBD5;
+      color: #2c2c2c;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      color: #3a2a1c;
+    }
+    form {
+      margin-top: 2rem;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.3rem;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      padding: 0.7rem 1.4rem;
+      font-family: 'Oswald', sans-serif;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5a3a1c;
+    }
+
+    .yeet {
+      transform: rotate(-10deg) translateX(200%) translateY(-20%);
+      opacity: 0;
+    }
+
+    .thank-you {
+      display: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      background-color: #e6d2af;
+      padding: 1.2rem;
+      border-radius: 8px;
+      color: #3a2a1c;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>We’d Love Your Feedback</h1>
+  <p>Tell us what made you smile, what you'd sip again, or what we could perk up a bit more.</p>
+
+  <form id="feedbackForm">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Your first name...">
+
+    <label for="feedback">Your Feedback</label>
+    <textarea id="feedback" name="feedback" rows="5" placeholder="Tell us anything..."></textarea>
+
+    <button type="submit">Send Feedback</button>
+  </form>
+
+  <div class="thank-you" id="thankYouMessage">
+    ☕ Thank you for your feedback. We have filed this for review (probably under "Important Thoughts").
+  </div>
+
+  <script>
+    const form = document.getElementById('feedbackForm');
+    const thankYou = document.getElementById('thankYouMessage');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // prevent actual submission
+      form.classList.add('yeet'); // throw it away 💨
+
+      setTimeout(() => {
+        form.style.display = 'none';      // hide form
+        thankYou.style.display = 'block'; // show message
+      }, 600); // match CSS animation duration
+    });
+  </script>
+</body>
+</html>
