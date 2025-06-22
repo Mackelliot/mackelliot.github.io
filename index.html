@@ -264,6 +264,14 @@
 <script>
   const backToTopBtn = document.getElementById("backToTop");
   const scrollCTA = document.getElementById("scrollDownCTA");
+  const navLinks = document.querySelectorAll("nav a");
+
+  // Remove 'active' from all links on click, let scroll event add the correct one
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.forEach(l => l.classList.remove("active"));
+    });
+  });
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 150) {
@@ -279,7 +287,6 @@
     }
 
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
     let current = "";
 
     sections.forEach(section => {
