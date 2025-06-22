@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Perk Up, Grant!</title>
+  <title>Perk Up, Grant! – Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
@@ -59,12 +59,12 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      min-height: 100vh;
+      min-height: 85vh;
       background-color: #F6EBD5;
-      padding: 2rem 1rem 1rem 1rem;
+      padding: 1rem;
     }
     header img {
-      max-width: 90vw;
+      max-width: 80vw;
       height: auto;
       opacity: 0;
       animation: fadeIn 1.5s ease-out forwards;
@@ -86,6 +86,91 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
+    }
+    section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #3a2a1c;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .drink {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .drink img {
+      width: 70px;
+      margin-right: 1rem;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .drink-text h3 {
+      font-family: 'Oswald', sans-serif;
+      margin: 0 0 0.3rem 0;
+    }
+    .drink-text p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #4a3b30;
+    }
+    .about-section img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+      border-radius: 8px;
+    }
+    .socials-section {
+      background-color: #3a2a1c;
+      color: #fff;
+      padding: 3rem 1rem;
+      border-radius: 8px;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .social-grid img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      color: #7c6e5a;
+      margin-top: 4rem;
+      background-color: #e0d2b5;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background-color: #3a2a1c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    #backToTop:hover {
+      background-color: #5a3a1c;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -112,36 +197,13 @@
     <a href="#menu" style="color: #3a2a1c; text-decoration: none;">↓ Scroll to Menu</a>
   </div>
 </header>
+
 <section id="menu">
   <h2>Menu</h2>
-  <div class="drink">
-    <img src="cortado.jpeg" alt="Cortado">
-    <div class="drink-text">
-      <h3>Cortado</h3>
-      <p>Grant’s pick. A no-nonsense shot of espresso softened with a splash of milk. Balanced, bold, and straight to the point—just like the general.</p>
-    </div>
-  </div>
-  <div class="drink">
-    <img src="cappuccino.jpeg" alt="Cappuccino">
-    <div class="drink-text">
-      <h3>Cappuccino</h3>
-      <p>Foamy, cozy, and deceptively strong.</p>
-    </div>
-  </div>
-  <div class="drink">
-    <img src="latte.jpeg" alt="Latte">
-    <div class="drink-text">
-      <h3>Latte</h3>
-      <p>The friendliest formation of espresso and milk. Warm, comforting, and built for slow sips.</p>
-    </div>
-  </div>
-  <div class="drink">
-    <img src="americano.jpeg" alt="Americano">
-    <div class="drink-text">
-      <h3>Americano</h3>
-      <p>Espresso, extended with hot water—popularized by American GIs in France who wanted “real coffee” when served a tiny espresso cup.</p>
-    </div>
-  </div>
+  <div class="drink"><img src="cortado.jpeg" alt="Cortado"><div class="drink-text"><h3>Cortado</h3><p>Grant’s pick. A no-nonsense shot of espresso softened with a splash of milk. Balanced, bold, and straight to the point—just like the general.</p></div></div>
+  <div class="drink"><img src="cappuccino.jpeg" alt="Cappuccino"><div class="drink-text"><h3>Cappuccino</h3><p>Foamy, cozy, and deceptively strong.</p></div></div>
+  <div class="drink"><img src="latte.jpeg" alt="Latte"><div class="drink-text"><h3>Latte</h3><p>The friendliest formation of espresso and milk. Warm, comforting, and built for slow sips.</p></div></div>
+  <div class="drink"><img src="americano.jpeg" alt="Americano"><div class="drink-text"><h3>Americano</h3><p>Espresso, extended with hot water—popularized by American GIs in France who wanted “real coffee” when served a tiny espresso cup.</p></div></div>
 </section>
 
 <section id="about" class="about-section">
