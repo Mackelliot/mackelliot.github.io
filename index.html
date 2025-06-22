@@ -264,39 +264,37 @@
 <script>
   const backToTopBtn = document.getElementById("backToTop");
   const scrollCTA = document.getElementById("scrollDownCTA");
-  const navLinks = document.querySelectorAll("nav a");
-  const sections = document.querySelectorAll("section");
 
-  // Highlight active nav link using IntersectionObserver
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.6 // Trigger when 60% of the section is visible
-  };
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 150) {
+      scrollCTA.style.opacity = 0;
+    } else {
+      scrollCTA.style.opacity = 1;
+    }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const currentId = entry.target.getAttribute("id");
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
 
-        navLinks.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === "#" + currentId) {
-            link.classList.add("active");
-          }
-        });
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
       }
     });
-  }, observerOptions);
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-
-  // CTA and Back-to-Top still work
-  window.addEventListener("scroll", () => {
-    scrollCTA.style.opacity = window.scrollY > 150 ? 0 : 1;
-    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
   });
 
   backToTopBtn.onclick = () => {
