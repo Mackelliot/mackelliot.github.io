@@ -13,6 +13,8 @@
       padding: 2rem;
       max-width: 700px;
       margin: auto;
+      position: relative;
+      overflow: hidden;
     }
 
     h1 {
@@ -23,8 +25,8 @@
 
     form {
       margin-top: 2rem;
-      transition: transform 1s ease-in, opacity 0.5s ease-in;
-      z-index: 2;
+      transition: transform 1s ease, opacity 1s ease;
+      z-index: 1;
       position: relative;
     }
 
@@ -57,25 +59,16 @@
       background-color: #5a3a1c;
     }
 
-    .shredder {
-      margin-top: 2rem;
-      width: 100%;
-      height: 60px;
-      background: repeating-linear-gradient(
-        -45deg,
-        #3a2a1c,
-        #3a2a1c 10px,
-        #5a3a1c 10px,
-        #5a3a1c 20px
-      );
-      border-radius: 6px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shredding {
-      transform: translateY(120px) rotate(2deg) scale(0.95);
-      opacity: 0;
+    #coffeeSpill {
+      display: none;
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 110%;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.8;
+      transform: rotate(-3deg);
     }
 
     .thank-you {
@@ -110,24 +103,37 @@
     <button type="submit">Send Feedback</button>
   </form>
 
-  <div class="shredder" id="shredder" aria-hidden="true"></div>
+  <!-- Spill Image -->
+  <img id="coffeeSpill" src="coffee-spill.png" alt="Coffee spill!">
 
+  <!-- Thank-you Message -->
   <div class="thank-you" id="thankYouMessage">
-    🧾 Thank you for your feedback. We’ve filed this for review (or shredded it with love).
+    ☕ Thank you for your feedback. We’ve spilled it, slid it, and totally took it seriously (probably).
   </div>
 
   <script>
     const form = document.getElementById('feedbackForm');
+    const coffeeSpill = document.getElementById('coffeeSpill');
     const thankYou = document.getElementById('thankYouMessage');
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      form.classList.add('shredding');
 
+      // Step 1: Splash coffee
+      coffeeSpill.style.display = 'block';
+
+      // Step 2: Slide form away
+      setTimeout(() => {
+        form.style.transform = 'translateX(100vw) rotate(4deg)';
+        form.style.opacity = '0';
+      }, 400);
+
+      // Step 3: Reveal thank-you message
       setTimeout(() => {
         form.style.display = 'none';
+        coffeeSpill.style.display = 'none';
         thankYou.style.display = 'block';
-      }, 1000);
+      }, 1800);
     });
   </script>
 </body>
