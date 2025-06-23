@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,10 +86,9 @@
   </style>
 </head>
 <body>
-
 <div id="scene-container">
 
-<!-- Intro Scene -->
+<!-- Scene 1 -->
 <div class="scene active" id="scene-1">
   <h1>☕ Welcome to the Application Process</h1>
   <p>Thank you for applying to <strong>Perk Up, Grant!</strong> We believe the best way to evaluate a potential team member is through a hyper-realistic simulation of what you might encounter on the job.</p>
@@ -100,12 +98,84 @@
     <button onclick="goToScene('scene-2')">Let’s Go</button>
   </div>
 </div>
+<!-- Scene 2 -->
+<div class="scene" id="scene-2">
+  <h1>☕ Moral Dilemma #1</h1>
+  <img class="scene-image" src="scene2.PNG" alt="Coffee Spill">
+  <p>You walk into your first shift and immediately spill an entire barrel of coffee beans. Your manager Grant hasn't seen it yet.</p>
+  <p>Do you:</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-honest')">Tell the truth and accept the consequences</button>
+    <button onclick="goToScene('scene-lie')">Blame it on the intern who left 10 minutes ago</button>
+  </div>
+</div>
 
-<!-- More scenes here (already created) -->
-<!-- We'll append a large chunk to keep under size limit per write -->
+<!-- Honest Path -->
+<div class="scene" id="scene-honest">
+  <h1>🕊️ Honesty Is the Best Policy?</h1>
+  <img class="scene-image" src="scene-honest.PNG" alt="Honesty">
+  <p>You confess, expecting rage. Instead, Grant applauds you for your integrity and says you are ready for the next challenge: dealing with the angry customer who says the espresso from his home country Italy tastes better.</p>
+  <p>Do you:</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-help')">Accuse the Italian customer of using counterfeit currency</button>
+    <button onclick="goToScene('scene-run')">Join the Italian on his yacht to taste coffee at sea</button>
+  </div>
+</div>
 
+<!-- Lie Path -->
+<div class="scene" id="scene-lie">
+  <h1>🤥 The Blame Game</h1>
+  <img class="scene-image" src="scene-lie.PNG" alt="Lie Scene">
+  <p>The manager believes you... for now. The intern returns unexpectedly with lunch for everyone. Chaos ensues.</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-coverup')">Double down and gaslight the intern</button>
+    <button onclick="goToScene('scene-confess')">Break down and confess everything</button>
+  </div>
+</div>
+<!-- Tic Tac Toe Scene -->
+<div class="scene" id="scene-tictactoe">
+  <h1>🎲 Trial by Tic Tac Toe</h1>
+  <p>You are X. The Intern is O. Tap to make your move!</p>
+  <div id="tic-tac-toe-board"></div>
+</div>
 
-</div> <!-- end #scene-container -->
+<!-- Flee Scene -->
+<div class="scene" id="scene-flee">
+  <h1>🏃‍♂️ Flee!</h1>
+  <p>You flee the cafe, spilling coffee beans in your wake. You escape—but at what cost? Probably your job.</p>
+  <p><strong>Status: Cowardly escape. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Win Scene -->
+<div class="scene" id="scene-win">
+  <h1>🎉 Victory!</h1>
+  <p>You defeated the Intern at Tic Tac Toe. Grant hires you on the spot. Welcome aboard!</p>
+  <div class="button-row">
+    <button onclick="window.location.href='index.html'">🏆 Return Home</button>
+  </div>
+</div>
+
+<!-- Lose Scene -->
+<div class="scene" id="scene-lose">
+  <h1>😢 Defeat...</h1>
+  <p>The Intern has bested you in Tic Tac Toe. Grant quietly hands you a complimentary biscotti and escorts you out.</p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+  </div>
+</div>
+
+<!-- Draw Scene -->
+<div class="scene" id="scene-draw">
+  <h1>🤝 Stalemate</h1>
+  <p>A draw! Grant sighs and says, “A true barista must commit.” You're sent back to latte duty.</p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+  </div>
+</div>
 
 <script>
   function goToScene(id) {
@@ -143,21 +213,56 @@
     boardState[index] = currentPlayer;
     event.target.textContent = currentPlayer;
     if (checkWinner(currentPlayer)) {
+      gameActive = false;
       goToScene(currentPlayer === 'X' ? 'scene-win' : 'scene-lose');
     } else if (!boardState.includes('')) {
+      gameActive = false;
       goToScene('scene-draw');
     } else {
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-      if (currentPlayer === 'O') setTimeout(computerMove, 500);
+      if (currentPlayer === 'O') setTimeout(computerMove, 400);
     }
   }
 
   function computerMove() {
-    const winPatterns = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-    const winMove = winPatterns.find(p => p.filter(i => boardState[i]==='O').length === 2 && p.some(i => boardState[i] === ''));
-    const blockMove = winPatterns.find(p => p.filter(i => boardState[i]==='X').length === 2 && p.some(i => boardState[i] === ''));
-    let move = (winMove || blockMove || boardState.findIndex(v => v === ''));
-    if (move >= 0) document.querySelector(`.cell[data-index='${move}']`).click();
+    const winPatterns = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+    let move = -1;
+
+    // First try to win
+    for (const pattern of winPatterns) {
+      const [a,b,c] = pattern;
+      const values = [boardState[a], boardState[b], boardState[c]];
+      if (values.filter(v => v === 'O').length === 2 && values.includes('')) {
+        move = pattern[values.indexOf('')];
+        break;
+      }
+    }
+
+    // Then try to block
+    if (move === -1) {
+      for (const pattern of winPatterns) {
+        const [a,b,c] = pattern;
+        const values = [boardState[a], boardState[b], boardState[c]];
+        if (values.filter(v => v === 'X').length === 2 && values.includes('')) {
+          move = pattern[values.indexOf('')];
+          break;
+        }
+      }
+    }
+
+    // Else pick center, then corners, then any
+    const priority = [4, 0, 2, 6, 8, 1, 3, 5, 7];
+    if (move === -1) {
+      move = priority.find(i => boardState[i] === '');
+    }
+
+    if (move !== undefined && move !== -1) {
+      document.querySelector(`.cell[data-index='${move}']`).click();
+    }
   }
 
   function checkWinner(p) {
@@ -165,6 +270,3 @@
       .some(line => line.every(i => boardState[i] === p));
   }
 </script>
-
-</body>
-</html>
