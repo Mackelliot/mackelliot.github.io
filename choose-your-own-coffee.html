@@ -13,6 +13,7 @@
       margin: 0;
       max-width: 100%;
       overflow-x: hidden;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -49,9 +50,9 @@
     button {
       background-color: #3a2a1c;
       color: #f6ebd5;
-      padding: 0.8rem 1.2rem;
+      padding: 1rem;
       font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
+      font-size: 1.1rem;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -63,6 +64,15 @@
       background-color: #5a3a1c;
     }
 
+    .scene-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1rem auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -72,9 +82,11 @@
 <body>
 
 <div id="scene-container">
+
   <!-- Intro Scene -->
   <div class="scene active" id="scene-1">
     <h1>☕ Welcome to the Application Process</h1>
+    <img class="scene-image" src="scene1.png" alt="Intro Scene">
     <p>Thank you for applying to <strong>Perk Up, Grant!</strong> We believe the best way to evaluate a potential team member is through a hyper-realistic simulation of what you might encounter on the job.</p>
     <p>You’ll be placed in a series of totally normal, definitely not exaggerated real-life workplace scenarios.</p>
     <p>Your decisions will reveal your true character. Will you survive? Will you thrive?</p>
@@ -86,6 +98,7 @@
   <!-- First Moral Dilemma -->
   <div class="scene" id="scene-2">
     <h1>☕ Moral Dilemma #1</h1>
+    <img class="scene-image" src="scene2.PNG" alt="Coffee Spill">
     <p>You walk into your first shift and immediately spill an entire barrel of coffee beans. Your manager Grant hasn't seen it yet.</p>
     <p>Do you:</p>
     <div class="button-row">
@@ -97,7 +110,9 @@
   <!-- Honest Path -->
   <div class="scene" id="scene-honest">
     <h1>🕊️ Honesty Is the Best Policy?</h1>
-    <p>You confess, expecting rage. Instead, Grant applauds you for your integrity and offers a new challenge: dealing with the angry customer who says the espresso from his home country Italy tastes better.</p>
+    <img class="scene-image" src="scene-honest.png" alt="Honesty">
+    <p>You confess, expecting rage. Instead, Grant applauds you for your integrity and says you are ready for the next challenge: dealing with the angry customer who says the espresso from his home country Italy tastes better.</p>
+    <p>Do you:</p>
     <div class="button-row">
       <button onclick="goToScene('scene-help')">Accuse the Italian customer of using counterfeit currency so he gets deported back to Italy</button>
       <button onclick="goToScene('scene-run')">Get lost in the Italian’s deep eyes and agree to join him on his yacht in the Mediterranean to taste Italian coffee for yourself</button>
@@ -107,6 +122,7 @@
   <!-- Lie Path -->
   <div class="scene" id="scene-lie">
     <h1>🤥 The Blame Game</h1>
+    <img class="scene-image" src="scene-lie.png" alt="Lie Scene">
     <p>The manager believes you... for now. The intern returns unexpectedly with lunch for everyone. Chaos ensues.</p>
     <div class="button-row">
       <button onclick="goToScene('scene-coverup')">Double down and gaslight the intern</button>
@@ -117,6 +133,7 @@
   <!-- Help the Espresso Machine -->
   <div class="scene" id="scene-help">
     <h1>👻 Haunted Grounds</h1>
+    <img class="scene-image" src="scene-help.png" alt="Haunted Espresso">
     <p>You reach for the Italian man but your hand passes through him. He is a ghost and is threatening to haunt the espresso machine for eternity. You tell Grant you think something’s up with the machine, leave work early, and ignore Grant’s texts the rest of the month.</p>
     <p><strong>Status: Paranormally successful. Not hired.</strong></p>
     <div class="button-row">
@@ -128,35 +145,11 @@
   <!-- Run Away Path -->
   <div class="scene" id="scene-run">
     <h1>🛥️ Latte Love</h1>
-    <p> You hop onto a luxury yacht named The Bean Princess. On the second night, over truffle risotto and suspicious glances, the Italian man tells you his name is Lorenzo. He leans in and whispers:
-
-“I knew I could trust you the moment you pronounced ‘macchiato’ with such reckless confidence.”
-
-
-
-</p>
-
-<p>
-
-You’re not sure what that means, but you’re pretty sure it’s love.
-
-
-
-</p>
-
-<p>
-
-Turns out Lorenzo is a double agent in an international coffee smuggling ring. You’re now his partner — romantically and professionally. You help him decode secret latte art messages and smuggle biscotti microchips across borders.
-
-
-
-You get married in Tuscany in a vineyard owned by a mysterious woman named “Nonna”.
-
-
-
-You never return.
-
-</p>
+    <img class="scene-image" src="scene-run.png" alt="Yacht Romance">
+    <p>You hop onto a luxury yacht named The Bean Princess. On the second night, over truffle risotto and suspicious glances, the Italian man tells you his name is Lorenzo. He leans in and whispers:</p>
+    <p>“I knew I could trust you the moment you pronounced ‘macchiato’ with such reckless confidence.”</p>
+    <p>You’re not sure what that means, but you’re pretty sure it’s love.</p>
+    <p>Turns out Lorenzo is a double agent in an international coffee smuggling ring...</p>
     <p><strong>Status: Lost in love. Not hired.</strong></p>
     <div class="button-row">
       <button onclick="restartAdventure()">☕ Apply Again</button>
@@ -167,6 +160,7 @@ You never return.
   <!-- Cover Up Path -->
   <div class="scene" id="scene-coverup">
     <h1>🧠 Gaslight Brew</h1>
+    <img class="scene-image" src="scene-coverup.png" alt="Gaslight Chaos">
     <p>You gaslight the intern so effectively that they question if they ever applied for this job. You’re promoted to Head of HR Manipulations… but then sued by five different barista unions.</p>
     <p><strong>Status: Legally troubled. Not hired.</strong></p>
     <div class="button-row">
@@ -178,6 +172,7 @@ You never return.
   <!-- Confess After Lying -->
   <div class="scene" id="scene-confess">
     <h1>😢 A Frothy Redemption</h1>
+    <img class="scene-image" src="scene-confess.png" alt="Foamy Tears">
     <p>You break down in tears and confess everything. The manager nods solemnly, then asks if you can foam milk with your tears. Turns out — you can.</p>
     <p><strong>Status: Emotionally foamy. Not hired.</strong></p>
     <div class="button-row">
@@ -185,6 +180,7 @@ You never return.
       <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
     </div>
   </div>
+
 </div>
 
 <script>
