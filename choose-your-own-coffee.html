@@ -193,25 +193,15 @@
 </div>
 </div>
 <!-- Intro Scene -->
-
 <!-- Moral Dilemma -->
-
 <!-- Honest Path -->
-
 <!-- Lie Path -->
-
 <!-- Cover Up Path with Tic Tac Toe -->
-
 <!-- Tic Tac Toe Scene -->
-
 <!-- Confession -->
-
 <!-- Haunted Grounds -->
-
 <!-- Yacht Run -->
-
 <!-- Flee Scene -->
-
 <!-- SCENES OMITTED FOR BREVITY IN THIS OUTPUT STAGE -->
 <!-- Will be inserted below -->
 </div>
@@ -263,6 +253,51 @@
   }
 
   function computerMove() {
+    if (!gameActive) return;
+
+    function minimax(board, isMaximizing) {
+      const winner = getWinner();
+      if (winner === 'O') return { score: 1 };
+      if (winner === 'X') return { score: -1 };
+      if (!board.includes('')) return { score: 0 };
+
+      const moves = [];
+
+      for (let i = 0; i < 9; i++) {
+        if (board[i] === '') {
+          board[i] = isMaximizing ? 'O' : 'X';
+          const result = minimax(board, !isMaximizing);
+          moves.push({ index: i, score: result.score });
+          board[i] = '';
+        }
+      }
+
+      if (isMaximizing) {
+        return moves.reduce((best, move) => move.score > best.score ? move : best, { score: -Infinity });
+      } else {
+        return moves.reduce((best, move) => move.score < best.score ? move : best, { score: Infinity });
+      }
+    }
+
+    function getWinner() {
+      const winPatterns = [
+        [0,1,2], [3,4,5], [6,7,8],
+        [0,3,6], [1,4,7], [2,5,8],
+        [0,4,8], [2,4,6]
+      ];
+      for (const pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+          return boardState[a];
+        }
+      }
+      return null;
+    }
+
+    const bestMove = minimax(boardState, true).index;
+    const cell = document.querySelector(`.cell[data-index='${bestMove}']`);
+    cell.click();
+  }
     if (!gameActive) return;
     let emptyIndices = boardState.map((val, idx) => val === '' ? idx : null).filter(i => i !== null);
     const randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
