@@ -4,77 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perk Up, Grant! - Application Adventure</title>
+  <link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.css" />
   <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #F6EBD5;
-      color: #2c2c2c;
-      padding: 1rem;
-      margin: 0;
-      max-width: 100%;
-      overflow-x: hidden;
-      box-sizing: border-box;
-    }
-
-    h1 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.8rem;
-      color: #3a2a1c;
-      text-align: center;
-      margin-top: 1.5rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .scene {
-      display: none;
-      animation: fadeIn 0.8s ease forwards;
-      padding: 1rem;
-    }
-
-    .scene.active {
-      display: block;
-    }
-
-    .button-row {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
-      align-items: center;
-    }
-
-    button {
-      background-color: #3a2a1c;
-      color: #f6ebd5;
-      padding: 1rem;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 80%;
-      max-width: 300px;
-    }
-
-    button:hover {
-      background-color: #5a3a1c;
-    }
-
-    .scene-image {
-      display: block;
-      max-width: 120px;
-      height: auto;
-      margin: 1rem auto;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    body { font-family:'Open Sans',sans-serif; background:#F6EBD5; color:#2c2c2c; padding:1rem; margin:0; max-width:100%; overflow-x:hidden; box-sizing:border-box; }
+    h1 { font-family:'Oswald',sans-serif; font-size:1.8rem; color:#3a2a1c; text-align:center; margin-top:1.5rem; }
+    p { font-size:1.1rem; line-height:1.6; }
+    .scene { display:none; animation:fadeIn .8s ease forwards; padding:1rem; }
+    .scene.active { display:block; }
+    .button-row { display:flex; flex-direction:column; gap:1rem; margin-top:2rem; align-items:center; }
+    button { background:#3a2a1c; color:#f6ebd5; padding:1rem; font-family:'Oswald',sans-serif; font-size:1.1rem; border:none; border-radius:6px; cursor:pointer; width:80%; max-width:300px; }
+    button:hover { background:#5a3a1c; }
+    .scene-image { display:block; max-width:120px; height:auto; margin:1rem auto; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+    #board { width:320px; margin:1rem auto; }
   </style>
 </head>
 <body>
@@ -86,9 +28,7 @@
     <p>Thank you for applying to <strong>Perk Up, Grant!</strong> We believe the best way to evaluate a potential team member is through a hyper-realistic simulation of what you might encounter on the job.</p>
     <p>You’ll be placed in a series of totally normal, definitely not exaggerated real-life workplace scenarios.</p>
     <p>Your decisions will reveal your true character. Will you survive? Will you thrive?</p>
-    <div class="button-row">
-      <button onclick="goToScene('scene-2')">Let’s Go</button>
-    </div>
+    <div class="button-row"><button onclick="goToScene('scene-2')">Let’s Go</button></div>
   </div>
 
   <div class="scene" id="scene-2">
@@ -104,11 +44,8 @@
 
   <div class="scene" id="scene-honest">
     <h1>🕊️ Honesty Is the Best Policy?</h1>
-  
+    <img class="scene-image" src="scene-honest.PNG" alt="Honesty">
     <p>You confess, expecting rage. Instead, Grant applauds you for your integrity and says you are ready for the next challenge: dealing with the angry customer who says the espresso from his home country Italy tastes better.</p>
-
-<img class="scene-image" src="scene-honest.PNG" alt="Honesty">
-
     <p>Do you:</p>
     <div class="button-row">
       <button onclick="goToScene('scene-help')">Accuse the Italian customer of using counterfeit currency so he gets deported back to Italy</button>
@@ -156,11 +93,10 @@
   <div class="scene" id="scene-coverup">
     <h1>🧠 Gaslight Brew</h1>
     <img class="scene-image" src="scene-coverup.PNG" alt="Gaslight Chaos">
-    <p>You gaslight the intern so effectively that they question if they ever applied for this job. You’re promoted to Head of HR Manipulations… but then sued by five different barista unions.</p>
-    <p><strong>Status: Legally troubled. Not hired.</strong></p>
+    <p>You tell Grant it was all the intern’s fault. But little did you know the intern was eavesdropping on your conversation. The intern pops out to counter-accuse you as the one who really spilled the beans. Thankfully for you, Grant is moral and just. He demands a trial by chess. The winner is hired and the loser is banished.</p>
     <div class="button-row">
-      <button onclick="restartAdventure()">☕ Apply Again</button>
-      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+      <button onclick="goToScene('scene-chess')">Accept trial by Chess</button>
+      <button onclick="goToScene('scene-flee')">Flee the scene</button>
     </div>
   </div>
 
@@ -175,19 +111,90 @@
     </div>
   </div>
 
+  <div class="scene" id="scene-chess">
+    <h1>♟️ Trial by Chess</h1>
+    <p>Play against the Intern (AI). You are White and go first. Win to be hired; lose and you’re banished.</p>
+    <div id="board"></div>
+    <div class="button-row"><button onclick="restartAdventure()">☕ Try Again</button></div>
+  </div>
+
+  <div class="scene" id="scene-flee">
+    <h1>🏃‍♂️ Flee!</h1>
+    <p>You flee the cafe, spilling coffee beans in your wake. You escape—but at what cost? Probably your job.</p>
+    <p><strong>Status: Cowardly escape. Not hired.</strong></p>
+    <div class="button-row">
+      <button onclick="restartAdventure()">☕ Apply Again</button>
+      <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+    </div>
+  </div>
+
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
+<script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
 <script>
-  function goToScene(sceneId) {
-    const scenes = document.querySelectorAll('.scene');
-    scenes.forEach(scene => scene.classList.remove('active'));
-    document.getElementById(sceneId).classList.add('active');
+  let board, game = new Chess();
+
+  function goToScene(id) {
+    document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if (id === 'scene-chess') initChess();
   }
 
-  function restartAdventure() {
-    goToScene('scene-1');
+  function initChess() {
+    game.reset();
+    board = Chessboard('board', {
+      position: 'start',
+      draggable: true,
+      onDrop: handleMove
+    });
   }
+
+  function handleMove(source, target) {
+    let move = game.move({ from: source, to: target, promotion: 'q' });
+    if (!move) return 'snapback';
+    updateBoard();
+    setTimeout(makeInternMove, 500);
+  }
+
+  function makeInternMove() {
+    if (game.game_over()) return finishChess();
+    let moves = game.moves();
+    let move = moves[Math.floor(Math.random() * moves.length)];
+    game.move(move);
+    updateBoard();
+    if (game.game_over()) finishChess();
+  }
+
+  function updateBoard() { board.position(game.fen()); }
+
+  function finishChess() {
+    if (game.in_checkmate()) {
+      game.turn() === 'b' ? goToScene('scene-win') : goToScene('scene-lose');
+    } else {
+      goToScene('scene-draw');
+    }
+  }
+
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="scene" id="scene-win">
+      <h1>🎉 You Win!</h1>
+      <p>Grant shakes your hand—you’re hired! Congratulations!</p>
+      <div class="button-row"><button onclick="window.location.href='index.html'">🏆 Celebrate</button></div>
+    </div>
+    <div class="scene" id="scene-lose">
+      <h1>😞 You Lose!</h1>
+      <p>The Intern checkmates you. You're banished. Better luck next time!</p>
+      <div class="button-row"><button onclick="restartAdventure()">☕ Apply Again</button></div>
+    </div>
+    <div class="scene" id="scene-draw">
+      <h1>🤝 Draw!</h1>
+      <p>You draw with the Intern. Grant calls it a tie—and sends you to latte duty anyway.</p>
+      <div class="button-row"><button onclick="restartAdventure()">☕ Apply Again</button></div>
+    </div>
+  `);
+
+  function restartAdventure() { goToScene('scene-1'); }
 </script>
-
 </body>
 </html>
