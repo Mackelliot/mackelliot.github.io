@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,10 +90,236 @@
 
 <div id="scene-container">
 
-  <!-- ✅ INSERT ALL SCENES HERE -->
-  <!-- For space, they are exactly as written in previous messages -->
-  <!-- Including scene-1 to scene-flee, scene-tictactoe, scene-win/lose/draw -->
+<!-- Intro Scene -->
+<div class="scene active" id="scene-1">
+  <h1>☕ Welcome to the Application Process</h1>
+  <p>Thank you for applying to <strong>Perk Up, Grant!</strong> We believe the best way to evaluate a potential team member is through a hyper-realistic simulation of what you might encounter on the job.</p>
+  <p>You’ll be placed in a series of totally normal, definitely not exaggerated real-life workplace scenarios.</p>
+  <p>Your decisions will reveal your true character. Will you survive? Will you thrive?</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-2')">Let’s Go</button>
+  </div>
+</div>
 
+<!-- Moral Dilemma -->
+<div class="scene" id="scene-2">
+  <h1>☕ Moral Dilemma #1</h1>
+  <img class="scene-image" src="scene2.PNG" alt="Coffee Spill">
+  <p>You walk into your first shift and immediately spill an entire barrel of coffee beans. Your manager Grant hasn't seen it yet.</p>
+  <p>Do you:</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-honest')">Tell the truth and accept the consequences</button>
+    <button onclick="goToScene('scene-lie')">Blame it on the intern who left 10 minutes ago</button>
+  </div>
+</div>
+
+<!-- Honest Path -->
+<div class="scene" id="scene-honest">
+  <h1>🕊️ Honesty Is the Best Policy?</h1>
+  <img class="scene-image" src="scene-honest.PNG" alt="Honesty">
+  <p>You confess, expecting rage. Instead, Grant applauds you for your integrity and says you are ready for the next challenge: dealing with the angry customer who says the espresso from his home country Italy tastes better.</p>
+  <p>Do you:</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-help')">Accuse the Italian customer of using counterfeit currency so he gets deported back to Italy</button>
+    <button onclick="goToScene('scene-run')">Get lost in the Italian’s deep eyes and agree to join him on his yacht in the Mediterranean to taste Italian coffee for yourself</button>
+  </div>
+</div>
+
+<!-- Lie Path -->
+<div class="scene" id="scene-lie">
+  <h1>🤥 The Blame Game</h1>
+  <img class="scene-image" src="scene-lie.PNG" alt="Lie Scene">
+  <p>The manager believes you... for now. The intern returns unexpectedly with lunch for everyone. Chaos ensues.</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-coverup')">Double down and gaslight the intern</button>
+    <button onclick="goToScene('scene-confess')">Break down and confess everything</button>
+  </div>
+</div>
+
+<!-- Cover Up Path with Tic Tac Toe -->
+<div class="scene" id="scene-coverup">
+  <h1>🧠 Gaslight Brew</h1>
+  <img class="scene-image" src="scene-coverup.PNG" alt="Gaslight Chaos">
+  <p>You tell Grant it was all the intern’s fault. But little did you know the intern was eavesdropping on your conversation. The intern pops out to counter-accuse you as the one who really spilled the beans. Thankfully for you, Grant is moral and just. He demands a trial by Tic Tac Toe. The winner is hired and the loser is banished.</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-tictactoe')">Accept Trial by Tic Tac Toe</button>
+    <button onclick="goToScene('scene-flee')">Flee the Scene</button>
+  </div>
+</div>
+
+<!-- Tic Tac Toe Scene -->
+<div class="scene" id="scene-tictactoe">
+  <h1>🎲 Trial by Tic Tac Toe</h1>
+  <p>You are X. The Intern is O. Tap to make your move!</p>
+  <div id="tic-tac-toe-board"></div>
+</div>
+
+<!-- Confession -->
+<div class="scene" id="scene-confess">
+  <h1>😢 A Frothy Redemption</h1>
+  <img class="scene-image" src="scene-confess.PNG" alt="Foamy Tears">
+  <p>You break down in tears and confess everything. The manager nods solemnly, then asks if you can foam milk with your tears. Turns out — you can.</p>
+  <p><strong>Status: Emotionally foamy. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Haunted Grounds -->
+<div class="scene" id="scene-help">
+  <h1>👻 Haunted Grounds</h1>
+  <img class="scene-image" src="scene-help.PNG" alt="Haunted Espresso">
+  <p>You reach for the Italian man but your hand passes through him. He is a ghost and is threatening to haunt the espresso machine for eternity. You tell Grant you think something’s up with the machine, leave work early, and ignore Grant’s texts the rest of the month.</p>
+  <p><strong>Status: Paranormally successful. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Yacht Run -->
+<div class="scene" id="scene-run">
+  <h1>🛥️ Latte Love</h1>
+  <img class="scene-image" src="scene-run.PNG" alt="Yacht Romance">
+  <p>You hop onto a luxury yacht named The Bean Princess. On the second night, over truffle risotto and suspicious glances, the Italian man tells you his name is Lorenzo. He leans in and whispers: “I knew I could trust you the moment you pronounced ‘macchiato’ with such reckless confidence.”</p>
+  <p>You’re not sure what that means, but you’re pretty sure it’s love.</p>
+  <p>You get married in Tuscany in a vineyard owned by a mysterious woman named “Nonna”.</p>
+  <p><strong>Status: Lost in love. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Flee Scene -->
+<div class="scene" id="scene-flee">
+  <h1>🏃‍♂️ Flee!</h1>
+  <p>You flee the cafe, spilling coffee beans in your wake. You escape—but at what cost? Probably your job.</p>
+  <p><strong>Status: Cowardly escape. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+
+<!-- Intro Scene -->
+<div class="scene active" id="scene-1">
+  <h1>☕ Welcome to the Application Process</h1>
+  <p>Thank you for applying to <strong>Perk Up, Grant!</strong> We believe the best way to evaluate a potential team member is through a hyper-realistic simulation of what you might encounter on the job.</p>
+  <p>You’ll be placed in a series of totally normal, definitely not exaggerated real-life workplace scenarios.</p>
+  <p>Your decisions will reveal your true character. Will you survive? Will you thrive?</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-2')">Let’s Go</button>
+  </div>
+</div>
+
+<!-- Moral Dilemma -->
+<div class="scene" id="scene-2">
+  <h1>☕ Moral Dilemma #1</h1>
+  <img class="scene-image" src="scene2.PNG" alt="Coffee Spill">
+  <p>You walk into your first shift and immediately spill an entire barrel of coffee beans. Your manager Grant hasn't seen it yet.</p>
+  <p>Do you:</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-honest')">Tell the truth and accept the consequences</button>
+    <button onclick="goToScene('scene-lie')">Blame it on the intern who left 10 minutes ago</button>
+  </div>
+</div>
+
+<!-- Honest Path -->
+<div class="scene" id="scene-honest">
+  <h1>🕊️ Honesty Is the Best Policy?</h1>
+  <img class="scene-image" src="scene-honest.PNG" alt="Honesty">
+  <p>You confess, expecting rage. Instead, Grant applauds you for your integrity and says you are ready for the next challenge: dealing with the angry customer who says the espresso from his home country Italy tastes better.</p>
+  <p>Do you:</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-help')">Accuse the Italian customer of using counterfeit currency so he gets deported back to Italy</button>
+    <button onclick="goToScene('scene-run')">Get lost in the Italian’s deep eyes and agree to join him on his yacht in the Mediterranean to taste Italian coffee for yourself</button>
+  </div>
+</div>
+
+<!-- Lie Path -->
+<div class="scene" id="scene-lie">
+  <h1>🤥 The Blame Game</h1>
+  <img class="scene-image" src="scene-lie.PNG" alt="Lie Scene">
+  <p>The manager believes you... for now. The intern returns unexpectedly with lunch for everyone. Chaos ensues.</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-coverup')">Double down and gaslight the intern</button>
+    <button onclick="goToScene('scene-confess')">Break down and confess everything</button>
+  </div>
+</div>
+
+<!-- Cover Up Path with Tic Tac Toe -->
+<div class="scene" id="scene-coverup">
+  <h1>🧠 Gaslight Brew</h1>
+  <img class="scene-image" src="scene-coverup.PNG" alt="Gaslight Chaos">
+  <p>You tell Grant it was all the intern’s fault. But little did you know the intern was eavesdropping on your conversation. The intern pops out to counter-accuse you as the one who really spilled the beans. Thankfully for you, Grant is moral and just. He demands a trial by Tic Tac Toe. The winner is hired and the loser is banished.</p>
+  <div class="button-row">
+    <button onclick="goToScene('scene-tictactoe')">Accept Trial by Tic Tac Toe</button>
+    <button onclick="goToScene('scene-flee')">Flee the Scene</button>
+  </div>
+</div>
+
+<!-- Tic Tac Toe Scene -->
+<div class="scene" id="scene-tictactoe">
+  <h1>🎲 Trial by Tic Tac Toe</h1>
+  <p>You are X. The Intern is O. Tap to make your move!</p>
+  <div id="tic-tac-toe-board"></div>
+</div>
+
+<!-- Confession -->
+<div class="scene" id="scene-confess">
+  <h1>😢 A Frothy Redemption</h1>
+  <img class="scene-image" src="scene-confess.PNG" alt="Foamy Tears">
+  <p>You break down in tears and confess everything. The manager nods solemnly, then asks if you can foam milk with your tears. Turns out — you can.</p>
+  <p><strong>Status: Emotionally foamy. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Haunted Grounds -->
+<div class="scene" id="scene-help">
+  <h1>👻 Haunted Grounds</h1>
+  <img class="scene-image" src="scene-help.PNG" alt="Haunted Espresso">
+  <p>You reach for the Italian man but your hand passes through him. He is a ghost and is threatening to haunt the espresso machine for eternity. You tell Grant you think something’s up with the machine, leave work early, and ignore Grant’s texts the rest of the month.</p>
+  <p><strong>Status: Paranormally successful. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Yacht Run -->
+<div class="scene" id="scene-run">
+  <h1>🛥️ Latte Love</h1>
+  <img class="scene-image" src="scene-run.PNG" alt="Yacht Romance">
+  <p>You hop onto a luxury yacht named The Bean Princess. On the second night, over truffle risotto and suspicious glances, the Italian man tells you his name is Lorenzo. He leans in and whispers: “I knew I could trust you the moment you pronounced ‘macchiato’ with such reckless confidence.”</p>
+  <p>You’re not sure what that means, but you’re pretty sure it’s love.</p>
+  <p>You get married in Tuscany in a vineyard owned by a mysterious woman named “Nonna”.</p>
+  <p><strong>Status: Lost in love. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+<!-- Flee Scene -->
+<div class="scene" id="scene-flee">
+  <h1>🏃‍♂️ Flee!</h1>
+  <p>You flee the cafe, spilling coffee beans in your wake. You escape—but at what cost? Probably your job.</p>
+  <p><strong>Status: Cowardly escape. Not hired.</strong></p>
+  <div class="button-row">
+    <button onclick="restartAdventure()">☕ Apply Again</button>
+    <button onclick="window.location.href='index.html'">🏠 Return to Home</button>
+  </div>
+</div>
+
+
+  <!-- SCENES OMITTED FOR BREVITY IN THIS OUTPUT STAGE -->
+  <!-- Will be inserted below -->
 </div>
 
 <script>
@@ -133,11 +360,9 @@
     event.target.textContent = currentPlayer;
     if (checkWinner(currentPlayer)) {
       goToScene(currentPlayer === 'X' ? 'scene-win' : 'scene-lose');
-      gameActive = false;
       return;
     } else if (!boardState.includes('')) {
       goToScene('scene-draw');
-      gameActive = false;
       return;
     }
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
@@ -164,29 +389,23 @@
   }
 </script>
 
-<!-- Outcome Scenes -->
+<!-- OUTCOME SCENES -->
 <div class="scene" id="scene-win">
   <h1>🎉 Victory!</h1>
   <p>You defeated the Intern at Tic Tac Toe. Grant hires you on the spot. Welcome aboard!</p>
-  <div class="button-row">
-    <button onclick="window.location.href='index.html'">🏆 Return Home</button>
-  </div>
+  <div class="button-row"><button onclick="window.location.href='index.html'">🏆 Return Home</button></div>
 </div>
 
 <div class="scene" id="scene-lose">
   <h1>😢 Defeat...</h1>
   <p>The Intern has bested you in Tic Tac Toe. Grant quietly hands you a complimentary biscotti and escorts you out.</p>
-  <div class="button-row">
-    <button onclick="restartAdventure()">☕ Apply Again</button>
-  </div>
+  <div class="button-row"><button onclick="restartAdventure()">☕ Apply Again</button></div>
 </div>
 
 <div class="scene" id="scene-draw">
   <h1>🤝 Stalemate</h1>
   <p>A draw! Grant sighs and says, “A true barista must commit.” You're sent back to latte duty.</p>
-  <div class="button-row">
-    <button onclick="restartAdventure()">☕ Apply Again</button>
-  </div>
+  <div class="button-row"><button onclick="restartAdventure()">☕ Apply Again</button></div>
 </div>
 
 </body>
