@@ -664,6 +664,9 @@
   }
   // Scroll-triggered animation for chat button
   const menuSection = document.getElementById("menu");
+  const belowMenuSections = [
+    ...document.querySelectorAll("section")
+  ].filter(section => section.id && section.id !== "menu");
   const chatWidget = document.getElementById("grantChatButton");
 
   function isElementInViewport(el) {
@@ -675,9 +678,19 @@
   }
 
   function handleScroll() {
-    if (isElementInViewport(menuSection)) {
+    let shouldPulse = false;
+    for (const section of belowMenuSections) {
+      if (isElementInViewport(section)) {
+        shouldPulse = true;
+        break;
+      }
+    }
+    if (shouldPulse) {
       chatWidget.classList.add("pulse-on");
     } else {
+      chatWidget.classList.remove("pulse-on");
+    }
+  } else {
       chatWidget.classList.remove("pulse-on");
     }
   }
