@@ -727,33 +727,29 @@ nav ul li a.active::after {
     toggleCTAVisibility();
   });
   window.addEventListener("load", () => {
-    handleScroll();
-    toggleCTAVisibility();
-    updateActiveLink();
-    setTimeout(() => {
-      document.getElementById("scrollDownCTA").style.opacity = '1';
-    }, 1600);
+  handleScroll();
+  toggleCTAVisibility();
+  updateActiveLink();
+  setTimeout(() => {
+    document.getElementById("scrollDownCTA").style.opacity = '1';
+  }, 1600);
+});
   // Active link highlighting based on scroll
   const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll("nav ul li a");
+const navLinks = document.querySelectorAll("nav ul li a");
 
-  function updateActiveLink() {
-    let index = sections.length;
-    while (--index && window.scrollY + window.innerHeight / 2 < sections[index].offsetTop) {}
+function updateActiveLink() {
+  let index = sections.length;
+  while (--index && window.scrollY + window.innerHeight / 2 < sections[index].offsetTop) {}
+  navLinks.forEach((link) => link.classList.remove("active"));
+  if (navLinks[index]) navLinks[index].classList.add("active");
+}
     navLinks.forEach((link) => link.classList.remove("active"));
     if (navLinks[index]) navLinks[index].classList.add("active");
   }
 
-  window.addEventListener("scroll", () => {
-    handleScroll();
-    toggleCTAVisibility();
-    updateActiveLink();
-  });
-  window.addEventListener("load", () => {
-    handleScroll();
-    toggleCTAVisibility();
-    updateActiveLink();
-  });
+  
+  
 </script>
 <!-- End Chat with Grant Widget -->
 
