@@ -34,25 +34,14 @@
       color: #3a2a1c;
       font-family: 'Oswald', sans-serif;
       font-size: 1rem;
-      position: relative;
+      transition: color 0.2s;
     }
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 100%;
-      height: 2px;
-      background-color: #3a2a1c;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease-out;
-    }
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
+   nav ul li a:hover,
+nav ul li a.active {
+  text-decoration: underline;
+  color: #000000;
+}
+   
     header {
       display: flex;
       flex-direction: column;
@@ -433,3 +422,42 @@ document.getElementById("grantChatClose").addEventListener("click", () => {
   }
 });
 </script>
+
+  <script>
+  const backToTopBtn = document.getElementById("backToTop");
+
+  window.onscroll = () => {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+
+    // Optional: Highlight active nav link while scrolling
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 60) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  };
+
+  backToTopBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+
+  
+</body>
+</html>
