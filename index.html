@@ -320,6 +320,232 @@ a.cta-button:hover {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 </script>
+<!-- Chat with Grant Widget -->
+<div id="grantChatWidget">
+  <div id="grantChatButton">💬</div>
+  <div id="grantChatBox">
+    <div id="grantChatHeader">Chat with Grant</div>
+    <div id="grantChatMessages"></div>
+    <div id="grantChatInputArea">
+      <input type="text" id="grantUserInput" placeholder="Ask Grant anything..." />
+      <button id="grantSendBtn">➤</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #grantChatWidget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+  }
+
+  #grantChatButton {
+    background-color: #3a2a1c;
+    color: #f6ebd5;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  #grantChatBox {
+    display: none;
+    flex-direction: column;
+    width: 300px;
+    max-height: 400px;
+    background: #fff;
+    border: 2px solid #3a2a1c;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+  }
+
+  #grantChatHeader {
+    background-color: #3a2a1c;
+    color: #f6ebd5;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  #grantChatMessages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f6ebd5;
+  }
+
+  .userMessage {
+    background-color: #3a2a1c;
+    color: #fff;
+    margin: 6px 0;
+    padding: 8px 12px;
+    border-radius: 16px;
+    max-width: 80%;
+    margin-left: auto;
+    text-align: right;
+    clear: both;
+  }
+
+  .grantRow {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .grantAvatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 1px solid #3a2a1c;
+  }
+
+  .grantBubble {
+    background-color: #fff;
+    color: #2c2c2c;
+    border: 1px solid #3a2a1c;
+    padding: 8px 12px;
+    border-radius: 16px;
+    max-width: 80%;
+  }
+
+  .typingIndicator {
+    font-style: italic;
+    color: #888;
+    margin: 6px 0;
+  }
+
+  #grantChatInputArea {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  #grantUserInput {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+
+  #grantSendBtn {
+    background: #3a2a1c;
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 500px) {
+    #grantChatBox {
+      width: 90vw;
+      right: 5vw;
+    }
+  }
+</style>
+
+<script>
+  const responses = [
+    "Mmm yes, very interesting. Tell me more while I pretend to stir an empty mug.",
+    "Honestly? No clue.",
+    "Ruh roh. I don't even know where to begin with that one.",
+    "I'm on break. Can you ask me again in like 5? kthxbye",
+    "I think you know the answer to that yourself...",
+    "Seriously?",
+    "My advice for you: Be like a postage stamp - stick to one thing until you get there.",
+    "I'm not sure I like your tone. Ask again.",
+    "Ooooh, bold choice of words for someone within slapping distance.",
+    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
+    "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
+    "Just to be sure... was that a request or a threat?",
+    "ok",
+    "thinking...",
+    "idk. what?",
+    "hold up, what?!",
+    "i don't really have time for this anymore. are we done here?",
+    "wait, back up. do you have a name? or can I call you mine?",
+    "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
+    "i actually don't know",
+    "hold up. i need to check in the back real quick",
+    "rude.",
+    "lol"
+  ];
+
+  const chatBtn = document.getElementById("grantChatButton");
+  const chatBox = document.getElementById("grantChatBox");
+  const sendBtn = document.getElementById("grantSendBtn");
+  const userInput = document.getElementById("grantUserInput");
+  const chatMessages = document.getElementById("grantChatMessages");
+
+  chatBtn.addEventListener("click", () => {
+    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+  });
+
+  sendBtn.addEventListener("click", handleUserMessage);
+  userInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") handleUserMessage();
+  });
+
+  function handleUserMessage() {
+    const msg = userInput.value.trim();
+    if (!msg) return;
+
+    appendMessage(msg, 'userMessage');
+    userInput.value = '';
+    simulateGrantResponse();
+  }
+
+  function appendMessage(text, className) {
+    if (className === 'grantMessage') {
+      const msgRow = document.createElement('div');
+      msgRow.className = 'grantRow';
+
+      const avatar = document.createElement('img');
+      avatar.className = 'grantAvatar';
+      avatar.src = 'grant-avatar.png'; // 👈 Replace this with your avatar image path
+
+      const msgBubble = document.createElement('div');
+      msgBubble.className = 'grantBubble';
+      msgBubble.textContent = text;
+
+      msgRow.appendChild(avatar);
+      msgRow.appendChild(msgBubble);
+      chatMessages.appendChild(msgRow);
+    } else {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = className;
+      msgDiv.textContent = text;
+      chatMessages.appendChild(msgDiv);
+    }
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function simulateGrantResponse() {
+    const typing = document.createElement('div');
+    typing.className = 'typingIndicator';
+    typing.textContent = 'Grant is typing...';
+    chatMessages.appendChild(typing);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    setTimeout(() => {
+      chatMessages.removeChild(typing);
+      const response = responses[Math.floor(Math.random() * responses.length)];
+      appendMessage(response, 'grantMessage');
+    }, 1200 + Math.random() * 1000);
+  }
+</script>
+<!-- End Chat with Grant Widget -->
 
 </body>
 </html>
