@@ -265,7 +265,8 @@ nav ul li a.active::after {
 
 <!-- Chat with Grant Widget (Smart Sassy Edition) -->
 <div id="grantChatWidget">
-  <div id="grantChatButton" title="Chat with Grant">💬</div>
+  </div>
+<div id="grantChatButton" title="Chat with Grant">💬</div>
   <div id="grantChatBox">
     <div id="grantChatHeader">Chat with Grant</div>
     <div id="grantChatMessages"></div>
@@ -727,12 +728,12 @@ nav ul li a.active::after {
     toggleCTAVisibility();
   });
   window.addEventListener("load", () => {
-  handleScroll();
-  toggleCTAVisibility();
-  updateActiveLink();
   setTimeout(() => {
     document.getElementById("scrollDownCTA").style.opacity = '1';
   }, 1600);
+  handleScroll();
+  toggleCTAVisibility();
+  updateActiveLink();
 });
   // Active link highlighting based on scroll
   const sections = document.querySelectorAll("section");
@@ -744,8 +745,6 @@ function updateActiveLink() {
   navLinks.forEach((link) => link.classList.remove("active"));
   if (navLinks[index]) navLinks[index].classList.add("active");
 }
-    navLinks.forEach((link) => link.classList.remove("active"));
-    if (navLinks[index]) navLinks[index].classList.add("active");
   }
 
   
