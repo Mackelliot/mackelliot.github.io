@@ -306,7 +306,10 @@ a.cta-button:hover {
 <!-- Chat Widget code follows and stays intact -->
 <div id="grantChatButton" title="Chat with Grant">💬</div>
 <div id="grantChatBox" style="display: none; flex-direction: column; width: 320px; max-height: 450px; background: #f8f9fa; border: 1px solid #ced4da; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); position: fixed; bottom: 90px; right: 20px; z-index: 9999; font-family: 'Open Sans', sans-serif;">
-  <div style="background-color: #0d6efd; color: #fff; padding: 12px; text-align: center; font-weight: 600; font-size: 1.1rem;">Chat with Grant</div>
+  <div style="background-color: #0d6efd; color: #fff; padding: 12px; text-align: center; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">
+  <span>Chat with Grant</span>
+  <button id="grantChatClose" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">✕</button>
+</div>
   <div id="grantChatMessages" style="flex: 1; padding: 16px; overflow-y: auto; background-color: #ffffff; font-size: 1.1rem; line-height: 1.6; color: #212529;"></div>
   <div style="display: flex; border-top: 1px solid #ddd;">
     <input type="text" id="grantUserInput" placeholder="Ask Grant anything..." style="flex: 1; padding: 10px; border: 1px solid #ced4da; outline: none; font-size: 1.1rem; border-radius: 4px; margin: 8px;">
@@ -332,8 +335,12 @@ a.cta-button:hover {
   const socialsSection = document.getElementById("socials");
 
   chatButton.addEventListener("click", () => {
-    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-  });
+  chatBox.style.display = "flex";
+});
+
+document.getElementById("grantChatClose").addEventListener("click", () => {
+  chatBox.style.display = "none";
+}););
 
   sendBtn.addEventListener("click", handleUserMessage);
   userInput.addEventListener("keypress", (e) => {
