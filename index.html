@@ -171,24 +171,20 @@
     return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
   }
   const fallbackResponses = [
-    "Mmm yes, very interesting. Tell me more while I pretend to stir an empty mug.",
-    "Honestly? No clue.",
-    "Ruh roh. I don't even know where to begin with that one.",
-    "I think you know the answer to that yourself...", "hi! i'm Grant. how can I help?",
-    "Seriously?",
-    "My advice for you: Be like a postage stamp - stick to one thing until you get there.",
-    "I'm not sure I like your tone. Ask again.",
-    "Ooooh, bold choice of words for someone within slapping distance.",
-    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
+    "Mmm yes, very interesting. tell me more while I pretend to stir an empty mug.",
+
+    "Ruh roh. i don't even know where to begin with that one. anything else i should know before trying to respond?",
+    "okay... can you elaborate? give me something to work with here.",
+    "okay, but I feel like you're not telling me everything. something else going on? you know you can tell me anything.",
+    "slow down. can you repeat that in a way a 1st grader might understand?",
+    "I'm not sure I like your tone. Try again. POLITELY!",
+    "Ooooh, bold choice of words for someone within slapping distance. Notifying the real Grant now...",
     "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
-    "Just to be sure... was that a threat?",
-    "okay... so what?", "thinking...", "idk. what?", "hold up, what?!",
+    "okay. so what?", "can we take things slower? ask me to tell you a joke. we need to lighten the mood here.",
     "i don't really have time for this anymore. are we done here?",
     "wait, let's start from the top. do you have a name? or can I call you mine?",
     "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
-    "i actually don't know",
-    "hold up. i need to check in the back real quick",
-    "rude.", "lol", "slow down. first, tell me something you like about me"
+     "lol. elaborate more.", "let's start over. tell me something you like about me"
   ];
 
   const keywordResponses = [
@@ -199,18 +195,18 @@
         "I would help, but I swore an oath to do nothing today. Anything else I can help with?",
         "Sounds like more of a you than a me problem.",
         "I'm on break. Can you ask me again in like 5? kthxbye",
-        "ok. but first tell me something you like about me."
+        "ok. but first tell me something you like about me.", "ruh roh. someone didn't say please."
       ]
     },
     {
       trigger: ["i like"],
       responses: [
-        "sweet of you to say so!",
+        "sweet of you to say so! what else do you like about me?",
         "when i look at myself in the mirror, that's what i see most too",
         "i will take that as a compliment! now what else can I help you with?",
-        "rude",
-        "most people say they like that too.",
-        "thank you. i get that a lot. what else do you like?",
+        "rude. anything else you like about me?", "yea everyone says that. what else do you like about me?",
+        "haha, but seriously what do you like about me?", "
+        "thank you. i get that a lot. what else do you like about me?",
         "is that something you like or something you love?"
       ]
     },
@@ -226,35 +222,35 @@
     {
       trigger: ["when will", "when does", "when do", "how much longer"],
       responses: [
-        "whenever i get around to it. okay!?",
-        "ooof. probably 3-5 business days.",
-        "when i'm done with work. i promise, champ.",
+        "whenever i get around to it. okay!? in the meantime, anything else?",
+        "ooof. probably 3-5 business days. anything else?",
+        "when i'm done with work. i promise, champ. anything else I can help with in the meantime?",
         "when do you think is reasonable?",
         "i'm on it now! don't go anywhere and don't close out this window!",
-        "it will happen when it happens. just trust in the process.",
-        "I'm on break. Can u ask me again in like 5? kthxbye"
+        "it will happen when it happens. just trust in the process and contact me back in 3-5 business months.",
+        "I'm on break. Can u ask me again in like 5? kthxbye", "i hear you, but first tell me something you like about me and then i'll give you the best answer with the most confident version of me."
       ]
     },
     {
-      trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it"],
+      trigger: ["do you", "can you", "can u", "do u", "do i", "does it"],
       responses: [
         "obvi",
         "no, not really", "yes", "probably", "100%", "haha. nope!", "yes, technically speaking", "yeppers", "oui", "no. just no.", "lol. no.", "a gentleman never tells...",
         "idk, but probably", "hmmm, gee idk. is a frog's butt watertight? don't ask me stupid questions.", "umm, i think so. actually, yes I'm pretty sure. why?",
-        "what made you ask that?", "tell me something you like about me, then I'll let you know the answer"
+        "what made you ask that?", "tell me something you like about me, then I'll let you know the answer", "ruh roh. someone didn't say please."
       ]
     },
     {
-      trigger: ["fuck", "shit", "damn", "butt", "fucking", "f'ing"],
+      trigger: ["fuck", "shit", "damn", "butt", "fucking", "f'ing", "bitch", "dick", "ass","asshole"],
       responses: [
         "whoa! watch your language.",
         "I wasn't raised to talk like that. I'll kindly ask that you leave. Anything else I can help with before you go?",
         "one sec. i'm getting soap to wash out your filthy mouth. do you prefer bar or liquid?",
-        "we don't say words like that in this household",
+        "we don't say words like that in this household. anything else you'd like to say while you're at it?",
         "please keep it clean. this is a family establishment.",
-        "lol. that is some colorful language",
-        "you talk like a sailor",
-        "where did you learn to talk like that!?",
+        "lol. that is some colorful language.",
+        "you talk like my aunt carol",
+         "rude.", "smh...",
         "i'm not sure i like your tone. ask again more politely."
       ]
     },
@@ -268,7 +264,7 @@
       ]
     },
     {
-      trigger: ["love", "flirt", "date", "single"],
+      trigger: ["love", "flirt", "date", "single", "sex", "sexy"],
       responses: [
         "I’m emotionally unavailable... like decaf.",
         "Whoa, slow down—buy me a latte first.",
@@ -291,20 +287,40 @@
       responses: [
         "what do you mean?",
         "idk actually",
-        "ruh roh. you got me. i have no clue.",
+        "ruh roh. you got me. i have no clue. anything else?",
         "a gentleman never tells...",
-        "that is a great question",
+        "that is a great question. anything else i should know?", "huh, idk actually. i never thought to ask. anything else?"
         "if you have to ask...",
         "oof, that question is above my pay grade. what do you want to know?",
         "okay i'll tell you. but first tell me something you like about me.",
         "i give up. what?",
-        "wow. deep question. but idk."
+        "wow. deep question. but idk. anything else?", "honestly? idk. anything else?", "ruh roh. someone didn't say please"
+
+      ]
+    },
+        {
+      trigger: ["will you", "will u"],
+      responses: [
+        "i mean, technically i cloud. but why would i?",
+        "i will. but first, what do you like about me?",
+        "ruh roh. somebody didn't say please",
+        "i will, but ask me to tell you a joke first. please?",
+        "i will do that when you least expect it. anything else in the meantime?"
+
+      ]
+    },
+            {
+      trigger: ["kock kock", "knockknock"],
+      responses: [
+        "who is there?",
+        "i don't open the door for strangers", "just leave it on the front doorstep and get the hell out of here!", "Who's there?", "come on in! door's open!"
+
       ]
     },
     {
       trigger: ["tell me a joke", "joke"],
       responses: [
-        "i told me wife she was drawing her eyebrows too high. she looked suprised.",
+        "i told my wife she was drawing her eyebrows too high. she looked suprised.",
         "i used to play piano by ear, but now i use my hands",
         "i'd agree with you, but then we'd both be wrong.",
         "parallel lines have so much in common... it's a shame they'll never meet",
