@@ -184,7 +184,10 @@
       background-color: #5a3a1c;
       transform: scale(1.05);
     }
-  </style>
+    #grantChatButton.pulse-on {
+    animation: pulse 2s infinite;
+  }
+</style>
 </head>
 <body>
   <nav>
@@ -291,7 +294,7 @@
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    animation: pulse 2s infinite;
+    /* animation will be added via JS */
   }
   #grantChatBox {
     display: none;
@@ -659,6 +662,28 @@
 
     return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
   }
+  // Scroll-triggered animation for chat button
+  const menuSection = document.getElementById("menu");
+  const chatWidget = document.getElementById("grantChatButton");
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom >= 0
+    );
+  }
+
+  function handleScroll() {
+    if (isElementInViewport(menuSection)) {
+      chatWidget.classList.add("pulse-on");
+    } else {
+      chatWidget.classList.remove("pulse-on");
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("load", handleScroll);
 </script>
 <!-- End Chat with Grant Widget -->
 
