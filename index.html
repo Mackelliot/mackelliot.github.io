@@ -184,6 +184,167 @@
       background-color: #5a3a1c;
       transform: scale(1.05);
     }
+      /* Chat Widget Styling + Animations */
+    #grantChatWidget {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      font-family: 'Open Sans', sans-serif;
+      z-index: 9999;
+    }
+
+    #grantChatButton {
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border: 1px solid #ddd;
+    }
+
+    #grantChatBox {
+      display: none;
+      flex-direction: column;
+      width: 300px;
+      max-height: 400px;
+      background: #fff;
+      border: 2px solid #3a2a1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+
+    #grantChatBox.animated-in {
+      animation: slideUpFadeIn 0.4s ease-out forwards;
+    }
+
+    #grantChatBox.animated-out {
+      animation: slideDownFadeOut 0.3s ease-in forwards;
+    }
+
+    @keyframes slideUpFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDownFadeOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+
+    #grantChatHeader {
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #grantChatMessages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #f6ebd5;
+    }
+
+    .userMessage {
+      background-color: #3a2a1c;
+      color: #fff;
+      margin: 6px 0;
+      padding: 8px 12px;
+      border-radius: 16px;
+      max-width: 80%;
+      margin-left: auto;
+      text-align: right;
+      clear: both;
+    }
+
+    .grantRow {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .grantAvatar {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+      border: 1px solid #3a2a1c;
+    }
+
+    .grantBubble {
+      background-color: #fff;
+      color: #2c2c2c;
+      border: 1px solid #3a2a1c;
+      padding: 8px 12px;
+      border-radius: 16px;
+      max-width: 80%;
+    }
+
+    .typingIndicator {
+      font-style: italic;
+      color: #888;
+      margin: 6px 0;
+    }
+
+    #grantChatInputArea {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    #grantUserInput {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    #grantSendBtn {
+      background: #3a2a1c;
+      color: #fff;
+      border: none;
+      padding: 0 16px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    @media (max-width: 500px) {
+      #grantChatBox {
+        width: 90vw;
+        right: 5vw;
+        bottom: 70px;
+        max-height: 70vh;
+      }
+
+      #grantChatButton {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
 
