@@ -285,7 +285,7 @@ nav ul li a.active::after {
     z-index: 9999;
   }
   #grantChatButton {
-    background-color: #007aff;
+    background-color: #f9f6f1;
     color: #fff;
     border-radius: 50%;
     width: 50px;
@@ -726,7 +726,7 @@ nav ul li a.active::after {
 
   function updateActiveLink() {
     let index = sections.length;
-    while (--index && window.scrollY + 10 < sections[index].offsetTop) {}
+    while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
     navLinks.forEach((link) => link.classList.remove("active"));
     if (navLinks[index]) navLinks[index].classList.add("active");
   }
