@@ -695,12 +695,22 @@ nav ul li a.active::after {
   }
 
   function handleScroll() {
-    let shouldPulse = false;
-    for (const section of belowMenuSections) {
-      if (isElementInViewport(section)) {
-        shouldPulse = true;
-        break;
-      }
+  let shouldPulse = false;
+  const rect = menuSection.getBoundingClientRect();
+  const passedMenu = rect.bottom < 0;
+
+  if (passedMenu) {
+    shouldPulse = true;
+  }
+
+  if (shouldPulse) {
+    chatWidget.classList.add("pulse-on");
+    document.getElementById("grantChatWidget").classList.add("visible");
+  } else {
+    chatWidget.classList.remove("pulse-on");
+    document.getElementById("grantChatWidget").classList.remove("visible");
+  }
+}
     }
     if (shouldPulse) {
     chatWidget.classList.add("pulse-on");
