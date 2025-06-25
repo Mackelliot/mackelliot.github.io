@@ -308,7 +308,10 @@ nav ul li a.active::after {
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    /* animation will be added via JS */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10001;
   }
   #grantChatBox {
     display: none;
@@ -729,7 +732,8 @@ nav ul li a.active::after {
   });
   window.addEventListener("load", () => {
   setTimeout(() => {
-    document.getElementById("scrollDownCTA").style.opacity = '1';
+    scrollDownCTA.style.opacity = '1';
+    scrollDownCTA.style.pointerEvents = 'auto';
   }, 1600);
   handleScroll();
   toggleCTAVisibility();
@@ -744,11 +748,6 @@ function updateActiveLink() {
   while (--index && window.scrollY + window.innerHeight / 2 < sections[index].offsetTop) {}
   navLinks.forEach((link) => link.classList.remove("active"));
   if (navLinks[index]) navLinks[index].classList.add("active");
-}
-  }
-
-  
-  
 </script>
 <!-- End Chat with Grant Widget -->
 
