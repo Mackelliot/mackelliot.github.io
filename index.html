@@ -285,6 +285,15 @@ nav ul li a.active::after {
     right: 20px;
     font-family: 'Open Sans', sans-serif;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+
+  #grantChatWidget.visible {
+    opacity: 1;
+    pointer-events: auto;
   }
   #grantChatButton {
     background-color: #f9f6f1;
@@ -690,11 +699,10 @@ nav ul li a.active::after {
       }
     }
     if (shouldPulse) {
-      chatWidget.classList.add("pulse-on");
-      document.getElementById("grantChatWidget").style.opacity = '1';
-    } else {
+    chatWidget.classList.add("pulse-on");
+    document.getElementById("grantChatWidget").classList.add("visible");} else {
       chatWidget.classList.remove("pulse-on");
-      document.getElementById("grantChatWidget").style.opacity = '0';
+    document.getElementById("grantChatWidget").classList.remove("visible");
     }
   
   }
@@ -724,7 +732,7 @@ nav ul li a.active::after {
     updateActiveLink();
     setTimeout(() => {
       document.getElementById("scrollDownCTA").style.opacity = '1';
-    }, 1600););
+    }, 1600);
   // Active link highlighting based on scroll
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
