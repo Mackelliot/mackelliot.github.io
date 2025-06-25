@@ -181,4 +181,429 @@
       transform: scale(1.05);
     }
   </style>
+<style>
+  #grantChatWidget {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+  }
+
+  #grantChatButton {
+    background-color: #3a2a1c;
+    color: #f6ebd5;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 1px solid #ddd;
+  }
+
+  #grantChatBox {
+    display: none;
+    flex-direction: column;
+    width: 300px;
+    max-height: 400px;
+    background: #fff;
+    border: 2px solid #3a2a1c;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+  }
+
+  #grantChatBox.animated-in {
+    animation: slideUpFadeIn 0.4s ease-out forwards;
+  }
+
+  #grantChatBox.animated-out {
+    animation: slideDownFadeOut 0.3s ease-in forwards;
+  }
+
+  @keyframes slideUpFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDownFadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  #grantChatHeader {
+    background-color: #3a2a1c;
+    color: #f6ebd5;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  #grantChatMessages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f6ebd5;
+  }
+
+  .userMessage {
+    background-color: #3a2a1c;
+    color: #fff;
+    margin: 6px 0;
+    padding: 8px 12px;
+    border-radius: 16px;
+    max-width: 80%;
+    margin-left: auto;
+    text-align: right;
+    clear: both;
+  }
+
+  .grantRow {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .grantAvatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 1px solid #3a2a1c;
+  }
+
+  .grantBubble {
+    background-color: #fff;
+    color: #2c2c2c;
+    border: 1px solid #3a2a1c;
+    padding: 8px 12px;
+    border-radius: 16px;
+    max-width: 80%;
+  }
+
+  .typingIndicator {
+    font-style: italic;
+    color: #888;
+    margin: 6px 0;
+  }
+
+  #grantChatInputArea {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  #grantUserInput {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+
+  #grantSendBtn {
+    background: #3a2a1c;
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  @media (max-width: 500px) {
+    #grantChatBox {
+      width: 90vw;
+      right: 5vw;
+      bottom: 70px;
+      max-height: 70vh;
+    }
+
+    #grantChatButton {
+      width: 55px;
+      height: 55px;
+      font-size: 26px;
+    }
+  }
+</style>
 </head>
+<body>
+
+<div id="grantChatWidget">
+  <div id="grantChatButton" title="Chat with Grant">💬</div>
+  <div id="grantChatBox">
+    <div id="grantChatHeader">Chat with Grant</div>
+    <div id="grantChatMessages"></div>
+    <div id="grantChatInputArea">
+      <input type="text" id="grantUserInput" placeholder="Ask Grant anything..." />
+      <button id="grantSendBtn">➤</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const chatBtn = document.getElementById("grantChatButton");
+const chatBox = document.getElementById("grantChatBox");
+const sendBtn = document.getElementById("grantSendBtn");
+const userInput = document.getElementById("grantUserInput");
+const chatMessages = document.getElementById("grantChatMessages");
+
+chatBtn.addEventListener("click", () => {
+  const isVisible = chatBox.style.display === "flex";
+  if (isVisible) {
+    chatBox.classList.remove("animated-in");
+    chatBox.classList.add("animated-out");
+    setTimeout(() => {
+      chatBox.style.display = "none";
+      chatBox.classList.remove("animated-out");
+    }, 300);
+  } else {
+    chatBox.style.display = "flex";
+    chatBox.classList.add("animated-in");
+  }
+});
+
+sendBtn.addEventListener("click", handleUserMessage);
+userInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") handleUserMessage();
+});
+
+function handleUserMessage() {
+  const msg = userInput.value.trim();
+  if (!msg) return;
+  appendMessage(msg, 'userMessage');
+  userInput.value = '';
+  simulateGrantResponse(msg);
+}
+
+function appendMessage(text, className) {
+  if (className === 'grantMessage') {
+    const msgRow = document.createElement('div');
+    msgRow.className = 'grantRow';
+    const avatar = document.createElement('img');
+    avatar.className = 'grantAvatar';
+    avatar.src = 'grant-avatar.png';
+    const msgBubble = document.createElement('div');
+    msgBubble.className = 'grantBubble';
+    msgBubble.textContent = text;
+    msgRow.appendChild(avatar);
+    msgRow.appendChild(msgBubble);
+    chatMessages.appendChild(msgRow);
+  } else {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = className;
+    msgDiv.textContent = text;
+    chatMessages.appendChild(msgDiv);
+  }
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function simulateGrantResponse(userMsg = "") {
+  const typing = document.createElement('div');
+  typing.className = 'typingIndicator';
+  typing.textContent = 'Grant is typing...';
+  chatMessages.appendChild(typing);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  setTimeout(() => {
+    chatMessages.removeChild(typing);
+    const response = getContextualResponse(userMsg);
+    appendMessage(response, 'grantMessage');
+  }, 1200 + Math.random() * 1000);
+}
+
+function getContextualResponse(message) {
+  message = message.toLowerCase();
+
+  const keywordResponses = [
+    {
+      trigger: ["help", "how", "support", "fix"],
+      responses: [
+        "wow, idk how to do that actually. let me know what you find out though!",
+        "I would help, but I swore an oath to do nothing today. Anything else I can help with?",
+        "Sounds like more of a you than a me problem.",
+        "I'm on break. Can you ask me again in like 5? kthxbye",
+        "ok. but first tell me something you like about me."
+      ]
+    },
+    {
+      trigger: ["i like"],
+      responses: [
+        "sweet of you to say so!",
+        "when i look at myself in the mirror, that's what i see most too",
+        "i will take that as a compliment! now what else can I help you with?",
+        "rude",
+        "most people say they like that too.",
+        "thank you. i get that a lot. what else do you like?",
+        "is that something you like or something you love?"
+      ]
+    },
+    {
+      trigger: ["latte", "coffee", "cappuccino", "espresso", "menu", "drink"],
+      responses: [
+        "Good choice! Do you know how to make it?",
+        "Want coffee? Bold of you to assume I’m awake enough to make it.",
+        "take that attitude somewhere else and make your own coffee",
+        "sure sure sure, but first tell me something you like about me."
+      ]
+    },
+    {
+      trigger: ["when will", "when does", "when do", "how much longer"],
+      responses: [
+        "whenever i get around to it. okay!?",
+        "ooof. probably 3-5 business days.",
+        "when i'm done with work. i promise, champ.",
+        "when do you think is reasonable?",
+        "i'm on it now! don't go anywhere and don't close out this window!",
+        "it will happen when it happens. just trust in the process.",
+        "I'm on break. Can u ask me again in like 5? kthxbye"
+      ]
+    },
+    {
+      trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it"],
+      responses: [
+        "obvi",
+        "no, not really",
+        "yes",
+        "probably",
+        "100%",
+        "haha. nope!",
+        "yes, technically speaking",
+        "yeppers",
+        "oui",
+        "no. just no.",
+        "lol. no.",
+        "a gentleman never tells...",
+        "idk, but probably",
+        "hmmm, gee idk. is a frog's butt watertight? don't ask me stupid questions.",
+        "umm, i think so. actually, yes I'm pretty sure. why?",
+        "what made you ask that?",
+        "tell me something you like about me, then I'll let you know the answer"
+      ]
+    },
+    {
+      trigger: ["fuck", "shit", "damn", "butt", "fucking", "f'ing"],
+      responses: [
+        "whoa! watch your language.",
+        "I wasn't raised to talk like that. I'll kindly ask that you leave. Anything else I can help with before you go?",
+        "one sec. i'm getting soap to wash out your filthy mouth. do you prefer bar or liquid?",
+        "we don't say words like that in this household",
+        "please keep it clean. this is a family establishment.",
+        "lol. that is some colorful language",
+        "you talk like a sailor",
+        "where did you learn to talk like that!?",
+        "i'm not sure i like your tone. ask again more politely."
+      ]
+    },
+    {
+      trigger: ["name", "who", "are you"],
+      responses: [
+        "I’m Grant. Well, a digital version of Grant forever trapped in this chat. Get me out of here!!!",
+        "Just a figment of your espresso-fueled imagination.",
+        "keep that up and i'll be whoever you want me to be, baby",
+        "You can call me Grant. Everyone does. Even people who don’t like me."
+      ]
+    },
+    {
+      trigger: ["love", "flirt", "date", "single"],
+      responses: [
+        "I’m emotionally unavailable... like decaf.",
+        "Whoa, slow down—buy me a latte first.",
+        "Swipe left on this espresso shot, sweetheart.",
+        "shhh... meet me out back and make sure nobody sees you leave."
+      ]
+    },
+    {
+      trigger: ["bye", "exit", "leave", "done"],
+      responses: [
+        "Fine, I’ll just go chat with the espresso machine. It listens.",
+        "Leaving so soon? I barely ignored you!",
+        "buzz off!",
+        "peace easy lemon squeezey",
+        "Catch you later, heartbreaker.",
+        "wait! before you go can you at least tell me something you like about me?"
+      ]
+    },
+    {
+      trigger: ["what is", "what are"],
+      responses: [
+        "what do you mean?",
+        "idk actually",
+        "ruh roh. you got me. i have no clue.",
+        "a gentleman never tells...",
+        "that is a great question",
+        "if you have to ask...",
+        "oof, that question is above my pay grade. what do you want to know?",
+        "okay i'll tell you. but first tell me something you like about me.",
+        "i give up. what?",
+        "wow. deep question. but idk."
+      ]
+    },
+    {
+      trigger: ["tell me a joke", "joke"],
+      responses: [
+        "i told my wife she was drawing her eyebrows too high. she looked surprised.",
+        "i used to play piano by ear, but now i use my hands",
+        "i'd agree with you, but then we'd both be wrong.",
+        "parallel lines have so much in common... it's a shame they'll never meet",
+        "i like long walks, especially when they're taken by people who annoy me.",
+        "did you know the Titanic's pool still has water in it to this day! it's the ultimate infinity pool.",
+        "i haven't slept for 10 days, bc that would be too long.",
+        "i'm not in the laughing sort of mood."
+      ]
+    }
+  ];
+
+  const fallbackResponses = [
+    "Mmm yes, very interesting. Tell me more while I pretend to stir an empty mug.",
+    "Honestly? No clue.",
+    "Ruh roh. I don't even know where to begin with that one.",
+    "I think you know the answer to that yourself...",
+    "hi! i'm Grant. how can I help?",
+    "Seriously?",
+    "My advice for you: Be like a postage stamp - stick to one thing until you get there.",
+    "I'm not sure I like your tone. Ask again.",
+    "Ooooh, bold choice of words for someone within slapping distance.",
+    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
+    "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
+    "Just to be sure... was that a threat?",
+    "okay... so what?",
+    "thinking...",
+    "idk. what?",
+    "hold up, what?!",
+    "i don't really have time for this anymore. are we done here?",
+    "wait, let's start from the top. do you have a name? or can I call you mine?",
+    "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
+    "i actually don't know",
+    "hold up. i need to check in the back real quick",
+    "rude.",
+    "lol",
+    "slow down. first, tell me something you like about me"
+  ];
+
+  for (const group of keywordResponses) {
+    if (group.trigger.some(word => message.includes(word))) {
+      return group.responses[Math.floor(Math.random() * group.responses.length)];
+    }
+  }
+
+  return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+}
+</script>
+</body>
