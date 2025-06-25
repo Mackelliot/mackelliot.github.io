@@ -726,7 +726,7 @@ nav ul li a.active::after {
 
   function updateActiveLink() {
     let index = sections.length;
-    while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+    while (--index && window.scrollY + 10 < sections[index].offsetTop) {}
     navLinks.forEach((link) => link.classList.remove("active"));
     if (navLinks[index]) navLinks[index].classList.add("active");
   }
