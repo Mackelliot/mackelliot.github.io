@@ -305,12 +305,15 @@ a.cta-button:hover {
 
 <!-- Chat Widget code follows and stays intact -->
 <div id="grantChatButton" title="Chat with Grant">💬</div>
-<div id="grantChatBox" style="display: none; flex-direction: column; width: 300px; max-height: 400px; background: #fff; border: 2px solid #3a2a1c; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); position: fixed; bottom: 90px; right: 20px; z-index: 9999;">
-  <div style="background-color: #3a2a1c; color: #f6ebd5; padding: 10px; text-align: center; font-weight: bold;">Chat with Grant</div>
-  <div id="grantChatMessages" style="flex: 1; padding: 16px; overflow-y: auto; background-color: #f6ebd5; font-size: 1.1rem; line-height: 1.6;"></div>
+<div id="grantChatBox" style="display: none; flex-direction: column; width: 320px; max-height: 450px; background: #f8f9fa; border: 1px solid #ced4da; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); position: fixed; bottom: 90px; right: 20px; z-index: 9999; font-family: 'Open Sans', sans-serif;">
+  <div style="background-color: #0d6efd; color: #fff; padding: 12px; text-align: center; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">
+  <span>Chat with Grant</span>
+  <button id="grantChatClose" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">✕</button>
+</div>
+  <div id="grantChatMessages" style="flex: 1; padding: 16px; overflow-y: auto; background-color: #ffffff; font-size: 1.1rem; line-height: 1.6; color: #212529;"></div>
   <div style="display: flex; border-top: 1px solid #ddd;">
-    <input type="text" id="grantUserInput" placeholder="Ask Grant anything..." style="flex: 1; padding: 10px; border: none; outline: none;; font-size: 1.1rem;">
-    <button id="grantSendBtn" style="background: #3a2a1c; color: #fff; border: none; padding: 0 16px; cursor: pointer;; font-size: 1.1rem;">➤</button>
+    <input type="text" id="grantUserInput" placeholder="Ask Grant anything..." style="flex: 1; padding: 10px; border: 1px solid #ced4da; outline: none; font-size: 1.1rem; border-radius: 4px; margin: 8px;">
+    <button id="grantSendBtn" style="background: #0d6efd; color: #fff; border: none; padding: 0 16px; cursor: pointer; font-size: 1.1rem; border-radius: 4px; margin: 8px;">➤</button>
   </div>
 </div>
   <div id="grantChatBox" style="display: none; flex-direction: column; width: 300px; max-height: 400px; background: #fff; border: 2px solid #3a2a1c; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); margin-bottom: 10px; position: fixed; bottom: 150px; right: 20px; z-index: 9999;">
@@ -332,8 +335,12 @@ a.cta-button:hover {
   const socialsSection = document.getElementById("socials");
 
   chatButton.addEventListener("click", () => {
-    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-  });
+  chatBox.style.display = "flex";
+});
+
+document.getElementById("grantChatClose").addEventListener("click", () => {
+  chatBox.style.display = "none";
+}););
 
   sendBtn.addEventListener("click", handleUserMessage);
   userInput.addEventListener("keypress", (e) => {
@@ -374,16 +381,23 @@ a.cta-button:hover {
   }
 
   function simulateGrantResponse(userMsg = "") {
-    const typing = document.createElement('div');
-    typing.textContent = 'Grant is typing...';
-    typing.style.fontStyle = 'italic';
-    typing.style.color = '#888';
-    typing.style.margin = '6px 0';
-    chatMessages.appendChild(typing);
+    const typingBubble = document.createElement('div');
+    typingBubble.className = 'grantMessage';
+    typingBubble.style.backgroundColor = '#e9ecef';
+    typingBubble.style.color = '#495057';
+    typingBubble.style.border = '1px solid #ced4da';
+    typingBubble.style.borderRadius = '16px';
+    typingBubble.style.padding = '8px 12px';
+    typingBubble.style.margin = '6px 0';
+    typingBubble.style.maxWidth = '80%';
+    typingBubble.style.clear = 'both';
+    typingBubble.style.display = 'inline-block';
+    typingBubble.textContent = 'Grant is typing...';
+    chatMessages.appendChild(typingBubble);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     setTimeout(() => {
-      chatMessages.removeChild(typing);
+      chatMessages.removeChild(typingBubble);
       const response = getContextualResponse(userMsg);
       appendMessage(response, 'grantMessage');
     }, 1200 + Math.random() * 1000);
