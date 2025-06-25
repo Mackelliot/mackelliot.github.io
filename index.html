@@ -276,6 +276,8 @@
 
 <style>
   #grantChatWidget {
+    opacity: 0;
+    transition: opacity 0.6s ease;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -687,8 +689,10 @@
     }
     if (shouldPulse) {
       chatWidget.classList.add("pulse-on");
+      document.getElementById("grantChatWidget").style.opacity = '1';
     } else {
       chatWidget.classList.remove("pulse-on");
+      document.getElementById("grantChatWidget").style.opacity = '0';
     }
   } else {
       chatWidget.classList.remove("pulse-on");
