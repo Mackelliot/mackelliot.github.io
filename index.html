@@ -684,6 +684,27 @@
 
   window.addEventListener("scroll", handleScroll);
   window.addEventListener("load", handleScroll);
+  // Scroll-triggered fade out for scrollDownCTA
+  const scrollDownCTA = document.getElementById("scrollDownCTA");
+
+  function toggleCTAVisibility() {
+    if (window.scrollY > 100) {
+      scrollDownCTA.style.opacity = '0';
+      scrollDownCTA.style.pointerEvents = 'none';
+    } else {
+      scrollDownCTA.style.opacity = '1';
+      scrollDownCTA.style.pointerEvents = 'auto';
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    handleScroll();
+    toggleCTAVisibility();
+  });
+  window.addEventListener("load", () => {
+    handleScroll();
+    toggleCTAVisibility();
+  });
 </script>
 <!-- End Chat with Grant Widget -->
 
