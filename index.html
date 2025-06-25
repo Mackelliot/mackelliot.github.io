@@ -356,6 +356,23 @@ document.getElementById("grantChatClose").addEventListener("click", () => {
   }
 
   function appendMessage(text, className) {
+    const msgRow = document.createElement('div');
+    msgRow.className = 'grantRow';
+    msgRow.style.display = 'flex';
+    msgRow.style.alignItems = 'flex-start';
+    msgRow.style.marginBottom = '10px';
+
+    const avatar = document.createElement('img');
+    avatar.src = 'avatar-grant.png';
+    avatar.alt = 'Grant Avatar';
+    avatar.style.width = '30px';
+    avatar.style.height = '30px';
+    avatar.style.borderRadius = '50%';
+    avatar.style.objectFit = 'cover';
+    avatar.style.marginRight = '8px';
+    avatar.style.border = '1px solid #3a2a1c';
+    avatar.style.flexShrink = '0';
+
     const msgDiv = document.createElement('div');
     msgDiv.className = className;
     msgDiv.textContent = text;
@@ -371,13 +388,15 @@ document.getElementById("grantChatClose").addEventListener("click", () => {
       msgDiv.style.marginLeft = 'auto';
       msgDiv.style.textAlign = 'right';
     } else {
-      msgDiv.style.backgroundColor = '#fff';
-      msgDiv.style.color = '#2c2c2c';
-      msgDiv.style.border = '1px solid #3a2a1c';
-    }
+    msgDiv.style.backgroundColor = '#fff';
+    msgDiv.style.color = '#2c2c2c';
+    msgDiv.style.border = '1px solid #3a2a1c';
+    msgRow.insertBefore(avatar, msgDiv);
+  }
 
-    chatMessages.appendChild(msgDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    msgRow.appendChild(msgDiv);
+    chatMessages.appendChild(msgRow);
+    chatMessages.scrollTop = chatMessages.scrollHeight + 10;
   }
 
   function simulateGrantResponse(userMsg = "") {
