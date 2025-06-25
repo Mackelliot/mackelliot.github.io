@@ -180,7 +180,25 @@
     #backToTop:hover {
       background-color: #5a3a1c;
     }
-  </style>
+  a.cta-button {
+  display: inline-block;
+  background-color: #3a2a1c;
+  color: #f6ebd5;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a.cta-button:hover {
+  background-color: #5a3a1c;
+  transform: scale(1.05);
+}
+
+</style>
 </head>
 <body>
 
@@ -344,11 +362,24 @@
   }
 
   window.addEventListener("scroll", () => {
-    const rect = socialsSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom >= 0) {
-      chatButton.style.display = "flex";
-    } else {
-      chatButton.style.display = "none";
-    }
+  const about = document.getElementById("about");
+  const socials = document.getElementById("socials");
+  const careers = document.getElementById("careers");
+
+  const sections = [about, socials, careers];
+  const shouldShow = sections.some(section => {
+    const rect = section.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom >= 0;
   });
+
+  if (shouldShow) {
+    chatButton.style.display = "flex";
+    chatButton.style.opacity = "1";
+    chatButton.style.pointerEvents = "auto";
+  } else {
+    chatButton.style.display = "none";
+    chatButton.style.opacity = "0";
+    chatButton.style.pointerEvents = "none";
+  }
+});
 </script>
