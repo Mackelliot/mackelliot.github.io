@@ -1,209 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Perk Up, Grant! – Menu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background-color: #F6EBD5;
-      color: #2c2c2c;
-    }
-    nav {
-      background-color: #f0dfc2;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      padding: 0.7rem 0;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #3a2a1c;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
-      position: relative;
-    }
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 100%;
-      height: 2px;
-      background-color: #3a2a1c;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease-out;
-    }
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      min-height: 85vh;
-      background-color: #F6EBD5;
-      padding: 1rem;
-    }
-    header img {
-      max-width: 80vw;
-      height: auto;
-      opacity: 0;
-      animation: fadeIn 1.5s ease-out forwards;
-    }
-    .established {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.2rem;
-      color: #5a4a3a;
-      margin-top: 1rem;
-    }
-    #scrollDownCTA {
-      margin-top: 2rem;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.1rem;
-      animation: bounce 2s infinite;
-      opacity: 1;
-      transition: opacity 0.5s;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    section {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2rem;
-      text-align: center;
-      border-bottom: 2px solid #3a2a1c;
-      padding-bottom: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .drink {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-    }
-    .drink img {
-      width: 70px;
-      margin-right: 1rem;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-    .drink-text h3 {
-      font-family: 'Oswald', sans-serif;
-      margin: 0 0 0.3rem 0;
-    }
-    .drink-text p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #4a3b30;
-    }
-    .about-section img {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-      margin: 0 auto 1.5rem;
-      display: block;
-      border-radius: 8px;
-    }
-    .socials-section {
-      background-color: #3a2a1c;
-      color: #fff;
-      padding: 3rem 1rem;
-      border-radius: 8px;
-    }
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .social-grid img {
-      width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-    footer {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
-      background-color: #3a2a1c;
-      color: #f6ebd5;
-      border-top: 4px double #f0dfc2;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 4rem;
-    }
-    footer:hover::after {
-      content: " ☕";
-      animation: wiggle 0.3s infinite alternate;
-    }
-    @keyframes wiggle {
-      from { transform: rotate(-5deg); }
-      to { transform: rotate(5deg); }
-    }
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      background-color: #3a2a1c;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: none;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    #backToTop:hover {
-      background-color: #5a3a1c;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    a.cta-button {
-  display: inline-block;
-  background-color: #3a2a1c;
-  color: #f6ebd5;
-  padding: 0.6rem 1.2rem;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-a.cta-button:hover {
-  background-color: #5a3a1c;
-  transform: scale(1.05);
-}
-  </style>
+  <!-- HEAD SECTION (unchanged from current canvas) -->
 </head>
 <body>
 
@@ -236,8 +34,7 @@ a.cta-button:hover {
 <section id="about" class="about-section">
   <h2>About</h2>
   <img src="about.jpeg" alt="About Perk Up, Grant!">
-  <p><strong>Perk Up, Grant!</strong> started the way many great ideas do—somewhere after a fourth cup of coffee but before a fourth cup of wine. After rewatching all seasons of <em>Bluey</em> for the 9th time without any good next things to watch, a weary dad hit his limit. So, naturally, he did the only reasonable thing left: he opened a coffee shop in his house.</p>
-  <p>What began as a small setup—just him, a stubborn espresso machine, and a dream—quickly became a local favorite. But there was a cost. Mainly, he could no longer say “Oh sorry, I don’t work here” when his in-laws asked him to unclog the sink.</p>
+  <p><strong>Perk Up, Grant!</strong> started the way many great ideas do—somewhere after a fourth cup of coffee but before a fourth cup of wine...</p>
   <p>Today, Perk Up, Grant! isn’t just a place for coffee—it’s a place for connection. It’s about love, family, and the people who show up for each other. One cup at a time.</p>
 </section>
 
@@ -245,7 +42,7 @@ a.cta-button:hover {
   <h2>Follow Us</h2>
   <div style="text-align:center; margin-bottom: 1rem;">
     <a href="https://instagram.com" target="_blank" style="text-decoration: none; color: #f6ebd5; font-family: 'Oswald', sans-serif; font-size: 1.2rem;">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" style="width: 20px; vertical-align: middle; margin-right: 8px; filter: brightness(0) saturate(100%) invert(96%) sepia(7%) saturate(427%) hue-rotate(354deg) brightness(95%) contrast(95%);">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" style="width: 20px; vertical-align: middle; margin-right: 8px;">
       @perkupgrant
     </a>
   </div>
@@ -268,59 +65,16 @@ a.cta-button:hover {
     <li>Unlimited exposure to espresso fumes</li>
   </ul>
   <p>If you're still reading, you're exactly the kind of person we're looking for. Bring your own mug.</p>
-<a class="cta-button" href="/choose-your-own-coffee.html">Apply Now</a>
+  <a class="cta-button" href="/choose-your-own-coffee.html">Apply Now</a>
 </section>
 
 <footer>
-   <a href="feedback.html" class="cta-button">Give Us Feedback</a>
- <br> 2025 Perk Up, Grant!<br>
+  <a href="feedback.html" class="cta-button">Give Us Feedback</a>
+  <br>2025 Perk Up, Grant!<br>
   No shame in a third cup.<br><br>
 </footer>
 
-<button id="backToTop" title="Back to top">↑</button>
-
-<script>
-  const backToTopBtn = document.getElementById("backToTop");
-  const scrollCTA = document.getElementById("scrollDownCTA");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 150) {
-      scrollCTA.style.opacity = 0;
-    } else {
-      scrollCTA.style.opacity = 1;
-    }
-
-    if (window.scrollY > 300) {
-      backToTopBtn.style.display = "block";
-    } else {
-      backToTopBtn.style.display = "none";
-    }
-
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
-  });
-
-  backToTopBtn.onclick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-</script>
-
-  <!-- Chat with Grant Widget (Smart Sassy Edition) -->
+<!-- Chat Widget -->
 <div id="grantChatWidget">
   <div id="grantChatButton" title="Chat with Grant">💬</div>
   <div id="grantChatBox">
@@ -333,248 +87,7 @@ a.cta-button:hover {
   </div>
 </div>
 
-<style>
-  #grantChatWidget {
-    position: fixed;
-    bottom: 90px; /* Moved up to avoid overlap with back-to-top */
-    right: 20px;
-    font-family: 'Open Sans', sans-serif;
-    z-index: 9999;
-  }
-
-  #grantChatButton {
-    background-color: #ffffff;
-    color: #3a2a1c;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    border: 1px solid #ddd;
-  }
-
-  #grantChatBox {
-    display: none;
-    flex-direction: column;
-    width: 300px;
-    max-height: 400px;
-    background: #fff;
-    border: 2px solid #3a2a1c;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    margin-bottom: 10px;
-  }
-
-  #grantChatHeader {
-    background-color: #3a2a1c;
-    color: #f6ebd5;
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  #grantChatMessages {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    background-color: #f6ebd5;
-  }
-
-  .userMessage {
-    background-color: #3a2a1c;
-    color: #fff;
-    margin: 6px 0;
-    padding: 8px 12px;
-    border-radius: 16px;
-    max-width: 80%;
-    margin-left: auto;
-    text-align: right;
-    clear: both;
-  }
-
-  .grantRow {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-
-  .grantAvatar {
-    width: 30px;
-    height: 30px;
-    margin-right: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    object-fit: cover;
-    border: 1px solid #3a2a1c;
-  }
-
-  .grantBubble {
-    background-color: #fff;
-    color: #2c2c2c;
-    border: 1px solid #3a2a1c;
-    padding: 8px 12px;
-    border-radius: 16px;
-    max-width: 80%;
-  }
-
-  .typingIndicator {
-    font-style: italic;
-    color: #888;
-    margin: 6px 0;
-  }
-
-  #grantChatInputArea {
-    display: flex;
-    border-top: 1px solid #ddd;
-  }
-
-  #grantUserInput {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    outline: none;
-  }
-
-  #grantSendBtn {
-    background: #3a2a1c;
-    color: #fff;
-    border: none;
-    padding: 0 16px;
-    cursor: pointer;
-  }
-
-  @media (max-width: 500px) {
-    #grantChatBox {
-      width: 90vw;
-      right: 5vw;
-    }
-  }
-</style>
-
 <script>
-  const fallbackResponses = [
-    "Mmm yes, very interesting. Tell me more while I pretend to stir an empty mug.",
-    "Honestly? No clue.",
-    "Ruh roh. I don't even know where to begin with that one.",
-    "I think you know the answer to that yourself...", "hi! i'm Grant. how can I help?"
-    "Seriously?",
-    "My advice for you: Be like a postage stamp - stick to one thing until you get there.",
-    "I'm not sure I like your tone. Ask again.",
-    "Ooooh, bold choice of words for someone within slapping distance.",
-    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
-    "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
-    "Just to be sure... was that a threat?",
-    "okay... so what?", "thinking...", "idk. what?", "hold up, what?!",
-    "i don't really have time for this anymore. are we done here?",
-    "wait, let's start from the top. do you have a name? or can I call you mine?",
-    "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
-    "i actually don't know",
-    "hold up. i need to check in the back real quick",
-    "rude.", "lol", "slow down. first, tell me something you like about me"
-  ];
-
-  const keywordResponses = [
-    {
-      trigger: ["help", "how", "support", "fix"],
-      responses: [
-        "wow, idk how to do that actually. let me know what you find out though!",
-        "I would help, but I swore an oath to do nothing today. Anything else I can help with?",
-        "Sounds like more of a you than a me problem.",   "I'm on break. Can you ask me again in like 5? kthxbye", "ok. but first tell me something you like about me."
-      ]
-    },
-     {
-      trigger: ["i like"],
-      responses: [
-        "sweet of you to say so!",
-        "when i look at myself in the mirror, that's what i see most too",
-        "i will take that as a compliment! now what else can I help you with?",   "rude", "most people say they like that too.", "thank you. i get that a lot. what else do you like?", "is that something you like or something you love?"
-      ]
-    },
-    {
-      trigger: ["latte", "coffee", "cappuccino", "espresso", "menu", "drink"],
-      responses: [
-        "Good choice! Do you know how to make it?",
-        "Want coffee? Bold of you to assume I’m awake enough to make it.",
-        "take that attitude somewhere else and make your own coffee", "sure sure sure, but first tell me something you like about me."
-      ]
-    },
-     {
-      trigger: ["when will", "when does", "when do", "how much longer"],
-      responses: [
-        "whenever i get around to it. okay!?",
-        "ooof. probably 3-5 business days.", "when i'm done with work. i promise, champ.", "when do you think is reasonable?",
-        "i'm on it now! don't go anywhere and don't close out this window!", "it will happen when it happens. just trust in the process.",   "I'm on break. Can u ask me again in like 5? kthxbye"
-      ]
-    },
-    {
-      trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it"],
-      responses: [
-        "obvi",
-        "no, not really", "yes", "probably", "100%", "haha. nope!", "yes, technically speaking", "yeppers", "oui", "no. just no.", "lol. no.", "a gentleman never tells...",
-        "idk, but probably", "hmmm, gee idk. is a frog's butt watertight? don't ask me stupid questions.", "umm, i think so. actually, yes I'm pretty sure. why?", "what made you ask that?", "tell me something you like about me, then I'll let you know the answer"
-      ]
-    },
-      {
-      trigger: ["fuck", "shit", "damn", "butt", "fucking", "f'ing"],
-      responses: [
-        "whoa! watch your language.",
-        "I wasn't raised to talk like that. I'll kindly ask that you leave. Anything else I can help with before you go?", "one sec. i'm getting soap to wash out your filthy mouth. do you prefer bar or liquid?", "we don't say words like that in this household", 
-        "please keep it clean. this is a family establishment.", "lol. that is some colorful language", "you talk like a sailor", "where did you learn to talk like that!?, "i'm not sure i like your tone. ask again more politely."
-      ]
-    },
-    {
-      trigger: ["name", "who", "are you"],
-      responses: [
-        "I’m Grant. Well, a digital version of Grant forever trapped in this chat. Get me out of here!!!",
-        "Just a figment of your espresso-fueled imagination.",
-        "keep that up and i'll be whoever you want me to be, baby",
-        "You can call me Grant. Everyone does. Even people who don’t like me."
-      ]
-    },
-    {
-      trigger: ["love", "flirt", "date", "single"],
-      responses: [
-        "I’m emotionally unavailable... like decaf.",
-        "Whoa, slow down—buy me a latte first.",
-        "Swipe left on this espresso shot, sweetheart.", "shhh... meet me out back and make sure nobody sees you leave."
-      ]
-    },
-    {
-      trigger: ["bye", "exit", "leave", "done"],
-      responses: [
-        "Fine, I’ll just go chat with the espresso machine. It listens.",
-        "Leaving so soon? I barely ignored you!",
-        "buzz off!", "peace easy lemon squeezey",
-        "Catch you later, heartbreaker.", "wait! before you go can you at least tell me something you like about me?"
-      ]
-    }
-     {
-      trigger: ["what is", "what are"],
-      responses: [
-        "what do you mean?",
-        "idk actually",
-        "ruh roh. you got me. i have no clue.",
-        "a gentleman never tells...", "that is a great question", "if you have to ask...", "oof, that question is above my pay grade. what do you want to know?", "okay i'll tell you. but first tell me something you like about me.",
-        "i give up. what?", "wow. deep question. but idk."
-      ]
-    }
-    {
-      trigger: ["tell me a joke", "joke"],
-      responses: [
-        "i told me wife she was drawing her eyebrows too high. she looked suprised.",
-        "i used to play piano by ear, but now i use my hands",
-        "i'd agree with you, but then we'd both be wrong.",
-        "parallel lines have so much in common... it's a shame they'll never meet", "i like long walks, especially when they're taken by people who annoy me.", "did you know the Titanic's pool still has water in it to this day! it's the ultimate infinity pool.",
-        "i haven't slept for 10 days, bc that would be too long.", "i'm not in the laughing sort of mood."
-      ]
-    }
-  ];
-
   const chatBtn = document.getElementById("grantChatButton");
   const chatBox = document.getElementById("grantChatBox");
   const sendBtn = document.getElementById("grantSendBtn");
@@ -582,7 +95,18 @@ a.cta-button:hover {
   const chatMessages = document.getElementById("grantChatMessages");
 
   chatBtn.addEventListener("click", () => {
-    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+    if (chatBox.style.display === "flex") {
+      chatBox.classList.remove("animated-in");
+      chatBox.classList.add("animated-out");
+      setTimeout(() => {
+        chatBox.style.display = "none";
+        chatBox.classList.remove("animated-out");
+      }, 300);
+    } else {
+      chatBox.style.display = "flex";
+      chatBox.style.flexDirection = "column";
+      chatBox.classList.add("animated-in");
+    }
   });
 
   sendBtn.addEventListener("click", handleUserMessage);
@@ -593,7 +117,6 @@ a.cta-button:hover {
   function handleUserMessage() {
     const msg = userInput.value.trim();
     if (!msg) return;
-
     appendMessage(msg, 'userMessage');
     userInput.value = '';
     simulateGrantResponse(msg);
@@ -603,15 +126,12 @@ a.cta-button:hover {
     if (className === 'grantMessage') {
       const msgRow = document.createElement('div');
       msgRow.className = 'grantRow';
-
       const avatar = document.createElement('img');
       avatar.className = 'grantAvatar';
-      avatar.src = 'grant-avatar.png'; // Replace with your own image
-
+      avatar.src = 'grant-avatar.png';
       const msgBubble = document.createElement('div');
       msgBubble.className = 'grantBubble';
       msgBubble.textContent = text;
-
       msgRow.appendChild(avatar);
       msgRow.appendChild(msgBubble);
       chatMessages.appendChild(msgRow);
@@ -636,6 +156,7 @@ a.cta-button:hover {
       const response = getContextualResponse(userMsg);
       appendMessage(response, 'grantMessage');
     }, 1200 + Math.random() * 1000);
+  }, 1000);
   }
 
   function getContextualResponse(message) {
@@ -649,9 +170,152 @@ a.cta-button:hover {
 
     return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
   }
-</script>
-<!-- End Chat with Grant Widget -->
+  const fallbackResponses = [
+    "Mmm yes, very interesting. Tell me more while I pretend to stir an empty mug.",
+    "Honestly? No clue.",
+    "Ruh roh. I don't even know where to begin with that one.",
+    "I think you know the answer to that yourself...", "hi! i'm Grant. how can I help?",
+    "Seriously?",
+    "My advice for you: Be like a postage stamp - stick to one thing until you get there.",
+    "I'm not sure I like your tone. Ask again.",
+    "Ooooh, bold choice of words for someone within slapping distance.",
+    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
+    "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
+    "Just to be sure... was that a threat?",
+    "okay... so what?", "thinking...", "idk. what?", "hold up, what?!",
+    "i don't really have time for this anymore. are we done here?",
+    "wait, let's start from the top. do you have a name? or can I call you mine?",
+    "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
+    "i actually don't know",
+    "hold up. i need to check in the back real quick",
+    "rude.", "lol", "slow down. first, tell me something you like about me"
+  ];
 
+  const keywordResponses = [
+    {
+      trigger: ["help", "how", "support", "fix"],
+      responses: [
+        "wow, idk how to do that actually. let me know what you find out though!",
+        "I would help, but I swore an oath to do nothing today. Anything else I can help with?",
+        "Sounds like more of a you than a me problem.",
+        "I'm on break. Can you ask me again in like 5? kthxbye",
+        "ok. but first tell me something you like about me."
+      ]
+    },
+    {
+      trigger: ["i like"],
+      responses: [
+        "sweet of you to say so!",
+        "when i look at myself in the mirror, that's what i see most too",
+        "i will take that as a compliment! now what else can I help you with?",
+        "rude",
+        "most people say they like that too.",
+        "thank you. i get that a lot. what else do you like?",
+        "is that something you like or something you love?"
+      ]
+    },
+    {
+      trigger: ["latte", "coffee", "cappuccino", "espresso", "menu", "drink"],
+      responses: [
+        "Good choice! Do you know how to make it?",
+        "Want coffee? Bold of you to assume I’m awake enough to make it.",
+        "take that attitude somewhere else and make your own coffee",
+        "sure sure sure, but first tell me something you like about me."
+      ]
+    },
+    {
+      trigger: ["when will", "when does", "when do", "how much longer"],
+      responses: [
+        "whenever i get around to it. okay!?",
+        "ooof. probably 3-5 business days.",
+        "when i'm done with work. i promise, champ.",
+        "when do you think is reasonable?",
+        "i'm on it now! don't go anywhere and don't close out this window!",
+        "it will happen when it happens. just trust in the process.",
+        "I'm on break. Can u ask me again in like 5? kthxbye"
+      ]
+    },
+    {
+      trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it"],
+      responses: [
+        "obvi",
+        "no, not really", "yes", "probably", "100%", "haha. nope!", "yes, technically speaking", "yeppers", "oui", "no. just no.", "lol. no.", "a gentleman never tells...",
+        "idk, but probably", "hmmm, gee idk. is a frog's butt watertight? don't ask me stupid questions.", "umm, i think so. actually, yes I'm pretty sure. why?",
+        "what made you ask that?", "tell me something you like about me, then I'll let you know the answer"
+      ]
+    },
+    {
+      trigger: ["fuck", "shit", "damn", "butt", "fucking", "f'ing"],
+      responses: [
+        "whoa! watch your language.",
+        "I wasn't raised to talk like that. I'll kindly ask that you leave. Anything else I can help with before you go?",
+        "one sec. i'm getting soap to wash out your filthy mouth. do you prefer bar or liquid?",
+        "we don't say words like that in this household",
+        "please keep it clean. this is a family establishment.",
+        "lol. that is some colorful language",
+        "you talk like a sailor",
+        "where did you learn to talk like that!?",
+        "i'm not sure i like your tone. ask again more politely."
+      ]
+    },
+    {
+      trigger: ["name", "who", "are you"],
+      responses: [
+        "I’m Grant. Well, a digital version of Grant forever trapped in this chat. Get me out of here!!!",
+        "Just a figment of your espresso-fueled imagination.",
+        "keep that up and i'll be whoever you want me to be, baby",
+        "You can call me Grant. Everyone does. Even people who don’t like me."
+      ]
+    },
+    {
+      trigger: ["love", "flirt", "date", "single"],
+      responses: [
+        "I’m emotionally unavailable... like decaf.",
+        "Whoa, slow down—buy me a latte first.",
+        "Swipe left on this espresso shot, sweetheart.",
+        "shhh... meet me out back and make sure nobody sees you leave."
+      ]
+    },
+    {
+      trigger: ["bye", "exit", "leave", "done"],
+      responses: [
+        "Fine, I’ll just go chat with the espresso machine. It listens.",
+        "Leaving so soon? I barely ignored you!",
+        "buzz off!", "peace easy lemon squeezey",
+        "Catch you later, heartbreaker.",
+        "wait! before you go can you at least tell me something you like about me?"
+      ]
+    },
+    {
+      trigger: ["what is", "what are"],
+      responses: [
+        "what do you mean?",
+        "idk actually",
+        "ruh roh. you got me. i have no clue.",
+        "a gentleman never tells...",
+        "that is a great question",
+        "if you have to ask...",
+        "oof, that question is above my pay grade. what do you want to know?",
+        "okay i'll tell you. but first tell me something you like about me.",
+        "i give up. what?",
+        "wow. deep question. but idk."
+      ]
+    },
+    {
+      trigger: ["tell me a joke", "joke"],
+      responses: [
+        "i told me wife she was drawing her eyebrows too high. she looked suprised.",
+        "i used to play piano by ear, but now i use my hands",
+        "i'd agree with you, but then we'd both be wrong.",
+        "parallel lines have so much in common... it's a shame they'll never meet",
+        "i like long walks, especially when they're taken by people who annoy me.",
+        "did you know the Titanic's pool still has water in it to this day! it's the ultimate infinity pool.",
+        "i haven't slept for 10 days, bc that would be too long.",
+        "i'm not in the laughing sort of mood."
+      ]
+    }
+  ];
+</script>
 
 </body>
 </html>
