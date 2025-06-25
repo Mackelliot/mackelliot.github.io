@@ -205,9 +205,9 @@ nav ul li a.active::after {
   <header id="top">
     <img src="logo.jpeg" alt="Perk Up, Grant! logo">
     <div class="established">est. 2025</div>
-    <div id="scrollDownCTA">
-      <a href="#menu" style="color: #3a2a1c; text-decoration: none;">↓ Scroll to Menu</a>
-    </div>
+    <div id="scrollDownCTA" style="opacity: 0; transition: opacity 1s ease;">
+  <a href="#menu" style="color: #3a2a1c; text-decoration: none;">↓ Scroll to Menu</a>
+</div>
   </header>
 
   <section id="menu">
@@ -710,6 +710,16 @@ nav ul li a.active::after {
     chatWidget.classList.remove("pulse-on");
     document.getElementById("grantChatWidget").classList.remove("visible");
   }
+  updateActiveLink();
+}
+
+  if (shouldPulse) {
+    chatWidget.classList.add("pulse-on");
+    document.getElementById("grantChatWidget").classList.add("visible");
+  } else {
+    chatWidget.classList.remove("pulse-on");
+    document.getElementById("grantChatWidget").classList.remove("visible");
+  }
 }
     }
     if (shouldPulse) {
@@ -756,6 +766,9 @@ const navLinks = document.querySelectorAll("nav ul li a");
 function updateActiveLink() {
   let index = sections.length;
   while (--index && window.scrollY + window.innerHeight / 2 < sections[index].offsetTop) {}
+  navLinks.forEach((link) => link.classList.remove("active"));
+  if (navLinks[index]) navLinks[index].classList.add("active");
+}
   navLinks.forEach((link) => link.classList.remove("active"));
   if (navLinks[index]) navLinks[index].classList.add("active");
 </script>
