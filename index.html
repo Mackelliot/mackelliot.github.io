@@ -81,8 +81,10 @@ nav ul li a.active::after {
       font-family: 'Oswald', sans-serif;
       font-size: 1.1rem;
       animation: bounce 2s infinite;
-      opacity: 1;
-      transition: opacity 0.5s;
+      opacity: 0;
+      transition: opacity 1s ease;
+      animation-delay: 2s;
+      animation-fill-mode: backwards;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
@@ -719,14 +721,17 @@ nav ul li a.active::after {
   window.addEventListener("load", () => {
     handleScroll();
     toggleCTAVisibility();
-  });
+    updateActiveLink();
+    setTimeout(() => {
+      document.getElementById("scrollDownCTA").style.opacity = '1';
+    }, 1600););
   // Active link highlighting based on scroll
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
 
   function updateActiveLink() {
     let index = sections.length;
-    while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+    while (--index && window.scrollY + window.innerHeight / 2 < sections[index].offsetTop) {}
     navLinks.forEach((link) => link.classList.remove("active"));
     if (navLinks[index]) navLinks[index].classList.add("active");
   }
