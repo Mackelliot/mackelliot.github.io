@@ -88,14 +88,106 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
     }
+    section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #3a2a1c;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .drink {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .drink img {
+      width: 70px;
+      margin-right: 1rem;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .drink-text h3 {
+      font-family: 'Oswald', sans-serif;
+      margin: 0 0 0.3rem 0;
+    }
+    .drink-text p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #4a3b30;
+    }
+    .about-section img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+      border-radius: 8px;
+    }
+    .socials-section {
+      background-color: #3a2a1c;
+      color: #fff;
+      padding: 3rem 1rem;
+      border-radius: 8px;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .social-grid img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    footer {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      border-top: 4px double #f0dfc2;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+    footer:hover::after {
+      content: " ☕";
+      animation: wiggle 0.3s infinite alternate;
+    }
+    @keyframes wiggle {
+      from { transform: rotate(-5deg); }
+      to { transform: rotate(5deg); }
+    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    a.cta-button {
+      display: inline-block;
+      background-color: #3a2a1c;
+      color: #f6ebd5;
+      padding: 0.6rem 1.2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    a.cta-button:hover {
+      background-color: #5a3a1c;
+      transform: scale(1.05);
+    }
   </style>
 </head>
-<body>
-<!-- BODY CONTENT CONTINUES -->
+
+
 
 <body>
 
