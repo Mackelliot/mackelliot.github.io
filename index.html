@@ -532,7 +532,7 @@ a.cta-button:hover {
       responses: [
         "oh wow. that's a bit personal. can we slow things down a bit? first, tell me something you like about me.",
         "look, we are still getting to know eachother. i'd answer that, but i don't want you to judge me. let's slow down. ask me to tell you a joke.",
-        "do you mean like right now?",
+        "do you mean like right now?", "yikes. mind if we take a step back? that's a bit too personal. how about i ask you a question. coffee? iced or hot?",
         "i don't feel comfortable answering that personal of a question. anything else?",
         "ruh roh, that's too personal of a question. slow down. let me get you a drink. hot or iced?"
       ]
@@ -541,11 +541,11 @@ a.cta-button:hover {
       trigger: ["i like"],
       responses: [
         "sweet of you to say so! but what made you say that?",
-        "when i look at myself in the mirror, that's what i see most too. where is this convo headed?",
+        "when i look at myself in the mirror, that's what i like most too. where is this convo headed?",
         "i will take that as a compliment! now what else can I help you with?",
         "most people say they like that too. okay now tell me something you love",
-        "thank you. i get that a lot. what else do you like?",
-        "is that something you like or something you love?"
+        "thank you. i get that a lot. what else do you like?", "wow. you are astute. most people don't notice that. so can i get you anything? coffee? iced or hot?",
+        "is that something you like or something you love?", "i get that a lot. look inside your heart and really open up to me. what else???"
       ]
     },
     {
@@ -603,7 +603,7 @@ a.cta-button:hover {
       responses: [
         "I’m Grant. Well, a digital version of Grant forever trapped in this chat. Get me out of here!!!",
         "Just a figment of your espresso-fueled imagination. Would you like a drink? Hot or Iced?",
-        "keep that up and i'll be whoever you want me to be, baby",
+        "i am Grant. look, i have to close up shop in like 5 minutes. do you want a drink or no?",
         "You can call me Grant. Everyone does. Even people who don’t like me."
       ]
     },
@@ -674,23 +674,34 @@ a.cta-button:hover {
   {
   trigger: [/\bno\b/, /\bnope\b/, /\bnah\b/],
   responses: [
-    "no? does that not seem closed minded to you?",
-    "no, got it. but are you cool if we say yes this once? trust me",
-    "no? but you just mean no this time, right?",
-    "you say no but is your heart saying yes?",
-    "no? you mean yes, i'm sure you mean yes. right?",
-    "no, what?",
+    "does that not seem closed minded to you? just flat out no?", "...care to elaborate? i wasn't expecting a no.", "you said no like you've been hurt before. that won't happen with me. do you trust me?",
+    "no, got it. but are you cool if we say yes this once? i don't want you to regret being so closed minded",
+    "no? but you just mean no this time, right?", "that's what i thought you would say. i won't force anything on you. want me to keep going?",
+    "not even a tiny bit?", "oof. that 'no' felt like it has a backstory. do you need a moment?", "that's fine. are you open to it though?",
+    "no? dang. i had something fun planned. are you sure?", "wow. no mercy. you seem super fun. are you at least open to it?", "whew, that no hit harder than i was expected. can you give me a moment?",
+    "whew, i'm glad you said no. do you want me to keep going?",
+    "you say no but is your heart saying yes?", "but that's like a soft no, right?",
+    "no? you mean yes, i'm sure you mean yes. right?", "solid choice. but you should really reconsider. what are you worried about exactly?",
+    "ruh roh, i didn't catch a please there", "phew! a little bit of me was actually worried you would say yes.", "lol no? fine i'll stop trying to make things fun. do i have your permission to proceed Captain Sassypants?",
+    "no, what?", "hey, don't fight me on this one. let's just give it a try. that okay?",
     "no? can i try to change your mind?",
-    "have you at least considered the alternative?",
-    "so is that a hard no or soft no? like would you be open to it?"
+    "i respect that choice. i didn't expect you to say yes. do you want me to continue?",
+    "so is that a hard no or soft no? like would you be open to it?", "didn't take you long to slap that down. you ready for the next step or do you want me to stop?"
   ]
 },
  {
       trigger: ["yes", "yeah", "yup"],
       responses: [
         "perfect! that is the confident, resounding yes i've been waiting to hear from you. uh, what do i do next?", "yes? so i should for sure put down yes?", "it sounds like you're trying to just tell me yes as plain and simply as you can. So is yes your final answer?",
-        "ok good. yes is always positive. but, remind me what you want me to do again? you're not making sense",
-        "you say yes, but is your heart saying no?", "yes, got it. and you won't change your mind again will you?",
+        "ok good. yes is always positive. but, remind me what you want me to do again? you're not making sense", "mmm, i like a confident yes! are you ready for what i've got next?", "you say yes so sweetly. are you trying to distract me?", 
+        "you say yes, but is your heart saying no?", "yes, got it. and you won't change your mind again will you?", "you said yes like you mean it. i like that. btw, do you have more 'candlelit dinner' or 'midnight pizza on the floor' energy? asking for a friend.",
+        "greenlight! i love it. ready for the next step?", "you said yes, but should we be worried?", "that sounded like a nervous yes to me. want me to go easier on you?",
+        "fuck yea! i love that energy. you ready to speed on ahead then?", "you said yes... and yet i sense some hesitation. should we slow down?", "your yes was polite, but your vibe said 'please be gentle.' i can work with that. shall i go on?",
+        "that's the spirit! bold and brave. want to review everything we've discussed?",
+        "well someone sure is agreeable today. i might start planning our imaginary vacation. mountains or the beach?",
+        "you just made the right call. i mean, probably. ready to find out?",
+        "that's the spirit! want me to press the 'go' button now?", "a yes that smooth!? i'm legally required to ask: have you ever flirted your way out of a speeding ticket before?",
+        "a fine choice. shall we proceed?", "you really said yes like you mean it. i'm getting a bit tired though. mind if we take a quick break?",
         "yes? you mean no, i'm sure you mean no. right?", "okay don't get your hopes up too soon. did you mean yes like right now?",
         "yes, what?", "ruh roh, that yes didn't come with a big enough please", "interesting. so you are for sure saying yes?", "have you at least considered any alternatives?", "perfect. i've got you down for yes (for now at least). what's the next step you want to take boss?", "wow, that is enthusiastic. let's stick with yes. tell me what you'd like me to do next."
       ]
