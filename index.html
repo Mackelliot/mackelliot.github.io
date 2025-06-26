@@ -671,16 +671,20 @@ a.cta-button:hover {
         "honestly, not any time soon. that okay?" , "probably a very very long time from now. is that okay?"
       ]
     },
-   {
-      trigger: ["no", "nope"],
-      responses: [
-        "no? does that not seem closed minded to you?", "no, got it. but are you cool if we say yes this once? trust me",
-        "no? but you just mean no this time, right?",
-        "you say no but is your heart saying yes?",
-        "no? you mean yes, i'm sure you mean yes. right?",
-        "no, what?", "no? can i try to change your mind?", "have you at least considered the alternative?", "so is that a hard no or soft no? like would you be open to it?"
-      ]
-    },
+  {
+  trigger: [/\bno\b/, /\bnope\b/, /\bnah\b/],
+  responses: [
+    "no? does that not seem closed minded to you?",
+    "no, got it. but are you cool if we say yes this once? trust me",
+    "no? but you just mean no this time, right?",
+    "you say no but is your heart saying yes?",
+    "no? you mean yes, i'm sure you mean yes. right?",
+    "no, what?",
+    "no? can i try to change your mind?",
+    "have you at least considered the alternative?",
+    "so is that a hard no or soft no? like would you be open to it?"
+  ]
+},
  {
       trigger: ["yes", "yeah", "yup"],
       responses: [
@@ -743,7 +747,12 @@ a.cta-button:hover {
     message = message.toLowerCase();
 
     for (const group of keywordResponses) {
-      if (group.trigger.some(word => message.includes(word))) {
+      if (group.trigger.some(trigger =>
+  typeof trigger === "string"
+    ? message.includes(trigger)
+    : trigger.test(message)
+)) {
+
         return group.responses[Math.floor(Math.random() * group.responses.length)];
       }
     }
