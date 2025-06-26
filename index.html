@@ -449,21 +449,21 @@ a.cta-button:hover {
   }
 
   const fallbackResponses = [
-    "Mmm yes, very interesting. Tell me more while I pretend to stir an empty mug.",
-    "honestly? don't care.",
-    "Ruh roh. I don't even know where to begin with that one.",
+    "Mmm yes, very interesting. tell me more while i pretend to stir an empty mug. sorry, continue.",
+    "that sounds good. what next?",
+    "ruh roh, you sound like you need a drink. can i get you one?",
     "Seriously?",
     "I'm not sure I like your tone. Try again.",
-    "Ooooh, bold choice of words for someone within slapping distance.",
-    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
+    "Ooooh, bold choice of words for someone within slapping distance. Are feeling strong now or something?",
+    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel. What's your game plan here?",
     "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
     "Just to be sure... was that a threat?",
-    "so what?",
-    "hold up, really?!",
+    "got it. continue.",
+    "noted. keep going.",
     "i don't really have time for this anymore. are we done here?",
     "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
-    "rude.",
-    "lol",
+    "rude. continue.",
+    "lol. keep going",
     "slow down. first, tell me something you like about me"
   ];
 
@@ -472,8 +472,8 @@ a.cta-button:hover {
         {
       trigger: ["hi", "hello", "hey", "sup", "howdy", "whats up", "what up"],
       responses: [
-        "hi! i'm Grant. how can I help you?",
-        "hello good lookin'",
+        "hi! i'm Grant. how can I help you?", "hi! is this your first time meeting me? you look familiar but its hard to recognize anyone when i'm looking up their nostrils (thanks by the way)",
+        "hello good looking. you having a good day?",
         "howdy. how can i help?",
         "hi. let's actually start with answering what you like about me",
         "hi! how is your day going?", "hi! can i get you anything to drink?"
@@ -483,7 +483,7 @@ a.cta-button:hover {
       trigger: ["how are you", "how r u", "how are u", "how you doin"],
       responses: [
         "i'm great, thanks! how can i help?",
-        "i'm okay. what's it to you?",
+        "i'm okay. are you okay? remember, its just me.",
         "oh just fine and dandy. what can i help you with?",
         "i am well. why are you bothering me?"
       ]
@@ -492,9 +492,9 @@ a.cta-button:hover {
       trigger: ["make me a drink", "make a drink"],
       responses: [
         "a drink? what time is it?",
-        "it would be my pleasure to get you a drink. what would you like?",
-        "certainly. what drink would you like?",
-        "yes. what would you like to drink?", "i'd be happy to get you a drink. what would you like?", "a drink at this hour? are you sure?", "should i make it a double? you look like you need it.", "a drink sounds nice. what do you want?"
+        "it would be my pleasure to get you a drink. want it with any special tiny umbrellas?", "should i make it a 'venti'? you look like you need it.", "a drink! do you want it to be hot?",
+        "certainly. what drink would you like? something with ice?", "happy to serve you a drink! do you want it to be crunchy?", 
+        "yes. what would you like to drink?", "a drink at this hour? are you sure?", "should i make it a double? you look like you need it.", "a drink sounds nice. want it to be sticky?"
         
       ]
     },
@@ -508,14 +508,23 @@ a.cta-button:hover {
         "ok. but first tell me something you like about me."
       ]
     },
+     {
+      trigger: ["what can you do", "what do you do"],
+      responses: [
+        "i can help you. all you have to do is ask. are you ready to start our adventure together?",
+        "I can get you a coffee or any beverage. Just let me know what you'd like!",
+        "i can be a friend if that's all you need. how are we feeling today?",
+        "i'm happy to help find the right drink for you. let me know a drink you love. Do want to try a drink with ice?",
+        "ok. but first tell me something you like about me."
+      ]
+    },
     {
       trigger: ["i like"],
       responses: [
-        "sweet of you to say so!",
-        "when i look at myself in the mirror, that's what i see most too",
+        "sweet of you to say so! but what made you say that?",
+        "when i look at myself in the mirror, that's what i see most too. where is this convo headed?",
         "i will take that as a compliment! now what else can I help you with?",
-        "rude",
-        "most people say they like that too.",
+        "most people say they like that too. okay now tell me something you love",
         "thank you. i get that a lot. what else do you like?",
         "is that something you like or something you love?"
       ]
@@ -524,9 +533,9 @@ a.cta-button:hover {
       trigger: ["latte", "coffee", "cappuccino", "espresso", "menu"],
       responses: [
         "Good choice! Do you know how to make it?",
-        "Want coffee? Bold of you to assume I’m awake enough to make it.",
+        "Oooh, you want coffee? Bold of you to assume I’m awake enough to make it.",
         "take that attitude somewhere else and make your own coffee",
-        "sure sure sure, but first tell me something you like about me.", "big or small?", "1% or 2% milk?", "hot or iced?", "like right now or is later today okay?"
+        "sure sure sure coffee got it, but first tell me something you like about me.", "okay. do you want 2% milk?", "okay, do you want it to be hot?", "hot coffee or iced coffee?", "like right now or is later today okay?"
       ]
     },
     {
