@@ -326,7 +326,34 @@ a.cta-button:hover {
   </div>
 </div>
 
+
 <script>
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+
+  function onScroll() {
+    let current = '';
+    sections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+        current = navLinks[index].getAttribute('href');
+      }
+    });
+
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === current) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll);
+  window.addEventListener('load', onScroll); // trigger once on load
+</script>
+<script>
+  
   const chatButton = document.getElementById("grantChatButton");
   const chatBox = document.getElementById("grantChatBox");
   const sendBtn = document.getElementById("grantSendBtn");
@@ -340,7 +367,7 @@ a.cta-button:hover {
 
 document.getElementById("grantChatClose").addEventListener("click", () => {
   chatBox.style.display = "none";
-}););
+});
 
   sendBtn.addEventListener("click", handleUserMessage);
   userInput.addEventListener("keypress", (e) => {
