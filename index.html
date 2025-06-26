@@ -450,20 +450,20 @@ a.cta-button:hover {
 
   const fallbackResponses = [
     "Mmm yes, very interesting. tell me more while i pretend to stir an empty mug. sorry, continue.",
-    "that sounds good. what next?",
+    "that sounds good. do you have anything else to add or have you said your piece?",
     "ruh roh, you sound like you need a drink. can i get you one?",
-    "Seriously?",
+    "oof, you sound tired. can i get you a coffee? hot or iced?", "should we unpack that last message a bit?", "stop - are you feeling okay? it's hard to tell with you."
     "I'm not sure I like your tone. Try again.",
-    "Ooooh, bold choice of words for someone within slapping distance. Are feeling strong now or something?",
-    "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel. What's your game plan here?",
+    "ok. can you elaborate a bit?",
+    "okay, cool cool cool. but i'm really just here to see if you want a drink. hot or iced?",
     "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
     "Just to be sure... was that a threat?",
-    "got it. continue.",
-    "noted. keep going.",
+    "okay... you good though? just checking before we get weird",
+    "that's a mood. anyway, would you rather have spaghetti for hair or waffles for feet?",
     "i don't really have time for this anymore. are we done here?",
     "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
-    "rude. continue.",
-    "lol. keep going",
+    "rude. but can you elaborate any?",
+    "lol. tell me more please", "ruh roh. should we unpack that a bit?", "...can you explain a little more?"
     "slow down. first, tell me something you like about me"
   ];
 
@@ -473,28 +473,37 @@ a.cta-button:hover {
       trigger: ["hi", "hello", "hey", "sup", "howdy", "whats up", "what up"],
       responses: [
         "hi! i'm Grant. how can I help you?", "hi! is this your first time meeting me? you look familiar but its hard to recognize anyone when i'm looking up their nostrils (thanks by the way)",
-        "hello good looking. you having a good day?",
-        "howdy. how can i help?",
+        "hello good looking. can i get you a drink? hot or iced?",
+        "howdy. how can i help? ask me to tell you a joke.",
         "hi. let's actually start with answering what you like about me",
-        "hi! how is your day going?", "hi! can i get you anything to drink?"
+        "hi! care for a beverage? hot or iced?", "hi! can i get you anything to drink? hot or iced?"
       ]
     },
     {
       trigger: ["how are you", "how r u", "how are u", "how you doin"],
       responses: [
-        "i'm great, thanks! how can i help?",
+        "i'm great, thanks! how can i help? can i get you a drink? hot or iced?",
         "i'm okay. are you okay? remember, its just me.",
-        "oh just fine and dandy. what can i help you with?",
+        "oh just fine and dandy. what can i help you with? want a drink? hot or iced?",
         "i am well. why are you bothering me?"
       ]
     },
     {
       trigger: ["make me a drink", "make a drink"],
       responses: [
-        "a drink? what time is it?",
-        "it would be my pleasure to get you a drink. want it with any special tiny umbrellas?", "should i make it a 'venti'? you look like you need it.", "a drink! do you want it to be hot?",
-        "certainly. what drink would you like? something with ice?", "happy to serve you a drink! do you want it to be crunchy?", 
-        "yes. what would you like to drink?", "a drink at this hour? are you sure?", "should i make it a double? you look like you need it.", "a drink sounds nice. want it to be sticky?"
+        "a drink? sure thing. hot or iced?", "ruh roh, i didn't hear a please."
+        "it would be my pleasure to get you a drink. want it with any special tiny umbrellas?", "should i make it a 'venti'? you look like you need it.", "a drink it is! iced or hot?",
+        "certainly. would you like a spiked drink? you look like you need it", "happy to serve you a drink! do you want it to be crunchy?", 
+        "yes. what would you like to drink?", "should i make it decaf? you look a bit wired", "should i make it a double? you look like you need it.", "a drink sounds nice. want it to be sticky?"
+        
+      ]
+    },
+      {
+      trigger: ["what can you make", "what do you know how to make", "what do you like to make?", "what drinks can you make", "what all can you make", "what else can you make"],
+      responses: [
+        "i can make a coffee. hot or iced?",
+        "i can make an espresso martini and serve it in a regular mug for you (nobody will know). want me to get started?", "i can make coffee or something a little more adventerous. hot or iced?",
+        "well i have a whole menu on my website. anything there strike your fancy?", "i can make a fun cocktail. hot or iced?" 
         
       ]
     },
@@ -516,6 +525,16 @@ a.cta-button:hover {
         "i can be a friend if that's all you need. how are we feeling today?",
         "i'm happy to help find the right drink for you. let me know a drink you love. Do want to try a drink with ice?",
         "ok. but first tell me something you like about me."
+      ]
+    },
+    {
+      trigger: ["what is your", "whats your", "what's your", "whats ur", "what is ur", "what's ur"],
+      responses: [
+        "oh wow. that's a bit personal. can we slow things down a bit? first, tell me something you like about me.",
+        "look, we are still getting to know eachother. i'd answer that, but i don't want you to judge me. let's slow down. ask me to tell you a joke.",
+        "do you mean like right now?",
+        "i don't feel comfortable answering that personal of a question. anything else?",
+        "ruh roh, that's too personal of a question. slow down. let me get you a drink. hot or iced?"
       ]
     },
     {
@@ -542,33 +561,29 @@ a.cta-button:hover {
       trigger: ["when will", "when does", "when do", "how much longer"],
       responses: [
         "whenever i get around to it. okay!?",
-        "ooof. probably 3-5 business days.",
+        "ooof. probably 3-5 business days. is that reasonable?",
         "when i'm done with work. i promise, champ.",
         "when do you think is reasonable?",
         "i'm on it now! don't go anywhere and don't close out this window!",
-        "it will happen when it happens. just trust in the process.",
-        "I'm on break. Can u ask me again in like 5? kthxbye"
+        "it will happen when it happens. just trust in the process. that work?",
+        "I'm on break. Can u ask me again in like 5?"
       ]
     },
     {
       trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it", "will it"],
       responses: [
-        "obvi. don't you think so?",
         "no",
         "yes",
-        "probably, but why is this important?",
         "haha. nope!",
         "yes, technically speaking",
         "what do you think?",
-        "oui",
-        "why?",
+        "can you elaborate a bit more? not sure i understand",
         "lol. no.",
         "a gentleman never tells...",
-        "idk, probably. but why?",
         "hmmm, gee idk. is a frog's butt watertight? don't ask me stupid questions.",
         "umm, i think so. actually, yes I'm pretty sure. why?",
         "what made you ask that?",
-        "tell me something you like about me, then I'll let you know the answer"
+        "enough questions. tell me something you like about me"
       ]
     },
     {
@@ -630,22 +645,22 @@ a.cta-button:hover {
     {
       trigger: ["what is", "what are"],
       responses: [
-        "what do you mean?",
-        "idk", "idk. that's a boring question. ask me to tell you a joke instead.",
+        "ooof. i'm stumped. ask me something more interesting that that",
+        "idk. and honestly i don't care.", "idk. that's a boring question. ask me to tell you a joke instead.",
         "ruh roh. you got me. i have no clue. do you know?",
         "a gentleman never tells...",
-        "what? or do you mean where?", "what? or do you mean when?", "what? or do you mean who?",
+        "...can you elaborate a bit more please?",
         "okay i'll tell you what. but first tell me something you like about me.",
-        "i give up. what?"
+        "i give up. what?", "wait, you really don't know? lol"
       ]
     },
      {
       trigger: ["why"],
       responses: [
-        "why? have you ever tried asking why not?",
-        "because",
-        "why? have you even thought about this much?",
-        "is that really a path you want to go down?", "did you mean why not?"
+        "instead of answering your pointless question, let me get you a drink. hot or iced?", "wait... you really don't know? lol",
+        "i actually don't know why. never thought about it before. anything else? can i get you a drink? hot or iced?",
+        "better question: why not? or even better question: hot or iced?", "i'll tell you why. but first, tell me something you like about me.", "i'll tell you why, but first ask me to tell you a joke",
+        "look, we could sit here all day asking pointless questions to eachother or i could get you a drink. hot or iced?", "what a great question. idk though. can i get you a drink? hot or iced?", "why? because i said so. next question."
       ]
     },
      {
@@ -670,27 +685,44 @@ a.cta-button:hover {
  {
       trigger: ["yes", "yeah", "yup"],
       responses: [
-        "yes? why are you into that all of a sudden?", "yes? so i should for sure put down yes?", "it sounds like you're trying to just tell me yes as plain and simply as you can. So is yes your final answer?",
+        "perfect! that is the confident, resounding yes i've been waiting to hear from you. uh, what do i do next?", "yes? so i should for sure put down yes?", "it sounds like you're trying to just tell me yes as plain and simply as you can. So is yes your final answer?",
         "ok good. yes is always positive. but, remind me what you want me to do again? you're not making sense",
         "you say yes, but is your heart saying no?", "yes, got it. and you won't change your mind again will you?",
         "yes? you mean no, i'm sure you mean no. right?", "okay don't get your hopes up too soon. did you mean yes like right now?",
-        "yes, what?", "ruh roh, that yes didn't come with a big enough please", "interesting. so you are for sure saying yes?", "have you at least considered any alternatives?"
-      ]
-    },
-      {
-      trigger: ["why"],
-      responses: [
-        "why? do you mean when?",
-        "why? do you mean how?",
-        "why, do you mean where?", "why do we even exist? is that what you're getting at?"
+        "yes, what?", "ruh roh, that yes didn't come with a big enough please", "interesting. so you are for sure saying yes?", "have you at least considered any alternatives?", "perfect. i've got you down for yes (for now at least). what's the next step you want to take boss?", "wow, that is enthusiastic. let's stick with yes. tell me what you'd like me to do next."
       ]
     },
     {
       trigger: ["how"],
       responses: [
-        "how? do you mean when?",
-        "how? do you mean why?",
-        "how, do you mean where?"
+        "how? i'm not sure really. what's your best guess at it? or do you also not know?",
+        "how? i never really thought about it. okay we done here?",
+        "how? no clue tbh. but is there anything else i can help with?"
+      ]
+    },
+        {
+      trigger: ["hot"],
+      responses: [
+        "ooh, nice and hot! good choice. can i make it scalding hot just for you?",
+        "great choice. i like hot too. do you want any milk?",
+        "sure, but you don't want it too hot right?",
+        "hot? are you sure? i swear you looked like you were going to say something else",
+        "i guess we can do hot. you're not going to change your mind on me are you?"
+      ]
+    },
+            {
+      trigger: ["iced", "ice"],
+      responses: [
+        "ooh, nice and cold! good choice. is one ice cube enough?", "ahhh, i was hoping you wouldn't say ice. i don't have any, but i can put some frozen peas in your drink. will that work?",
+        "great choice. i like cold too. do you want any milk?", "hmm... okay. i actually don't have ice but i have frozen pennies. will that work?",
+        "okay, i was hoping you wouldn't say that bc i need to go out and get some ice. do you still want it?"
+      ]
+    },
+         {
+      trigger: ["please"],
+      responses: [
+        "please what?",
+        "ruh roh... that please still isn't big enough for what you're asking"
       ]
     },
     {
