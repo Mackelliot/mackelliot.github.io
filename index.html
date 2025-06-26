@@ -450,21 +450,21 @@ a.cta-button:hover {
 
   const fallbackResponses = [
     "Mmm yes, very interesting. tell me more while i pretend to stir an empty mug. sorry, continue.",
-    "that sounds good. do you have anything else to add or have you said your piece?",
-    "ruh roh, you sound like you need a drink. can i get you one?",
+    "that sounds good. do you have anything else to add or have you said your piece?", "am i boring you? this is not the back-and-forth banter i was hoping for. just bring at least some effort into our chat. please.",
+    "ruh roh, you sound like you need a drink. can i get you one?", "i'm sensing stress. anything you need to vent about?", "you sound exhausted. running from your feelings again?",
     "oof, you sound tired. can i get you a coffee? hot or iced?", "should we unpack that last message a bit?", "stop - are you feeling okay? it's hard to tell with you.",
-    "I'm not sure I like your tone. Try again.",
-    "ok. can you elaborate a bit?",
+    "I'm not sure I like your tone. Try again.", "you seem worn out. care to unwind with a signature Grant cocktail?", "okay, i am detecting some serious low energy from you. coffee? hot or iced?",
+    "ok. can you elaborate a bit more?", "you sound tired. can i get you a coffee? hot or iced?", 
     "okay, cool cool cool. but i'm really just here to see if you want a drink. hot or iced?",
-    "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
-    "Just to be sure... was that a threat?",
-    "okay... you good though? just checking before we get weird",
-    "that's a mood. anyway, would you rather have spaghetti for hair or waffles for feet?",
+    "got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
+    "just to be sure... was that a threat?", "you said that like you've had a long day. can i get you a cocktail?", "are you always this cute?", "i really like your energy. but i feel like you haven't even gotten to know me. ask me anything.",
+    "okay... you good though? just checking before we get weird. you can ask me to tell a joke if we need to lighten the mood",
+    "that's a mood. anyway, can you change the subject. ask me to tell you a joke!",
     "i don't really have time for this anymore. are we done here?",
-    "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
-    "rude. but can you elaborate any?",
-    "lol. tell me more please", "ruh roh. should we unpack that a bit?", "...can you explain a little more?",
-    "slow down. first, tell me something you like about me"
+    "you sound more interesting than i expected. by the way, is your name wi-fi? because I'm feeling a strong connection.",
+    "rude. but can you elaborate any?", "wow. i didn't think a message could be both dry and dissapointing, but you managed it.", "💅 i'm still listening",
+    "lol. tell me more please", "ruh roh. that is unexpected. should we unpack that a bit?", "...can you explain a little more?",
+    "you sound annoyed. was it something i did?", "oh interesting. can you tell me a bit more?"
   ];
 
   const keywordResponses = [
@@ -475,15 +475,21 @@ a.cta-button:hover {
         "hi! i'm Grant. how can I help you?", "hi! is this your first time meeting me? you look familiar but its hard to recognize anyone when i'm looking up their nostrils (thanks by the way)",
         "hello good looking. can i get you a drink? hot or iced?",
         "howdy. how can i help? ask me to tell you a joke.",
-        "hi. let's actually start with answering what you like about me",
+        "hi. let's actually start with you telling me what you like about me. i need a confidence boost!",
         "hi! care for a beverage? hot or iced?", "hi! can i get you anything to drink? hot or iced?"
+      ]
+    },
+     {
+      trigger: ["will you pain my nails"],
+      responses: [
+        "💅 is this color okay?"
       ]
     },
     {
       trigger: ["how are you", "how r u", "how are u", "how you doin"],
       responses: [
         "i'm great, thanks! how can i help? can i get you a drink? hot or iced?",
-        "i'm okay. are you okay? remember, its just me.",
+        "i'm okay. are you okay? remember, its just me. what's on your mind?",
         "oh just fine and dandy. what can i help you with? want a drink? hot or iced?",
         "i am well. why are you bothering me?"
       ]
@@ -492,18 +498,17 @@ a.cta-button:hover {
       trigger: ["make me a drink", "make a drink"],
       responses: [
         "a drink? sure thing. hot or iced?", "ruh roh, i didn't hear a please.",
-        "it would be my pleasure to get you a drink. want it with any special tiny umbrellas?", "should i make it a 'venti'? you look like you need it.", "a drink it is! iced or hot?",
-        "certainly. would you like a spiked drink? you look like you need it", "happy to serve you a drink! do you want it to be crunchy?", 
-        "yes. what would you like to drink?", "should i make it decaf? you look a bit wired", "should i make it a double? you look like you need it.", "a drink sounds nice. want it to be sticky?"
+        "should i make it a 'venti'? you look like you need it.", "a drink it is! iced or hot?",
+        "certainly. would you like a spiked drink? you look like you need it", "should i make it decaf? you seem a bit jittery", "should i make it a double? you look like you need it."
         
       ]
     },
       {
       trigger: ["what can you make", "what do you know how to make", "what do you like to make?", "what drinks can you make", "what all can you make", "what else can you make"],
       responses: [
-        "i can make a coffee. hot or iced?",
+        "i can make coffee. would you like hot or iced?",
         "i can make an espresso martini and serve it in a regular mug for you (nobody will know). want me to get started?", "i can make coffee or something a little more adventerous. hot or iced?",
-        "well i have a whole menu on my website. anything there strike your fancy?", "i can make a fun cocktail. hot or iced?" 
+        "well i have a whole menu on my website. anything there strike your fancy?", "i can make a fun cocktail. would you like it hot or iced?" 
         
       ]
     },
@@ -511,8 +516,8 @@ a.cta-button:hover {
       trigger: ["help", "how", "support", "fix"],
       responses: [
         "wow, idk how to do that actually. let me know what you find out though!",
-        "I would help, but I swore an oath to do nothing today. Anything else I can help with?",
-        "Sounds like more of a you than a me problem.",
+        "i would help, but i feel low energy. can you tell me a knock knock joke?",
+        "sounds like more of a you than a me problem.",
         "I'm on break. Can you ask me again in like 5?",
         "ok. but first tell me something you like about me."
       ]
@@ -596,6 +601,12 @@ a.cta-button:hover {
       ]
     },
     {
+      trigger: ["interrupting cow"],
+      responses: [
+        "interrupting cow who?"
+      ]
+    },
+    {
       trigger: ["fuck", "shit", "damn", "butt", "fucking", "f'ing", "suck"],
       responses: [
         "whoa! watch your language.",
@@ -624,6 +635,12 @@ a.cta-button:hover {
         "Whoa, slow down—buy me a latte first. You okay with that?",
         "Swipe left on this espresso shot, sweetheart.",
         "shhh... meet me out back and make sure nobody sees you leave.", "love? do you even know what that is?", "really? love?", "are you sure it's love?", "love is a bit strong. don't you think?"
+      ]
+    },
+     {
+      trigger: ["knock knock"],
+      responses: [
+        "who's there?", "who is there?"
       ]
     },
     {
@@ -694,7 +711,7 @@ a.cta-button:hover {
     "no? you mean yes, i'm sure you mean yes. right?", "solid choice. but you should really reconsider. what are you worried about exactly?",
     "ruh roh, i didn't catch a please there", "phew! a little bit of me was actually worried you would say yes.", "lol no? fine i'll stop trying to make things fun. do i have your permission to proceed Captain Sassypants?",
     "no, what?", "hey, don't fight me on this one. let's just give it a try. what is giving you pause?",
-    "no? can i try to change your mind? what's holding you back?",
+    "no? can i try to change your mind? what's holding you back?", "no? okay let's change things up a bit then. you're getting me really down. can you tell me a   joke?",
     "i respect that choice. i didn't expect you to say yes. do you want me to continue?",
     "so is that a hard no or soft no? like would you be open to it?", "didn't take you long to slap that down. you ready for the next step or do you want me to stop?"
   ]
@@ -705,7 +722,7 @@ a.cta-button:hover {
         "perfect! that is the confident, resounding yes i've been waiting to hear from you. uh, what do i do next?", "yes? so i should for sure put down yes?", "it sounds like you're trying to just tell me yes as plain and simply as you can. So is yes your final answer?",
         "ok good. yes is always positive. but, remind me what you want me to do again? you're not making sense", "mmm, i like a confident yes! are you ready for what i've got next?", "you say yes so sweetly. are you trying to distract me?", 
         "you say yes, but is your heart saying no?", "yes, got it. and you won't change your mind again will you?", "you said yes like you mean it. i like that. btw, do you have more 'candlelit dinner' or 'midnight pizza on the floor' energy? asking for a friend.",
-        "greenlight! i love it. ready for the next step?", "you said yes, but should we be worried?", "that sounded like a nervous yes to me. want me to go easier on you?",
+        "greenlight! i love it. wait, while we are on a roll, can you tell me a   joke?", "you said yes, but should we be worried?", "that sounded like a nervous yes to me. want me to go easier on you?",
         "fuck yea! i love that energy. you ready to speed on ahead then?", "you said yes... and yet i sense some hesitation. should we slow down?", "your yes was polite, but your vibe said 'please be gentle.' i can work with that. shall i go on?",
         "that's the spirit! bold and brave. want to review everything we've discussed?",
         "well someone sure is agreeable today. i might start planning our imaginary vacation. mountains or the beach?",
@@ -747,6 +764,24 @@ a.cta-button:hover {
       responses: [
         "please what?",
         "ruh roh... that please still isn't big enough for what you're asking"
+      ]
+    },
+     {
+      trigger: ["orange"],
+      responses: [
+        "orange you going to tell a better joke than that!?"
+      ]
+    },
+     {
+      trigger: ["banana"],
+      responses: [
+        "banana who?"
+      ]
+    },
+     {
+      trigger: ["KGB"],
+      responses: [
+        "the KGB will wait for no one!"
       ]
     },
     {
