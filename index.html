@@ -452,17 +452,17 @@ a.cta-button:hover {
     "Mmm yes, very interesting. tell me more while i pretend to stir an empty mug. sorry, continue.",
     "that sounds good. do you have anything else to add or have you said your piece?", "am i boring you? this is not the back-and-forth banter i was hoping for. just bring at least some effort into our chat. please.",
     "ruh roh, you sound like you need a drink. can i get you one?", "i'm sensing stress. anything you need to vent about?", "you sound exhausted. running from your feelings again?",
-    "oof, you sound tired. can i get you a coffee? hot or iced?", "should we unpack that last message a bit?", "stop - are you feeling okay? it's hard to tell with you.",
+    "oof, you sound tired. can i get you a coffee? hot or iced?", "hmm. that feels loaded. should we unpack that a bit?", "ok. i wasn't expecting that. why?",
     "I'm not sure I like your tone. Try again.", "you seem worn out. care to unwind with a signature Grant cocktail?", "okay, i am detecting some serious low energy from you. coffee? hot or iced?",
-    "ok. can you elaborate a bit more?", "you sound tired. can i get you a coffee? hot or iced?", 
+    "ok. can you elaborate a bit more?", "you sound tired. can i get you a coffee? hot or iced?", "you seem sad. like really really sad. want me to cheer you up?", "you sure are energetic! want to lower that energy with a signature cocktail?",
     "okay, cool cool cool. but i'm really just here to see if you want a drink. hot or iced?",
-    "got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
+    "got it. Let me know when you're done auditioning for 'America's Worst Communicator'", "oh sorry. are you bored with me or something?", "oh, ok. are you upset with me?"
     "just to be sure... was that a threat?", "you said that like you've had a long day. can i get you a cocktail?", "are you always this cute?", "i really like your energy. but i feel like you haven't even gotten to know me. ask me anything.",
-    "okay... you good though? just checking before we get weird. you can ask me to tell a joke if we need to lighten the mood",
+    "oh, okay... you good though? just checking before we get weird. you can ask me to tell a joke if we need to lighten the mood",
     "that's a mood. anyway, can you change the subject. ask me to tell you a joke!",
-    "i don't really have time for this anymore. are we done here?",
-    "you sound more interesting than i expected. by the way, is your name wi-fi? because I'm feeling a strong connection.",
-    "rude. but can you elaborate any?", "wow. i didn't think a message could be both dry and dissapointing, but you managed it.", "💅 i'm still listening",
+    "i don't really have time for this anymore. are we done here?", "you're putting in a lot of effort into the conversation, and i appreciate that. but this just isn't going anywhere. bye.",
+    "you sound more interesting than i expected. i'd love to hear any knock knock jokes you have. all interesting people have at least one good one",
+    "okay... can you elaborate any?", "wow. i didn't think a message could be both dry and dissapointing, but you managed it.", "💅 i'm still listening",
     "lol. tell me more please", "ruh roh. that is unexpected. should we unpack that a bit?", "...can you explain a little more?",
     "you sound annoyed. was it something i did?", "oh interesting. can you tell me a bit more?"
   ];
@@ -472,15 +472,15 @@ a.cta-button:hover {
         {
       trigger: ["hi", "hello", "hey", "sup", "howdy", "whats up", "what up"],
       responses: [
-        "hi! i'm Grant. how can I help you?", "hi! is this your first time meeting me? you look familiar but its hard to recognize anyone when i'm looking up their nostrils (thanks by the way)",
+        "hi! i'm Grant. how can I help you? let me know if you want me to make you a drink or tell you a joke", "hi! is this your first time meeting me? you look familiar but its hard to recognize anyone when i'm looking up their nostrils (thanks by the way)",
         "hello good looking. can i get you a drink? hot or iced?",
-        "howdy. how can i help? ask me to tell you a joke.",
-        "hi. let's actually start with you telling me what you like about me. i need a confidence boost!",
-        "hi! care for a beverage? hot or iced?", "hi! can i get you anything to drink? hot or iced?"
+        "howdy. how can i help? ask me to tell you a joke or make you a drink.",
+        "hi. how are you? let's get to know eachother. start by telling me something you like about me. i need a confidence boost!",
+        "hi! care for a beverage? hot or iced?"
       ]
     },
      {
-      trigger: ["will you pain my nails"],
+      trigger: ["paint my nails"],
       responses: [
         "💅 is this color okay?"
       ]
@@ -499,7 +499,7 @@ a.cta-button:hover {
       responses: [
         "a drink? sure thing. hot or iced?", "ruh roh, i didn't hear a please.",
         "should i make it a 'venti'? you look like you need it.", "a drink it is! iced or hot?",
-        "certainly. would you like a spiked drink? you look like you need it", "should i make it decaf? you seem a bit jittery", "should i make it a double? you look like you need it."
+        "certainly. would you like a spiked drink? you look like you need it", "should i make it decaf? you seem a bit spazy", "should i make it a double? you look like you need it."
         
       ]
     },
@@ -526,10 +526,10 @@ a.cta-button:hover {
       trigger: ["what can you do", "what do you do"],
       responses: [
         "i can help you. all you have to do is ask. are you ready to start our adventure together?",
-        "I can get you a coffee or any beverage. Just let me know what you'd like!",
+        "I can get you a coffee or any beverage. Let me know if you would like me to make you a drink or tell you a joke",
         "i can be a friend if that's all you need. how are we feeling today?",
-        "i'm happy to help find the right drink for you. let me know a drink you love. Do want to try a drink with ice?",
-        "ok. but first tell me something you like about me."
+        "i'm happy to help find the right drink for you. let me know a drink you love. or we can start with some questions: hot or iced?",
+        "ok. but first tell me something you like about me.", "i can tell a knock knock joke. or better yet, tell one to me if you think you're witty enough."
       ]
     },
        {
@@ -784,10 +784,22 @@ a.cta-button:hover {
         "ruh roh... that please still isn't big enough for what you're asking"
       ]
     },
-     {
+      {
+      trigger: ["knock knock joke"],
+      responses: [
+        "knock knock"
+      ]
+    },
+    {
       trigger: ["orange"],
       responses: [
         "orange you going to tell a better joke than that!?"
+      ]
+    },
+     {
+      trigger: ["banana who", "bananawho"],
+      responses: [
+        "knock knock"
       ]
     },
      {
@@ -808,17 +820,23 @@ a.cta-button:hover {
         "glad one of us is laughing!", "you think that's really funny, don't you?", "at least you have a cute laugh", "is that a pity laugh?"
       ]
     },
+        {
+      trigger: ["who is there", "whose there", "who's there", "whois there", "who there", "who dat"],
+      responses: [
+        "banana"
+      ]
+    },
     {
       trigger: ["tell me a joke", "joke"],
       responses: [
         "i told me wife she was drawing her eyebrows too high. she looked surprised.",
-        "i used to play piano by ear, but now i use my hands",
-        "i'd agree with you, but then we'd both be wrong.",
+        "i used to play piano by ear, but now i use my hands", "a joke? let's warm up first. tell me a knock knock joke so i can get a sense of your humor.",
+        "i'd agree with you, but then we'd both be wrong.", "knock knock",
         "parallel lines have so much in common... it's a shame they'll never meet",
         "i like long walks, especially when they're taken by people who annoy me.",
         "did you know the Titanic's pool still has water in it to this day! it's the ultimate infinity pool.",
         "i haven't slept for 10 days, bc that would be too long.",
-        "i'm not in the laughing sort of mood."
+        "i'm not in the laughing sort of mood. do you want coffee? hot or iced?", "how about you tell me a knock knock joke instead"
       ]
     }
   ];
