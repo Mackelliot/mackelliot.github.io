@@ -458,7 +458,7 @@ a.cta-button:hover {
     "Wow. I'm not sure who hurt you, but I'm not volunteering for the sequel.",
     "Got it. Let me know when you're done auditioning for 'America's Worst Communicator'",
     "Just to be sure... was that a threat?",
-    "okay... so what?",
+    "so what?",
     "hold up, really?!",
     "i don't really have time for this anymore. are we done here?",
     "whoa slow down. i need to ask you something first. is your name wi-fi? because I'm feeling a strong connection.",
@@ -470,10 +470,10 @@ a.cta-button:hover {
   const keywordResponses = [
     
         {
-      trigger: ["hi", "hello"],
+      trigger: ["hi", "hello", "hey", "sup", "howdy", "whats up", "what up"],
       responses: [
         "hi! i'm Grant. how can I help you?",
-        "hello good lookin'?",
+        "hello good lookin'",
         "howdy. how can i help?",
         "hi. let's actually start with answering what you like about me",
         "hi! how is your day going?", "hi! can i get you anything to drink?"
@@ -488,13 +488,23 @@ a.cta-button:hover {
         "i am well. why are you bothering me?"
       ]
     },
-   {
+    {
+      trigger: ["make me a drink", "make a drink"],
+      responses: [
+        "a drink? what time is it?",
+        "it would be my pleasure to get you a drink. what would you like?",
+        "certainly. what drink would you like?",
+        "yes. what would you like to drink?", "i'd be happy to get you a drink. what would you like?", "a drink at this hour? are you sure?", "should i make it a double? you look like you need it.", "a drink sounds nice. what do you want?"
+        
+      ]
+    },
+    {
       trigger: ["help", "how", "support", "fix"],
       responses: [
         "wow, idk how to do that actually. let me know what you find out though!",
         "I would help, but I swore an oath to do nothing today. Anything else I can help with?",
         "Sounds like more of a you than a me problem.",
-        "I'm on break. Can you ask me again in like 5? kthxbye",
+        "I'm on break. Can you ask me again in like 5?",
         "ok. but first tell me something you like about me."
       ]
     },
@@ -511,12 +521,12 @@ a.cta-button:hover {
       ]
     },
     {
-      trigger: ["latte", "coffee", "cappuccino", "espresso", "menu", "drink"],
+      trigger: ["latte", "coffee", "cappuccino", "espresso", "menu"],
       responses: [
         "Good choice! Do you know how to make it?",
         "Want coffee? Bold of you to assume I’m awake enough to make it.",
         "take that attitude somewhere else and make your own coffee",
-        "sure sure sure, but first tell me something you like about me."
+        "sure sure sure, but first tell me something you like about me.", "big or small?", "1% or 2% milk?", "hot or iced?", "like right now or is later today okay?"
       ]
     },
     {
@@ -532,21 +542,20 @@ a.cta-button:hover {
       ]
     },
     {
-      trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it"],
+      trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it", "will it"],
       responses: [
-        "obvi",
-        "no, not really",
+        "obvi. don't you think so?",
+        "no",
         "yes",
-        "probably",
-        "100%",
+        "probably, but why is this important?",
         "haha. nope!",
         "yes, technically speaking",
-        "yeppers",
+        "what do you think?",
         "oui",
-        "no. just no.",
+        "why?",
         "lol. no.",
         "a gentleman never tells...",
-        "idk, but probably",
+        "idk, probably. but why?",
         "hmmm, gee idk. is a frog's butt watertight? don't ask me stupid questions.",
         "umm, i think so. actually, yes I'm pretty sure. why?",
         "what made you ask that?",
@@ -579,9 +588,9 @@ a.cta-button:hover {
       trigger: ["love", "flirt", "date", "single", "sexy"],
       responses: [
         "I’m emotionally unavailable... like decaf.",
-        "Whoa, slow down—buy me a latte first.",
+        "Whoa, slow down—buy me a latte first. You okay with that?",
         "Swipe left on this espresso shot, sweetheart.",
-        "shhh... meet me out back and make sure nobody sees you leave."
+        "shhh... meet me out back and make sure nobody sees you leave.", "love? do you even know what that is?", "really? love?", "are you sure it's love?", "love is a bit strong. don't you think?"
       ]
     },
     {
@@ -596,17 +605,49 @@ a.cta-button:hover {
       ]
     },
     {
+      trigger: ["can you"],
+      responses: [
+        "it's not a question of 'can' but one of 'will'...",
+        "idk actually. i think i can. when?",
+        "ruh roh. i didn't hear a please.",
+        "a gentleman never tells...",
+        "when? like today?",
+        "i can, but it will be a while. how long can you wait?",
+        "okay i'll tell you. but first tell me something you like about me.",
+        "i can, but not very well. is that okay?",
+        "i can't, but i have always wanted to try. can we try this together?"
+      ]
+    },
+    {
       trigger: ["what is", "what are"],
       responses: [
         "what do you mean?",
-        "idk actually",
-        "ruh roh. you got me. i have no clue.",
+        "idk", "idk. that's a boring question. ask me to tell you a joke instead.",
+        "ruh roh. you got me. i have no clue. do you know?",
         "a gentleman never tells...",
-        "that is a great question",
-        "if you have to ask...",
-        "okay i'll tell you. but first tell me something you like about me.",
-        "i give up. what?",
-        "wow. deep question. but idk."
+        "what? or do you mean where?", "what? or do you mean when?", "what? or do you mean who?",
+        "okay i'll tell you what. but first tell me something you like about me.",
+        "i give up. what?"
+      ]
+    },
+   {
+      trigger: ["no", "nope"],
+      responses: [
+        "no? does that not seem closed minded to you?", "no, got it. but are you cool if we say yes this once? trust me",
+        "no? but you just mean no this time, right?",
+        "you say no but is your heart saying yes?",
+        "no? you mean yes, i'm sure you mean yes. right?",
+        "no, what?", "no? can i try to change your mind?", "have you at least considered the alternative?", "so is that a hard no or soft no? like would you be open to it?"
+      ]
+    },
+ {
+      trigger: ["yes", "yeah", "yup"],
+      responses: [
+        "yes? why are you into that all of a sudden?", "yes? so i should for sure put down yes?", "it sounds like you're trying to just tell me yes as plain and simply as you can. So is yes your final answer?",
+        "ok good. yes is always positive. but, remind me what you want me to do again? you're not making sense",
+        "you say yes, but is your heart saying no?", "yes, got it. and you won't change your mind again will you?",
+        "yes? you mean no, i'm sure you mean no. right?", "okay don't get your hopes up too soon. did you mean yes like right now?",
+        "yes, what?", "ruh roh, that yes didn't come with a big enough please", "interesting. so you are for sure saying yes?", "have you at least considered any alternatives?"
       ]
     },
     {
