@@ -454,9 +454,9 @@ a.cta-button:hover {
   const fallbackResponses = [
     "Mmm yes, very interesting. tell me more while i pretend to stir an empty mug. sorry, continue.",
     "that sounds good. do you have anything else to add or have you said your piece?", "am i boring you? this is not the back-and-forth banter i was hoping for. just bring at least some effort into our chat. please.",
-    "ruh roh, you sound like you need a drink. can i get you one?", "i'm sensing stress. anything you need to vent about?", "you sound exhausted. i'm making you a coffee. hot or iced?",
+    "ruh roh, you sound like you need a drink. can i get you one?", "i'm sensing stress. anything you need to vent about?", "k",
     "oof, you sound tired. can i get you a coffee? hot or iced?", "ok. i wasn't expecting that. why may i ask?",
-    "I'm not sure I like your tone. Try again.", "you seem worn out. care to unwind with a signature Grant cocktail?", "i am detecting some serious low energy from you. coffee? hot or iced?",
+    "I'm not sure I like your tone. Try again.", "you seem worn out. care to unwind with a signature Grant cocktail?", "i am detecting some serious low energy from you. ready for that coffee?",
     "ok. can you elaborate a bit more?", "you sound tired. can i get you a coffee? hot or iced?", "you seem sad. like really really sad. want me to cheer you up? you can ask me to tell you a joke or even a knock knock joke",
     "okay, cool cool cool. but i'm really just here to see if you want a drink. hot or iced?", "lol. why?",
     "got it. Let me know when you're done auditioning for 'America's Worst Communicator'", "oh sorry. are you bored with me or something?",
@@ -465,8 +465,8 @@ a.cta-button:hover {
     "that's a mood. anyway, can you change the subject. ask me to tell you a joke!",
     "i don't really have time for this anymore. are we done here?", "you're putting in a lot of effort into the conversation, and i appreciate that. but this just isn't going anywhere. bye.",
     "stop. tell me a knock knock joke.",
-    "okay... can you elaborate any?", "wow. i didn't think a message could be both dry and dissapointing, but you managed it.", "💅 i'm still listening",
-    "lol. tell me more please", "ruh roh. that is unexpected. should we unpack that a bit?", "...can you explain a little more than that please?",
+    "okay... can you elaborate any?", "wow. i didn't think a message could be both dry and dissapointing, but you managed it.", "💅 i'm listening",
+    "lol. tell me more please", "...can you explain a little more than that please?",
     "you sound annoyed. was it something i did?", "oh interesting. can you tell me a bit more?"
   ];
 
@@ -497,12 +497,22 @@ a.cta-button:hover {
         "i am well. why are you bothering me?"
       ]
     },
-    {
-      trigger: ["make me a drink", "make a drink"],
+      {
+      trigger: ["why not"],
       responses: [
-        "a drink? sure thing. hot or iced?", "ruh roh, i didn't hear a please.",
-        "should i make it a 'venti'? you look like you need it.", "a drink it is! iced or hot?",
-        "certainly. would you like a spiked drink? you look like you need it", "should i make it decaf? you seem a bit spazy", "should i make it a double? you look like you need it."
+        "Mmm, see... that attitude is the reason why not.",
+        "because you asked like someone who's about to cause problems on purpose.",
+        "oh, you want reasons? that is cute.",
+        "you're not helping your cause right now.",
+        "
+      ]
+    },
+     {
+      trigger: ["make me a drink", "make a drink", "make me one", "make one for"],
+      responses: [
+        "ruh roh, i didn't hear a please.", "should i make it a double? you look like you need it.", "happy to make one. did you mean right now though?",
+        "should i make it a 'venti'? you look like you need it.", "a drink it is! looking for something with a bite?",
+        "certainly. would you like a spiked drink? you look like you need it", "should i make it decaf? you seem a bit spazy"
         
       ]
     },
@@ -638,7 +648,7 @@ a.cta-button:hover {
     {
       trigger: ["do you", "will you", "will u", "can you", "can u", "do u", "do i", "does it", "will it"],
       responses: [
-        "no. not today anyway. anything else?",
+        "no. not today. anything else?",
         "yes, that should be obvious",
         "haha. fat chance!",
         "yes, technically speaking",
@@ -804,7 +814,7 @@ a.cta-button:hover {
     "whew, i'm glad you said no. but i'm sorry, its hard to follow along to your messages. would you mind telling me what you're after again?",
     "you say no but is your heart saying yes?", "but that's like a soft no, right?", "ouch. i don't handle rejection well. quick - tell me something you like about me",
      "solid choice. but you should really reconsider. what are you worried about exactly?",
-    "ruh roh, i didn't catch a please there", "phew! a little bit of me was actually worried you would say yes.", "lol no? fine i'll stop trying to make things fun.",
+    "ruh roh, i didn't catch a please there", "phew! a little bit of me was actually worried you would say yes.", "lol no? fine i'll stop trying to  things fun.",
     "no, what?", "hey, don't fight me on this one. let's just give it a try. what is giving you pause?",
     "no? can i try to change your mind? what's holding you back?", "no? okay let's change things up a bit then. you're getting me really down. can you tell me a knock knock joke?",
     "i respect that choice. i didn't expect you to say yes. do you want me to continue?", "you hate it. noted. anything else to avoid?", "phew! i'm actually really glad you said no bc it would have been hard trying to keep a straight face the rest of our chat. speaking of which, any other requests or can we move on?",
@@ -839,7 +849,7 @@ a.cta-button:hover {
         {
       trigger: ["hot"],
       responses: [
-        "ooh, nice and hot! good choice. can i make it scalding hot just for you?",
+        "ooh, nice and hot! good choice. can i  it scalding hot just for you?",
         "great choice. i like hot too. do you want any milk?",
         "good, because i have to get it to a certain temp to kill whatever is stuck to the inside of this mug",
         "hot? are you sure? i swear you were going to say iced this time",
@@ -851,7 +861,7 @@ a.cta-button:hover {
       responses: [
         "okay, i was hoping you wouldn't say that bc i need to go out and get some ice. do you still want it?", "ooh, nice and cold! good choice. is one ice cube enough?", "ahhh, i was hoping you wouldn't say ice. i don't have any, but i can put some frozen peas in your drink. will that work?",
         "great choice. i like cold too. do you want any milk?", "hmm... okay. i actually don't have ice but i have frozen pennies. will that work?",
-        "okay, you know that makes it colder right?"
+        "okay, you know that s it colder right?"
       ]
     },
          {
