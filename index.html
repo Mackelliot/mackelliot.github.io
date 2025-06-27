@@ -943,8 +943,12 @@ function getContextualResponse(message) {
       // Create a unique key for tracking this group's responses
       const key = group.trigger.join("|");
 
-      // Get the last used index for this key, or start at -1
-      let lastIndex = responseHistory.get(key) ?? -1;
+      // 
+      if (!responseHistory.has(key)) {
+  responseHistory.set(key, Math.floor(Math.random() * group.responses.length));
+}
+let lastIndex = responseHistory.get(key);
+
 
       // Get the next index, wrap around with modulo
       const nextIndex = (lastIndex + 1) % group.responses.length;
