@@ -381,6 +381,9 @@ a.cta-button:hover {
   window.addEventListener('load', onScroll); // trigger once on load
 </script>
 <script>
+
+  const responseHistory = new Map();
+
   const chatButton = document.getElementById("grantChatButton");
   const chatBox = document.getElementById("grantChatBox");
   const sendBtn = document.getElementById("grantSendBtn");
@@ -893,22 +896,38 @@ a.cta-button:hover {
     }
   ];
 
-  function getContextualResponse(message) {
-    message = message.toLowerCase();
+function getContextualResponse(message) {
+  message = message.toLowerCase();
 
-    for (const group of keywordResponses) {
-      if (group.trigger.some(trigger =>
-  typeof trigger === "string"
-    ? message.includes(trigger)
-    : trigger.test(message)
-)) {
+  for (const group of keywordResponses) {
+    const matched = group.trigger.some(trigger =>
+      typeof trigger === "string"
+        ? new RegExp(`\\b${trigger}\\b`).test(message)
+        : trigger.test(message)
+    );
 
-        return group.responses[Math.floor(Math.random() * group.responses.length)];
-      }
+    if (matched) {
+      // Create a unique key for tracking this group's responses
+      const key = group.trigger.join("|");
+
+      // Get the last used index for this key, or start at -1
+      let lastIndex = responseHistory.get(key) ?? -1;
+
+      // Get the next index, wrap around with modulo
+      const nextIndex = (lastIndex + 1) % group.responses.length;
+
+      // Update the history with the new index
+      responseHistory.set(key, nextIndex);
+
+      // Return the rotated response
+      return group.responses[nextIndex];
     }
-
-    return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
   }
+
+  // Still fallback randomly if no triggers match
+  return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+}
+
 
   window.addEventListener("scroll", () => {
     const about = document.getElementById("about");
