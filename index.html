@@ -356,6 +356,9 @@ a.cta-button:hover {
 
 
 <script>
+ const recentResponses = [];
+const MAX_HISTORY = 5;
+  
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
 
@@ -952,14 +955,23 @@ function getContextualResponse(message) {
 let lastIndex = responseHistory.get(key);
 
 
-      // Get the next index, wrap around with modulo
-      const nextIndex = (lastIndex + 1) % group.responses.length;
+let nextIndex = (lastIndex + 1) % group.responses.length;
+let response = group.responses[nextIndex];
 
-      // Update the history with the new index
-      responseHistory.set(key, nextIndex);
+// Avoid recent repeats globally
+let attempts = 0;
+while (recentResponses.includes(response) && attempts < group.responses.length) {
+  nextIndex = (nextIndex + 1) % group.responses.length;
+  response = group.responses[nextIndex];
+  attempts++;
+}
 
-      // Return the rotated response
-      return group.responses[nextIndex];
+responseHistory.set(key, nextIndex);
+recentResponses.push(response);
+if (recentResponses.length > MAX_HISTORY) recentResponses.shift();
+
+return response;
+;
     }
   }
 
