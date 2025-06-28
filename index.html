@@ -958,9 +958,12 @@ let lastIndex = responseHistory.get(key);
 let nextIndex = (lastIndex + 1) % group.responses.length;
 let response = group.responses[nextIndex];
 
-// Avoid recent repeats globally
 let attempts = 0;
-while (recentResponses.includes(response) && attempts < group.responses.length) {
+while (
+  recentResponses.includes(response) &&
+  attempts < group.responses.length &&
+  group.responses.length > 1
+) {
   nextIndex = (nextIndex + 1) % group.responses.length;
   response = group.responses[nextIndex];
   attempts++;
@@ -971,7 +974,7 @@ recentResponses.push(response);
 if (recentResponses.length > MAX_HISTORY) recentResponses.shift();
 
 return response;
-;
+
     }
   }
 
