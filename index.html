@@ -393,17 +393,20 @@ const welcomeMessages = [
 
 let chatOpenedOnce = false;
 
-chatButton.addEventListener("click", () => {
-  chatBox.style.display = "flex";
+if (chatButton && chatBox) {
+  chatButton.addEventListener("click", () => {
+    chatBox.style.display = "flex";
 
-  if (!chatOpenedOnce) {
-    const randomGreeting = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
-    setTimeout(() => {
-      appendMessage(randomGreeting, "grantMessage");
-    }, 500);
-    chatOpenedOnce = true;
-  }
-});
+    if (!chatOpenedOnce) {
+      const randomGreeting = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+      setTimeout(() => {
+        appendMessage(randomGreeting, "grantMessage");
+      }, 500);
+      chatOpenedOnce = true;
+    }
+  });
+}
+
 
   document.getElementById("grantChatClose").addEventListener("click", () => {
     chatBox.style.display = "none";
