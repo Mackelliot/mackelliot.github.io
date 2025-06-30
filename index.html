@@ -393,10 +393,26 @@ const MAX_HISTORY = 5;
   const userInput = document.getElementById("grantUserInput");
   const chatMessages = document.getElementById("grantChatMessages");
   const socialsSection = document.getElementById("socials");
+const welcomeMessages = [
+  "hey there! i'm U.S. Grant, our nation's 18th president and your new favorite digital barista. can i make you a drink or crack a joke to lighten the mood?",
+  "well well well... look who decided to chat. i’m Ulysses S. Grant — former general, 18th president, and now, somehow... your barista. history gave me a Union to preserve. today? just your dignity — and your coffee order. let me know if i can make you a drink",
+  "yo! i'm U.S. Grant. what can i do for you today?, "what do you want?
+  "oh hey! didn’t see you there. i'm US Grant. i can make you a drink or tell you a joke. just let me know."
+];
 
-  chatButton.addEventListener("click", () => {
-    chatBox.style.display = "flex";
-  });
+let chatOpenedOnce = false;
+
+chatButton.addEventListener("click", () => {
+  chatBox.style.display = "flex";
+
+  if (!chatOpenedOnce) {
+    const randomGreeting = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+    setTimeout(() => {
+      appendMessage(randomGreeting, "grantMessage");
+    }, 500);
+    chatOpenedOnce = true;
+  }
+});
 
   document.getElementById("grantChatClose").addEventListener("click", () => {
     chatBox.style.display = "none";
@@ -475,15 +491,7 @@ const MAX_HISTORY = 5;
 
   const keywordResponses = [
     
-        {
-      trigger: ["hi", "hello", "hey", "sup", "howdy", "whats up", "what up", "what's up", "yo", "What's up"],
-      responses: [
-        "hi! i'm Grant. how can I help you? let me know if you want me to make you a drink or tell you a joke", "hi! is thir first time meeting me? you look familiar but its hard to recognize anyone when i'm looking up their nostrils (thanks by the way)",
-        "howdy. how can i help? ask me to tell you a joke or make you a drink.",
-        "hi. how are you? let's get to know eachother. start by telling me something you like about me. i need a confidence boost!",
-        "hi! care for a beverage? hot or iced?", "hi! do you know any good knock knock jokes? tell me one please"
-      ]
-    },
+      
      {
       trigger: ["do you care"],
       responses: [
